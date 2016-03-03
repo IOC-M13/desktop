@@ -10,6 +10,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -26,6 +27,9 @@ public class NewJFrame1 extends javax.swing.JFrame {
      */
     public NewJFrame1() {
         initComponents();
+        
+        
+        
     }
 
     /**
@@ -44,6 +48,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chrono Schedule 1.0");
         setMinimumSize(new java.awt.Dimension(778, 444));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2016", "2017", "2018", "2019", "2020" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -53,6 +62,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
         });
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -102,27 +116,121 @@ public class NewJFrame1 extends javax.swing.JFrame {
         int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
         int month = jComboBox2.getSelectedIndex();
         
-        // Create a calendar object and set year and month
-        Calendar mycal = new GregorianCalendar(year, month, 1);
-        
-        // Get the number of days in that month
-        int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        
-        jPanel1.setSize(547, 273);
-        jPanel1.setLayout(new GridLayout(5,7));
+        jPanel1.setLayout(new GridLayout(6,7));
         jPanel1.removeAll();
         
-        JLabel[] labels = new JLabel[daysInMonth];
-        
-        for (int i = 0; i < labels.length; i++) { 
-            labels[i] = new JLabel(String.valueOf(i + 1));
-            jPanel1.add(labels[i]);
-        }
-        
-        jPanel1.updateUI();
+        createCalendar(year, month, jPanel1);
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        
+        int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
+        int month = jComboBox2.getSelectedIndex();
+        
+        jPanel1.setLayout(new GridLayout(6,7));
+        jPanel1.removeAll();
+        
+        createCalendar(year, month, jPanel1);
+        
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        
+        int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
+        int month = jComboBox2.getSelectedIndex();
+
+        jPanel1.setLayout(new GridLayout(6,7));
+        jPanel1.removeAll();
+
+        createCalendar(year, month, jPanel1);
+        
+    }//GEN-LAST:event_formWindowOpened
+
+    public void createCalendar (int year, int month, JPanel jPanel) {
+        // Create a calendar object and set year and month
+        Calendar mycal = new GregorianCalendar(year, month, 1);
+                
+        
+        
+        
+        int daysBeforeMonth = getDaysBeforeMonth(mycal);
+        System.out.println("Primer dia del mes: " + daysBeforeMonth);
+        
+        JLabel[] jLab = new JLabel[daysBeforeMonth];
+        for (int i = 0; i < jLab.length; i++) {
+            jLab[i] = new JLabel();
+            jPanel.add(jLab[i]);
+        }
+        
+        
+        
+        
+        
+        // Get the number of days in that month
+        int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        JLabel[] labels = new JLabel[daysInMonth];
+        for (int i = 0; i < labels.length; i++) { 
+            labels[i] = new JLabel(String.valueOf(i + 1));
+            jPanel.add(labels[i]);
+        }
+        
+        
+        
+        
+        
+        int daysAfterMonth = getDaysAfterMonth(mycal);
+        
+        JLabel[] jLab2 = new JLabel[daysAfterMonth];
+        for (int i = 0; i < jLab2.length; i++) {
+            jLab2[i] = new JLabel();
+            jPanel.add(jLab2[i]);
+        }
+        
+        
+        jPanel.updateUI();
+        
+        
+    }
+    
+    public static int getDaysBeforeMonth(Calendar cal){
+	
+        int initialDayOfMonth = cal.get(Calendar.DAY_OF_WEEK);
+        
+        switch (initialDayOfMonth) {
+            case 1: return 6;
+            case 2: return 0;
+            case 3: return 1;
+            case 4: return 2;
+            case 5: return 3;
+            case 6: return 4;
+            case 7: return 5;
+        }
+        
+        return 0;
+    }
+    
+    public static int getDaysAfterMonth(Calendar cal){
+	
+        int finallyDayOfMonth = cal.get(Calendar.DAY_OF_WEEK);
+        
+        switch (finallyDayOfMonth) {
+            case 1: return 0;
+            case 2: return 6;
+            case 3: return 5;
+            case 4: return 4;
+            case 5: return 3;
+            case 6: return 2;
+            case 7: return 1;
+        }
+        
+        return 0;
+    }
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -154,10 +262,10 @@ public class NewJFrame1 extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 //new NewJFrame1();
-                //NewJFrame1 jframe = new NewJFrame1();
-                //jframe.setVisible(true);
-                //jframe.setLayout(null); //Para colocar los componentes en cualquier ubicación
-                
+                NewJFrame1 jframe = new NewJFrame1();
+                jframe.setVisible(true);
+                jframe.setLayout(null); //Para colocar los componentes en cualquier ubicación
+                                
             }
         });
     }
