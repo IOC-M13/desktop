@@ -18,7 +18,7 @@ public class BDHelper {
     Statement statement = null;
     ResultSet rs = null;
     
-    public Connection conectarDB(String ip, String port, String user, String pass) {
+    public Connection connectDB(String ip, String port, String user, String pass) {
         
         try {
             

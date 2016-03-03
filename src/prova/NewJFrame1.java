@@ -5,8 +5,10 @@
  */
 package prova;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.util.Calendar;
@@ -15,6 +17,9 @@ import java.util.GregorianCalendar;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 /**
  *
@@ -27,9 +32,6 @@ public class NewJFrame1 extends javax.swing.JFrame {
      */
     public NewJFrame1() {
         initComponents();
-        
-        
-        
     }
 
     /**
@@ -55,6 +57,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2016", "2017", "2018", "2019", "2020" }));
+        jComboBox1.setName(""); // NOI18N
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -116,7 +119,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
         int month = jComboBox2.getSelectedIndex();
         
-        jPanel1.setLayout(new GridLayout(6,7));
+        //jPanel1.setLayout(new GridLayout(6,7));
         jPanel1.removeAll();
         
         createCalendar(year, month, jPanel1);
@@ -129,7 +132,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
         int month = jComboBox2.getSelectedIndex();
         
-        jPanel1.setLayout(new GridLayout(6,7));
+        //jPanel1.setLayout(new GridLayout(6,7));
         jPanel1.removeAll();
         
         createCalendar(year, month, jPanel1);
@@ -142,7 +145,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
         int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
         int month = jComboBox2.getSelectedIndex();
 
-        jPanel1.setLayout(new GridLayout(6,7));
+        jPanel1.setLayout(new GridLayout(7,7)); //(filas, columnas)
         jPanel1.removeAll();
 
         createCalendar(year, month, jPanel1);
@@ -150,6 +153,25 @@ public class NewJFrame1 extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     public void createCalendar (int year, int month, JPanel jPanel) {
+        
+        Border border = LineBorder.createGrayLineBorder();
+        
+        
+        //Mostrar los nombres de los días de la semana
+        JLabel[] lab = new JLabel[7];
+        for (int i = 0; i < lab.length; i++) {
+            lab[i] = new JLabel(Constants.dayName[i], SwingConstants.CENTER);
+            lab[i].setForeground(Color.white);
+            JPanel titlePanel = new JPanel(new BorderLayout());
+            titlePanel.setBackground(Color.black);
+            titlePanel.add(lab[i]);  // adds to center of panel's default BorderLayout.
+            jPanel.add(titlePanel);
+        }
+        
+        
+        
+        
+        
         // Create a calendar object and set year and month
         Calendar mycal = new GregorianCalendar(year, month, 1);
                 
@@ -157,11 +179,13 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
         
         int daysBeforeMonth = getDaysBeforeMonth(mycal);
-        System.out.println("Primer dia del mes: " + daysBeforeMonth);
-        
+        Calendar c = new GregorianCalendar(year, month - 1, 1);
+        int daysMonthAgo = c.getActualMaximum(Calendar.DAY_OF_MONTH);
         JLabel[] jLab = new JLabel[daysBeforeMonth];
-        for (int i = 0; i < jLab.length; i++) {
-            jLab[i] = new JLabel();
+        for (int i = 0; i < daysBeforeMonth; i++) {
+            jLab[i] = new JLabel(String.valueOf(daysMonthAgo - daysBeforeMonth + i + 1), SwingConstants.CENTER);
+            jLab[i].setForeground(Color.gray);
+            jLab[i].setBorder(border);
             jPanel.add(jLab[i]);
         }
         
@@ -170,10 +194,12 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
         
         // Get the number of days in that month
-        int daysInMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        JLabel[] labels = new JLabel[daysInMonth];
+        int daysOfMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        JLabel[] labels = new JLabel[daysOfMonth];
         for (int i = 0; i < labels.length; i++) { 
-            labels[i] = new JLabel(String.valueOf(i + 1));
+            labels[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
+            labels[i].setBorder(border);
+            boldFont(labels[i]);
             jPanel.add(labels[i]);
         }
         
@@ -181,11 +207,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
         
         
         
-        int daysAfterMonth = getDaysAfterMonth(mycal);
-        
-        JLabel[] jLab2 = new JLabel[daysAfterMonth];
+        JLabel[] jLab2 = new JLabel[42 - daysOfMonth - daysBeforeMonth];
         for (int i = 0; i < jLab2.length; i++) {
-            jLab2[i] = new JLabel();
+            jLab2[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
+            jLab2[i].setForeground(Color.gray);
+            jLab2[i].setBorder(border);
             jPanel.add(jLab2[i]);
         }
         
@@ -199,37 +225,27 @@ public class NewJFrame1 extends javax.swing.JFrame {
 	
         int initialDayOfMonth = cal.get(Calendar.DAY_OF_WEEK);
         
-        switch (initialDayOfMonth) {
-            case 1: return 6;
-            case 2: return 0;
-            case 3: return 1;
-            case 4: return 2;
-            case 5: return 3;
-            case 6: return 4;
-            case 7: return 5;
+        cal.setMinimalDaysInFirstWeek(7);
+        int numberWeekOfMonth = cal.get(Calendar.WEEK_OF_MONTH);
+        
+        if (numberWeekOfMonth == 0) {
+            
+            switch (initialDayOfMonth) {
+                case 1: return 6;
+                default: return initialDayOfMonth - 2;
+            }
+        
+        } else {
+            return 7;
         }
-        
-        return 0;
+      
+    } 
+    
+    public JLabel boldFont (JLabel lab) {
+        Font f = lab.getFont();
+        lab.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
+        return lab;
     }
-    
-    public static int getDaysAfterMonth(Calendar cal){
-	
-        int finallyDayOfMonth = cal.get(Calendar.DAY_OF_WEEK);
-        
-        switch (finallyDayOfMonth) {
-            case 1: return 0;
-            case 2: return 6;
-            case 3: return 5;
-            case 4: return 4;
-            case 5: return 3;
-            case 6: return 2;
-            case 7: return 1;
-        }
-        
-        return 0;
-    }
-    
-    
     
     /**
      * @param args the command line arguments
