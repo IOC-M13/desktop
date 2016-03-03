@@ -2,6 +2,7 @@
 
 package prova;
 
+import com.mysql.jdbc.CommunicationsException;
 import java.sql.*;
 import java.util.Arrays;
 import java.util.logging.Level;
@@ -23,11 +24,12 @@ public class BDHelper {
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
+            
             con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/dbchronoschedule", "standard", "1234");
             
         } catch(ClassNotFoundException | SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error en: " + e);
-        }
+            JOptionPane.showMessageDialog(null, "La IP y/o el puerto son incorrectos");
+        } 
         
         return con;
     }

@@ -9,4 +9,6 @@ package prova;
 public class Constants {
     public static final String dayName[] = {"Lunes", "Martes", "Miércoles",
                 "Jueves", "Viernes", "Sábado", "Domingo"};
+    public static String IP = "localhost";
+    public static String port = "3306";
 }
