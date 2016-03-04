@@ -57,4 +57,23 @@ public class BDHelper {
         return false;
     }
     
+    public ResultSet shiftsOfUser(String user) {
+        
+        
+        String sentenciaSQL = "SELECT * " + 
+                              "FROM users " +
+                              "WHERE userName = '" + user + 
+                                    "' AND pass = ';";
+        
+        try {
+            
+            statement = con.createStatement();
+            rs = statement.executeQuery(sentenciaSQL);
+        } catch (SQLException ex) {
+            return null;
+        }
+        return rs;
+    }
+    
+    
 }

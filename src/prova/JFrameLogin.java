@@ -63,9 +63,9 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Usuario:");
+        jLabel1.setText("User name:");
 
-        jLabel3.setText("Contraseña:");
+        jLabel3.setText("Password:");
 
         jTextField1.setName(""); // NOI18N
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -101,9 +101,9 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon("E:\\Estudios\\DAM\\M13 Projecte de desenvolupament d’aplicacions multiplataforma - 99h\\desktop\\icons\\loginLock.png")); // NOI18N
 
-        jMenu1.setText("Archivo");
+        jMenu1.setText("File");
 
-        jMenuItem1.setText("Salir");
+        jMenuItem1.setText("Close");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -113,9 +113,9 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Editar");
+        jMenu2.setText("Edit");
 
-        jMenuItem2.setText("Acceso a BD");
+        jMenuItem2.setText("Access to DB");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem2ActionPerformed(evt);
@@ -132,28 +132,27 @@ public class JFrameLogin extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(75, 75, 75)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(94, 94, 94))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(75, 75, 75)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,7 +194,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         
         try {
             
-            Connection conn = con.connectDB(Constants.IP,Constants.port,"standard", "1234");
+            Connection conn = con.connectDB(Support.IP,Support.port,"standard", "1234");
         
         
             String textUser = jTextField1.getText();
@@ -204,10 +203,12 @@ public class JFrameLogin extends javax.swing.JFrame {
             if (con.login(textUser, textPass)) {
                 JOptionPane.showMessageDialog(null, "Ha entrado correctamente!");
                 this.setVisible(false);
-                NewJFrame1 window = new NewJFrame1();
+                Support.userName = textUser;
+                JFrameWorker window = new JFrameWorker();
                 window.setVisible(true);
                 window.setLocationRelativeTo(null);
                 window.setLayout(null);
+                dispose();
             } else {
                 JOptionPane.showMessageDialog(null, "El usuario y/o contraseña es/son incorrecto/s");
             } 
@@ -232,10 +233,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1KeyTyped
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        
-        System.exit(0);
-        
+        System.exit(0); // Cerrar la aplicación
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
