@@ -15,6 +15,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -44,8 +45,9 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jComboBox1 = new javax.swing.JComboBox();
-        jComboBox2 = new javax.swing.JComboBox();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chrono Schedule 1.0");
@@ -64,14 +66,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,6 +79,24 @@ public class NewJFrame1 extends javax.swing.JFrame {
             .addGap(0, 269, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 282, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 22, Short.MAX_VALUE)
+        );
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,23 +104,27 @@ public class NewJFrame1 extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(165, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(51, 51, 51)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         pack();
@@ -116,43 +133,54 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
         
-        int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
-        int month = jComboBox2.getSelectedIndex();
-        
-        //jPanel1.setLayout(new GridLayout(6,7));
-        jPanel1.removeAll();
-        
-        createCalendar(year, month, jPanel1);
+        createCalendar(jPanel2, jPanel1);
         
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
         
-        int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
-        int month = jComboBox2.getSelectedIndex();
-        
-        //jPanel1.setLayout(new GridLayout(6,7));
-        jPanel1.removeAll();
-        
-        createCalendar(year, month, jPanel1);
+        createCalendar(jPanel2, jPanel1);
         
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         
-        int year = Integer.valueOf((String)jComboBox1.getSelectedItem());
-        int month = jComboBox2.getSelectedIndex();
-
-        jPanel1.setLayout(new GridLayout(7,7)); //(filas, columnas)
-        jPanel1.removeAll();
-
-        createCalendar(year, month, jPanel1);
+        createCalendar(jPanel2, jPanel1);
         
     }//GEN-LAST:event_formWindowOpened
 
-    public void createCalendar (int year, int month, JPanel jPanel) {
+    public void createCalendar (JPanel jPanelYearMonth, JPanel jPanelDays) {
+        
+        jPanelYearMonth.setLayout(new GridLayout(1,2));
+        JComboBox jComboBoxYear = new JComboBox();
+        Calendar c1 = Calendar.getInstance();
+        int currentYear = c1.get(Calendar.YEAR);
+        for (int i = 0; i <= 6; i++) {
+            jComboBoxYear.addItem(String.valueOf(currentYear + i));
+        }
+        jPanelYearMonth.add(jComboBoxYear);
+        
+        
+        JComboBox jComboBoxMonth = new JComboBox();
+        for (int i = 0; i < Constants.MONTH_NAME.length; i++) {
+            jComboBoxMonth.addItem(Constants.MONTH_NAME[i]);
+        }
+        jPanelYearMonth.add(jComboBoxMonth);
+        
+        
+        int year = Integer.valueOf((String)jComboBoxYear.getSelectedItem());
+        int month = jComboBoxMonth.getSelectedIndex();
+        
+        
+        
+        
+        
+        
+        
+        jPanelDays.setLayout(new GridLayout(7,7)); //(filas, columnas)
+        jPanelDays.removeAll();
         
         Border border = LineBorder.createGrayLineBorder();
         
@@ -160,12 +188,12 @@ public class NewJFrame1 extends javax.swing.JFrame {
         //Mostrar los nombres de los días de la semana
         JLabel[] lab = new JLabel[7];
         for (int i = 0; i < lab.length; i++) {
-            lab[i] = new JLabel(Constants.dayName[i], SwingConstants.CENTER);
+            lab[i] = new JLabel(Constants.DAY_NAME[i], SwingConstants.CENTER);
             lab[i].setForeground(Color.white);
             JPanel titlePanel = new JPanel(new BorderLayout());
             titlePanel.setBackground(Color.black);
             titlePanel.add(lab[i]);  // adds to center of panel's default BorderLayout.
-            jPanel.add(titlePanel);
+            jPanelDays.add(titlePanel);
         }
         
         
@@ -186,7 +214,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
             jLab[i] = new JLabel(String.valueOf(daysMonthAgo - daysBeforeMonth + i + 1), SwingConstants.CENTER);
             jLab[i].setForeground(Color.gray);
             jLab[i].setBorder(border);
-            jPanel.add(jLab[i]);
+            jPanelDays.add(jLab[i]);
         }
         
         
@@ -200,7 +228,7 @@ public class NewJFrame1 extends javax.swing.JFrame {
             labels[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
             labels[i].setBorder(border);
             boldFont(labels[i]);
-            jPanel.add(labels[i]);
+            jPanelDays.add(labels[i]);
         }
         
         
@@ -212,11 +240,11 @@ public class NewJFrame1 extends javax.swing.JFrame {
             jLab2[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
             jLab2[i].setForeground(Color.gray);
             jLab2[i].setBorder(border);
-            jPanel.add(jLab2[i]);
+            jPanelDays.add(jLab2[i]);
         }
         
         
-        jPanel.updateUI();
+        jPanelDays.updateUI();
         
         
     }
@@ -290,5 +318,6 @@ public class NewJFrame1 extends javax.swing.JFrame {
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JComboBox jComboBox2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }
