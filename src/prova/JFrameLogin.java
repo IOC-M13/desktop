@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
 public class JFrameLogin extends javax.swing.JFrame {
     
     /**
-     * Creates new form NewJFrame
+     * Creates new form JFrameWorker
      */
     public JFrameLogin() {
         initComponents();
@@ -57,6 +57,7 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chrono Schedule 1.0");
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
