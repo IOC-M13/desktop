@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.Support;
+import controller.*;
 
 /**
  *
@@ -14,6 +14,7 @@ import controller.Support;
 public class JFrameWorker extends javax.swing.JFrame {
 
     private Support support;
+    private CalendarClass calendar;
     
     /**
      * Creates new form NewJFrame
@@ -21,6 +22,7 @@ public class JFrameWorker extends javax.swing.JFrame {
     public JFrameWorker() {
         
         support = new Support();
+        calendar = new CalendarClass();
         initComponents();
         jLabel1.setText(Support.userName);
     }
@@ -128,7 +130,7 @@ public class JFrameWorker extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        support.createCalendar(jPanel1, jPanel2);
+        calendar.createCalendar(jPanel1, jPanel2);
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

@@ -16,10 +16,10 @@ import javax.swing.*;
 public class BDHelper {
     
     Connection con = null;
-    Statement statement = null;
+    Statement st = null;
     ResultSet rs = null;
     
-    public Connection connectDB(String ip, String port, String user, String pass) {
+    public Connection connectDB(String ip, String port) {
         
         try {
             
@@ -36,15 +36,15 @@ public class BDHelper {
     
     public int login(String user, String pass) {
         
-        String sentenciaSQL = "SELECT admin " + 
-                              "FROM users " +
-                              "WHERE userName = '" + user + 
-                                    "' AND pass = '" + pass + "';";
+        String query = "SELECT admin " + 
+                       "FROM users " +
+                       "WHERE userName = '" + user + 
+                            "' AND pass = '" + pass + "';";
         
         try {
             
-            statement = con.createStatement();
-            rs = statement.executeQuery(sentenciaSQL);
+            st = con.createStatement();
+            rs = st.executeQuery(query);
             
             if (rs.first()) {
                 if (rs.getBoolean("admin") == false){
@@ -61,22 +61,40 @@ public class BDHelper {
         return 0;
     }
     
-    public ResultSet shiftsOfUser(String user) {
+    public ResultSet shiftsOfUserOnMonth(String user, int year, int month) {
         
-        
-        String sentenciaSQL = "SELECT * " + 
-                              "FROM users " +
-                              "WHERE userName = '" + user + 
-                                    "' AND pass = ';";
+        String query = "SELECT day(date), color " +
+                       "FROM shifts as s, users as u, usershifts as us " +
+                       "WHERE s.idShift = us.idShift AND us.idUser = u.idUser " +
+                            "AND month(date) = " + (month + 1) + " " +
+                            "AND year(date) = " + year + " " +
+                            "AND userName = '" + user + "';";
         
         try {
             
-            statement = con.createStatement();
-            rs = statement.executeQuery(sentenciaSQL);
+            st = con.createStatement();
+            rs = st.executeQuery(query);
         } catch (SQLException ex) {
-            return null;
+            Logger.getLogger(BDHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         return rs;
+    }
+    
+    public void closeDB() {
+         
+        try {
+            if (rs != null) {
+                rs.close();
+            }
+            if (st != null) {
+                st.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error: " + ex);
+        }
     }
     
     

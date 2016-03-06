@@ -26,8 +26,8 @@ public class JFrameLogin extends javax.swing.JFrame {
     public JFrameLogin() {
         initComponents();
         
-        jButton1.setIcon(new ImageIcon(getClass().getResource("/icons/loginUnlock.png")));
-        jButton2.setIcon(new ImageIcon(getClass().getResource("/icons/loginClear.png")));
+        jButton1.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png")));
+        jButton2.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginClear.png")));
         
     }
 
@@ -102,7 +102,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/loginLock.png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loginLock.png"))); // NOI18N
 
         jMenu1.setText("File");
 
@@ -198,7 +198,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         
         try {
             
-            Connection conn = con.connectDB(Support.IP,Support.port,"standard", "1234");
+            Connection conn = con.connectDB(Support.IP,Support.port);
         
         
             String textUser = jTextField1.getText();

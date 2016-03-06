@@ -113,7 +113,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
                 .addContainerGap(147, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon(getClass().getResource("/icons/addUsers.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUsers.png")), jPanel2); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,7 +126,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
             .addGap(0, 325, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("", new javax.swing.ImageIcon(getClass().getResource("/icons/edit.png")), jPanel1); // NOI18N
+        jTabbedPane1.addTab("", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png")), jPanel1); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
