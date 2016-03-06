@@ -3,11 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="NetBeansProjects">
-            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/prova/Support.java</file>
-            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/prova/JFrameLogin.java</file>
-            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/prova/JFrameIPport.java</file>
-            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/prova/JFrameWorker.java</file>
-            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/prova/BDHelper.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/view/JFrameLogin.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/view/JFrameIPport.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/view/JFrameAdminUsers.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/controller/Support.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/view/JFrameAdmin.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/controller/BDHelper.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/controller/CalendarClass.java</file>
+            <file>file:/E:/Estudios/DAM/M13%20Projecte%20de%20desenvolupament%20d’aplicacions%20multiplataforma%20-%2099h/desktop/src/view/JFrameWorker.java</file>
         </group>
     </open-files>
 </project-private>

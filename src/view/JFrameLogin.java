@@ -6,6 +6,7 @@
 package view;
 
 import controller.BDHelper;
+import controller.FileProperties;
 import controller.Support;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -28,6 +29,10 @@ public class JFrameLogin extends javax.swing.JFrame {
         
         jButton1.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png")));
         jButton2.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginClear.png")));
+        
+        //Obtener los datos del fichero config.properties (la IP y puerto)
+        FileProperties fp = new FileProperties();
+        fp.loadProperties();
         
     }
 

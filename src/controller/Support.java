@@ -27,8 +27,10 @@ import javax.swing.border.LineBorder;
  */
 public class Support {
     
-    public static String IP = "localhost";
-    public static String port = "3306";
+    //public static String IP = "localhost";
+    //public static String port = "3306";
+    public static String IP = "";
+    public static String port = "";
     public static String userName = "";
         
 }

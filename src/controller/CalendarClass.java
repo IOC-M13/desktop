@@ -30,7 +30,7 @@ import javax.swing.border.LineBorder;
  */
 public class CalendarClass {
     public static final String[] MONTH_NAME = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Agosto", "Noviembre", "Diciembre"};
-    public static final String[] DAY_NAME = {"Lunes", "Martes", "Mi\u00e9rcoles", "Jueves", "Viernes", "S\u00e1bado", "Domingo"};
+    public static final String[] DAY_NAME = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     private String dateSelected = "";
     
     private BDHelper bdHelper;
