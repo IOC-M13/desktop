@@ -6,6 +6,10 @@
 package view;
 
 import controller.*;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -15,16 +19,41 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
     //private Support support;
     private CalendarClass calendar;
+    private DBHelper db;
     
     /**
      * Creates new form JFrameAdmin
      */
     public JFrameAdmin() {
         
-        //support = new Support();
         calendar = new CalendarClass();
+        db = new DBHelper();
+        
         initComponents();
-        jComboUsers.addItem(Support.userName);
+        
+        // Cargar los nombres de usuarios en el combobox, mediante una query al BD
+        db.connectDB(Support.IP, Support.port);
+        ResultSet rs = db.getUserNames();
+        
+        String auxUserName = Support.userName; /**
+                                                *  Para que no varie el nombre de user, ya que al hacer cambios sobre
+                                                *  el combobox... el evento del mismo se activa y cambia el nombre de user
+                                                **/
+        // Iterar por los resultados de los resultSet para ir agregado items al combobox
+        try {
+            while (rs.next()) {
+                jComboUsers.addItem(rs.getString(1));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeDB();
+        }
+        
+        //Devolver el nombre de user original a la variable Support.userName
+        Support.userName = auxUserName;
+        jComboUsers.setSelectedItem(Support.userName);
+
         
     }
 
@@ -79,6 +108,12 @@ public class JFrameAdmin extends javax.swing.JFrame {
             .addGap(0, 267, Short.MAX_VALUE)
         );
 
+        jComboUsers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboUsersActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
 
         jMenuItem3.setText("Close");
@@ -105,6 +140,11 @@ public class JFrameAdmin extends javax.swing.JFrame {
         jMenu4.add(jMenuItem1);
 
         jMenuItem2.setText("Shifts");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
@@ -159,6 +199,20 @@ public class JFrameAdmin extends javax.swing.JFrame {
         jFrameAdminUsers.setLocationRelativeTo(null);
         jFrameAdminUsers.setLayout(null);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jComboUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboUsersActionPerformed
+        // TODO add your handling code here:
+        Support.userName = (String) jComboUsers.getSelectedItem();
+        calendar.createCalendarDays(jPanel2);
+    }//GEN-LAST:event_jComboUsersActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts();
+        jFrameAdminShifts.setVisible(true);
+        jFrameAdminShifts.setLocationRelativeTo(null);
+        jFrameAdminShifts.setLayout(null);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments

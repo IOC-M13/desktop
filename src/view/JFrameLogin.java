@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.BDHelper;
+import controller.DBHelper;
 import controller.FileProperties;
 import controller.Support;
 import java.awt.event.KeyEvent;
@@ -199,17 +199,17 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        BDHelper con = new BDHelper();
+        DBHelper db = new DBHelper();
         
         try {
             
-            Connection conn = con.connectDB(Support.IP,Support.port);
+            Connection conn = db.connectDB(Support.IP,Support.port);
         
         
             String textUser = jTextField1.getText();
             String textPass = String.valueOf(jPasswordField1.getPassword());
 
-            int stateLogin = con.login(textUser, textPass);
+            int stateLogin = db.login(textUser, textPass);
             
             if (stateLogin > 0) {
                 JOptionPane.showMessageDialog(null, "Ha entrado correctamente!");
@@ -235,6 +235,8 @@ public class JFrameLogin extends javax.swing.JFrame {
             } 
         
         } catch (NullPointerException e) {
+        } finally {
+            db.closeDB();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

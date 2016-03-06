@@ -32,12 +32,14 @@ public class CalendarClass {
     public static final String[] MONTH_NAME = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Agosto", "Noviembre", "Diciembre"};
     public static final String[] DAY_NAME = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
     private String dateSelected = "";
+    private int year;
+    private int month;
     
-    private BDHelper bdHelper;
+    private DBHelper db;
 
     public CalendarClass(){
         
-        bdHelper = new BDHelper();
+        db = new DBHelper();
         
     }
     
@@ -58,25 +60,25 @@ public class CalendarClass {
         jComboBoxYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
-                int month = jComboBoxMonth.getSelectedIndex();
-                createCalendarDays(year, month, jPanelDays);
+                year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
+                month = jComboBoxMonth.getSelectedIndex();
+                createCalendarDays(jPanelDays);
             }
         });
         jComboBoxMonth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
-                int month = jComboBoxMonth.getSelectedIndex();
-                createCalendarDays(year, month, jPanelDays);
+                year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
+                month = jComboBoxMonth.getSelectedIndex();
+                createCalendarDays(jPanelDays);
             }
         });
-        int year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
-        int month = jComboBoxMonth.getSelectedIndex();
-        createCalendarDays(year, month, jPanelDays);
+        year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
+        month = jComboBoxMonth.getSelectedIndex();
+        createCalendarDays(jPanelDays);
     }
 
-    private void createCalendarDays(int year, int month, JPanel jPanelDays) {
+    public void createCalendarDays(JPanel jPanelDays) {
         
         // Crear un Layout en forma de cuadrícula de 7 filas x 7 columnas
         jPanelDays.setLayout(new GridLayout(7, 7));
@@ -174,9 +176,9 @@ public class CalendarClass {
 
     private void loadShiftsOnCalendar(String user, int year, int month, JLabel[] labels) {
         
-        bdHelper.connectDB(Support.IP, Support.port);
+        db.connectDB(Support.IP, Support.port);
         
-        ResultSet rs = bdHelper.shiftsOfUserOnMonth(user, year, month);
+        ResultSet rs = db.shiftsOfUserOnMonth(user, year, month);
         
         try {
             
@@ -187,6 +189,8 @@ public class CalendarClass {
             
         } catch (SQLException ex) {
             Logger.getLogger(CalendarClass.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            db.closeDB();
         }
         
         

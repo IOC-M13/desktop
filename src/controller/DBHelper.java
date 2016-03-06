@@ -13,7 +13,7 @@ import javax.swing.*;
  *
  * @author Oscar
  */
-public class BDHelper {
+public class DBHelper {
     
     Connection con = null;
     Statement st = null;
@@ -55,7 +55,7 @@ public class BDHelper {
             }
             
         } catch (SQLException ex) {
-            Logger.getLogger(BDHelper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return 0;
@@ -75,8 +75,24 @@ public class BDHelper {
             st = con.createStatement();
             rs = st.executeQuery(query);
         } catch (SQLException ex) {
-            Logger.getLogger(BDHelper.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return rs;
+    }
+    
+    public ResultSet getUserNames() {
+        
+        String query = "SELECT userName " +
+                       "FROM users;";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         return rs;
     }
     
