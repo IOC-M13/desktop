@@ -78,14 +78,15 @@ public class CalendarClass {
 
     private void createCalendarDays(int year, int month, JPanel jPanelDays) {
         
-        
+        // Crear un Layout en forma de cuadrícula de 7 filas x 7 columnas
         jPanelDays.setLayout(new GridLayout(7, 7));
         jPanelDays.removeAll();
         
-        
+        // Crear un borde para los JLabel de los días
         Border border = LineBorder.createGrayLineBorder();
         
         
+        // Agregar los nombre de los días de la semana
         JLabel[] lab = new JLabel[7];
         for (int i = 0; i < lab.length; i++) {
             lab[i] = new JLabel(CalendarClass.DAY_NAME[i], SwingConstants.CENTER);
@@ -98,7 +99,7 @@ public class CalendarClass {
         
         
         
-        
+        // Agregar los días anteriores al mes seleccionado
         Calendar mycal = new GregorianCalendar(year, month, 1);
         int daysBeforeMonth = getDaysBeforeMonth(mycal);
         Calendar c = new GregorianCalendar(year, month - 1, 1);
@@ -115,7 +116,7 @@ public class CalendarClass {
         
         
         
-        
+        // Agregar los días del mes seleccionado
         int daysOfMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
         JLabel[] labels = new JLabel[daysOfMonth];
         for (int i = 0; i < labels.length; i++) {
@@ -124,13 +125,10 @@ public class CalendarClass {
             boldFont(labels[i]);
             labels[i].addMouseListener(new MouseListener() {
                 @Override
-                public void mouseClicked(MouseEvent me) {
-                }
+                public void mouseClicked(MouseEvent me) {}
 
                 @Override
-                public void mouseEntered(MouseEvent arg0) {
-                    // El ratón se ha situado sobre la etiqueta
-                }
+                public void mouseEntered(MouseEvent arg0) {} // El ratón se ha situado sobre la etiqueta
 
                 @Override
                 public void mouseExited(MouseEvent arg0) {
@@ -154,7 +152,7 @@ public class CalendarClass {
         
         
         
-        
+        // Agregar los días posteriores al mes seleccionado
         JLabel[] jLab2 = new JLabel[42 - daysOfMonth - daysBeforeMonth];
         for (int i = 0; i < jLab2.length; i++) {
             jLab2[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
@@ -165,12 +163,12 @@ public class CalendarClass {
         
         
         
-        
+        // Cargar los turnos del usuario indicado
         loadShiftsOnCalendar(Support.userName, year, month, labels);
         
         
         
-        
+        // Actualizar el JPanel para que se vean los cambios efectuados en el
         jPanelDays.updateUI();
     }
 
