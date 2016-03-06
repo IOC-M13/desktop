@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.FileProperties;
 import controller.Support;
 
 /**
@@ -122,6 +123,9 @@ public class JFrameIPport extends javax.swing.JFrame {
         
         Support.IP = jTextField1.getText();
         Support.port = jTextField2.getText();
+        //Guardos los datos en el fichero config.properties (la IP y puerto)
+        FileProperties fp = new FileProperties();
+        fp.writeProperties();
         dispose();
         
     }//GEN-LAST:event_jButton1ActionPerformed
