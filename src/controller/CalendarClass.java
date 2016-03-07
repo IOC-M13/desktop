@@ -23,6 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import view.JFrameAdminEditDay;
+import view.JFrameAdminUsers;
 
 /**
  *
@@ -152,9 +154,13 @@ public class CalendarClass {
 
                 @Override
                 public void mousePressed(MouseEvent me) {
-                    JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
+                    //JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
                     dateSelected = String.valueOf(year) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + addZeroLeft(((JLabel) me.getSource()).getText());
-                    System.out.println(dateSelected);
+                    //System.out.println(dateSelected);
+                    JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay();
+                    jFrameAdminEditDay.setVisible(true);
+                    jFrameAdminEditDay.setLocationRelativeTo(null);
+                    jFrameAdminEditDay.setLayout(null);
                 }
 
                 @Override
