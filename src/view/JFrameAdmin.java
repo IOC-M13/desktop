@@ -26,10 +26,12 @@ public class JFrameAdmin extends javax.swing.JFrame {
      */
     public JFrameAdmin() {
         
-        calendar = new CalendarClass();
+        
         db = new DBHelper();
         
         initComponents();
+        
+        calendar = new CalendarClass(jPanel1, jPanel2);
         
         // Cargar los nombres de usuarios en el combobox, mediante una query al BD
         db.connectDB(Support.IP, Support.port);
@@ -184,7 +186,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        calendar.createCalendar(jPanel1, jPanel2);
+        calendar.createCalendar();
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -203,7 +205,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
     private void jComboUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboUsersActionPerformed
         // TODO add your handling code here:
         Support.userName = (String) jComboUsers.getSelectedItem();
-        calendar.createCalendarDays(jPanel2);
+        calendar.createCalendarDays();
     }//GEN-LAST:event_jComboUsersActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed

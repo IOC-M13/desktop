@@ -34,16 +34,28 @@ public class CalendarClass {
     private String dateSelected = "";
     private int year;
     private int month;
+    private int daysOfMonth;
+    private JPanel jPanelYearMonth;
+    private JPanel jPanelDays;
+    private JLabel[] labelsDaysCurrentMonth;
     
     private DBHelper db;
 
-    public CalendarClass(){
+    public CalendarClass(JPanel jPanelYearMonth, JPanel jPanelDays){
         
         db = new DBHelper();
         
+        this.jPanelYearMonth = jPanelYearMonth;
+        this.jPanelDays = jPanelDays;
+        
     }
     
-    public void createCalendar(JPanel jPanelYearMonth, JPanel jPanelDays) {
+    public void createCalendar() {
+        createCalendarYearMonth();
+        createCalendarDays();
+    }
+    
+    public void createCalendarYearMonth() {
         jPanelYearMonth.setLayout(new GridLayout(1, 2));
         JComboBox jComboBoxYear = new JComboBox();
         java.util.Calendar c1 = java.util.Calendar.getInstance();
@@ -62,7 +74,8 @@ public class CalendarClass {
             public void actionPerformed(ActionEvent e) {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
-                createCalendarDays(jPanelDays);
+                createCalendarDays();
+                loadShiftsOnCalendar();
             }
         });
         jComboBoxMonth.addActionListener(new ActionListener() {
@@ -70,15 +83,16 @@ public class CalendarClass {
             public void actionPerformed(ActionEvent e) {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
-                createCalendarDays(jPanelDays);
+                createCalendarDays();
+                loadShiftsOnCalendar();
             }
         });
         year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
         month = jComboBoxMonth.getSelectedIndex();
-        createCalendarDays(jPanelDays);
+        //createCalendarDays();
     }
 
-    public void createCalendarDays(JPanel jPanelDays) {
+    public void createCalendarDays() {
         
         // Crear un Layout en forma de cuadrícula de 7 filas x 7 columnas
         jPanelDays.setLayout(new GridLayout(7, 7));
@@ -119,13 +133,13 @@ public class CalendarClass {
         
         
         // Agregar los días del mes seleccionado
-        int daysOfMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
-        JLabel[] labels = new JLabel[daysOfMonth];
-        for (int i = 0; i < labels.length; i++) {
-            labels[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
-            labels[i].setBorder(border);
-            boldFont(labels[i]);
-            labels[i].addMouseListener(new MouseListener() {
+        daysOfMonth = mycal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        labelsDaysCurrentMonth = new JLabel[daysOfMonth];
+        for (int i = 0; i < labelsDaysCurrentMonth.length; i++) {
+            labelsDaysCurrentMonth[i] = new JLabel(String.valueOf(i + 1), SwingConstants.CENTER);
+            labelsDaysCurrentMonth[i].setBorder(border);
+            boldFont(labelsDaysCurrentMonth[i]);
+            labelsDaysCurrentMonth[i].addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent me) {}
 
@@ -147,7 +161,7 @@ public class CalendarClass {
                 public void mouseReleased(MouseEvent me) {
                 }
             });
-            jPanelDays.add(labels[i]);
+            jPanelDays.add(labelsDaysCurrentMonth[i]);
         }
         
         
@@ -166,25 +180,23 @@ public class CalendarClass {
         
         
         // Cargar los turnos del usuario indicado
-        loadShiftsOnCalendar(Support.userName, year, month, labels);
-        
-        
+        loadShiftsOnCalendar();
         
         // Actualizar el JPanel para que se vean los cambios efectuados en el
         jPanelDays.updateUI();
     }
 
-    private void loadShiftsOnCalendar(String user, int year, int month, JLabel[] labels) {
+    private void loadShiftsOnCalendar() {
         
         db.connectDB(Support.IP, Support.port);
         
-        ResultSet rs = db.shiftsOfUserOnMonth(user, year, month);
+        ResultSet rs = db.shiftsOfUserOnMonth(Support.userName, year, month);
         
         try {
             
             while (rs.next()) {
-                labels[rs.getInt(1) - 1].setBackground(Color.decode("#" + rs.getString(2)));
-                labels[rs.getInt(1) - 1].setOpaque(true);
+                labelsDaysCurrentMonth[rs.getInt(1) - 1].setBackground(Color.decode("#" + rs.getString(2)));
+                labelsDaysCurrentMonth[rs.getInt(1) - 1].setOpaque(true);
             }
             
         } catch (SQLException ex) {
@@ -192,7 +204,6 @@ public class CalendarClass {
         } finally {
             db.closeDB();
         }
-        
         
     }
     

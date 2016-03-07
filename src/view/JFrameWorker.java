@@ -22,8 +22,10 @@ public class JFrameWorker extends javax.swing.JFrame {
     public JFrameWorker() {
         
         support = new Support();
-        calendar = new CalendarClass();
+        
         initComponents();
+        
+        calendar = new CalendarClass(jPanel1, jPanel2);
         jLabel1.setText(Support.userName);
     }
 
@@ -130,7 +132,7 @@ public class JFrameWorker extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        calendar.createCalendar(jPanel1, jPanel2);
+        calendar.createCalendar();
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
