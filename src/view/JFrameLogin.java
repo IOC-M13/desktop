@@ -27,8 +27,8 @@ public class JFrameLogin extends javax.swing.JFrame {
     public JFrameLogin() {
         initComponents();
         
-        jButton1.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png")));
-        jButton2.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginClear.png")));
+        //jButton1.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png")));
+        //jButton2.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginClear.png")));
         
         //Obtener los datos del fichero config.properties (la IP y puerto)
         FileProperties fp = new FileProperties();
@@ -94,6 +94,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -101,6 +102,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loginClear.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
