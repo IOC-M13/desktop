@@ -133,6 +133,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
         jMenu4.setText("Manage");
 
+        jMenuItem1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/manageUsers.png"))); // NOI18N
         jMenuItem1.setText("Users");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +142,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
         });
         jMenu4.add(jMenuItem1);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/manageShifts.png"))); // NOI18N
         jMenuItem2.setText("Shifts");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
