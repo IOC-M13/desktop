@@ -19,9 +19,11 @@ import view.JFrameAdmin;
 public class EditDay {
     
     private DBHelper db;
+    private boolean doUpdate;
     
     public EditDay() {
         db = new DBHelper();
+        doUpdate = false;
     }
     
     public JComboBox loadShifts(JComboBox jComboBox, String day, String user) {
@@ -39,13 +41,13 @@ public class EditDay {
             }
             
             java.sql.Date sqlDate = stringDateToSQLdate(day);
+        
             ResultSet rs2 = db.userWithShiftAssigned(user, sqlDate);
-            
+
             if (rs2.first()) {
-                //Hacer update
+                jComboBox.setSelectedItem(db.getShiftName(rs2.getInt(1)));
                 
-            } else {
-                
+                doUpdate = true;
             }
             
         } catch (SQLException ex) {
@@ -64,8 +66,13 @@ public class EditDay {
         
         java.sql.Date sqlDate = stringDateToSQLdate(day);
         
-        //Asignar un turno a un usuario
-        db.assignShiftToUser(sqlDate, user, shift);
+        if (doUpdate) {
+            //Hacer update
+            db.updateShiftToUser(sqlDate, user, shift);
+        } else {
+            //Hacer insert
+            db.assignShiftToUser(sqlDate, user, shift);
+        }
         
         
     }

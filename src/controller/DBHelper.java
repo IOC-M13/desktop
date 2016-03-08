@@ -139,12 +139,40 @@ public class DBHelper {
         
     }
     
+    public void updateShiftToUser(java.sql.Date date, String userName, String shiftName) {
+          
+        try {
+            
+            //Obtener el id del usuario
+            int idUser = getIdUser(userName);
+            
+            //Obtener el id del turno
+            int idShift = getIdShift(shiftName);   
+
+            // create the java mysql update preparedstatement
+            String query = "UPDATE usershifts SET idShift = ? " + 
+                           "WHERE idUser = ? AND date = ?";
+
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt(1, idShift);
+            preparedStmt.setInt(2, idUser);
+            preparedStmt.setDate(3, date);
+
+            // execute the java preparedstatement
+            preparedStmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
     public ResultSet userWithShiftAssigned(String userName, java.sql.Date date) {
         
         //Obtener el id del usuario
         int idUser = getIdUser(userName);
         
-        String query = "SELECT * " +
+        String query = "SELECT idShift " +
                        "FROM usershifts " + 
                        "WHERE idUser = '" + idUser + "' AND date = '" + date + "';";
         
@@ -157,6 +185,31 @@ public class DBHelper {
         }
         
         return rs;
+    }
+    
+    
+    public String getShiftName(int idShift) {
+        
+        String shiftName = null;
+        
+        String query = "SELECT name " +
+                       "FROM shifts " + 
+                       "WHERE idShift = " + idShift + ";";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            
+            rs.first();
+            
+            shiftName = rs.getString(1);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return shiftName;
     }
 
     private int getIdUser(String userName) {
