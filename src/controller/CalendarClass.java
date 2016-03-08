@@ -157,7 +157,7 @@ public class CalendarClass {
                     //JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
                     dateSelected = String.valueOf(year) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + addZeroLeft(((JLabel) me.getSource()).getText());
                     //System.out.println(dateSelected);
-                    JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay();
+                    JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(dateSelected);
                     jFrameAdminEditDay.setVisible(true);
                     jFrameAdminEditDay.setLocationRelativeTo(null);
                     jFrameAdminEditDay.setLayout(null);

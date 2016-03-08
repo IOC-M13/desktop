@@ -205,7 +205,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         
         try {
             
-            Connection conn = db.connectDB(Support.IP,Support.port);
+            db.connectDB(Support.IP,Support.port);
         
         
             String textUser = jTextField1.getText();
