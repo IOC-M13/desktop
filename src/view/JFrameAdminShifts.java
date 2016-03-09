@@ -60,6 +60,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Manage Shifts");
 
         jLabel1.setText("Name:");
 

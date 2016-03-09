@@ -67,7 +67,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Chrono Schedule 1.0");
+        setTitle("Manage Users");
 
         jLabel1.setText("User Name:");
 

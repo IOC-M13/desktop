@@ -77,7 +77,7 @@ public class CalendarClass {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
                 createCalendarDays();
-                loadShiftsOnCalendar();
+                //loadShiftsOnCalendar();
             }
         });
         jComboBoxMonth.addActionListener(new ActionListener() {
@@ -86,7 +86,7 @@ public class CalendarClass {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
                 createCalendarDays();
-                loadShiftsOnCalendar();
+                //loadShiftsOnCalendar();
             }
         });
         year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());

@@ -32,5 +32,6 @@ public class Support {
     public static String IP = "";
     public static String port = "";
     public static String userName = "";
+    public static boolean windowClosed = false;
         
 }

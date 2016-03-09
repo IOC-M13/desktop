@@ -47,11 +47,9 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Edit Day");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/dayShiftOnDate.png"))); // NOI18N
         jLabel1.setText("Day shift on date:");
@@ -79,14 +77,6 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -136,7 +126,7 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton1))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,7 +141,8 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         controller.save(jLabel2.getText(), jLabel5.getText(), (String) jComboBox2.getSelectedItem());
-        
+        Support.windowClosed = true;
+        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -199,8 +190,5 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
