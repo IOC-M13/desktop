@@ -211,6 +211,24 @@ public class DBHelper {
         
         return shiftName;
     }
+    
+    public ResultSet getUserPersonalData(String userName) {
+    
+        String query = "SELECT pass, userDni, realName " +
+                       "FROM users " +
+                       "WHERE userName = '" + userName + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+        
+    }
 
     private int getIdUser(String userName) {
         

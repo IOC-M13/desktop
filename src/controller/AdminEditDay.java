@@ -16,17 +16,17 @@ import view.JFrameAdmin;
  *
  * @author Oscar
  */
-public class EditDay {
+public class AdminEditDay {
     
     private DBHelper db;
     private boolean doUpdate;
     
-    public EditDay() {
+    public AdminEditDay() {
         db = new DBHelper();
         doUpdate = false;
     }
     
-    public JComboBox loadShifts(JComboBox jComboBox, String day, String user) {
+    public void loadShifts(JComboBox jComboBox, String day, String user) {
         
         jComboBox.addItem("--Select--");
         
@@ -55,8 +55,6 @@ public class EditDay {
         } finally {
             db.closeDB();
         }
-        
-        return jComboBox;
         
     }
     
@@ -88,7 +86,7 @@ public class EditDay {
             sqlDate = new java.sql.Date(date.getTime());  
 
         } catch (ParseException ex) {
-            Logger.getLogger(EditDay.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminEditDay.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return sqlDate;

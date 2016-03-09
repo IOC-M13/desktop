@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.EditDay;
+import controller.AdminEditDay;
 import controller.Support;
 
 /**
@@ -14,7 +14,7 @@ import controller.Support;
  */
 public class JFrameAdminEditDay extends javax.swing.JFrame {
     
-    private EditDay controller;
+    private AdminEditDay controller;
     
     /**
      * Creates new form JFrameEditDay
@@ -22,12 +22,12 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
      */
     public JFrameAdminEditDay(String dateSelected) {
         
-        controller = new EditDay();
+        controller = new AdminEditDay();
         
         initComponents();
         jLabel2.setText(dateSelected);
         jLabel5.setText(Support.userName);
-        jComboBox2 = controller.loadShifts(jComboBox2, dateSelected, Support.userName);
+        controller.loadShifts(jComboBox2, dateSelected, Support.userName);
     }
 
     /**
@@ -96,15 +96,14 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
                             .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10))))
+                                .addGap(29, 29, 29)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(10, 10, 10))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(16, 16, 16)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
