@@ -111,6 +111,22 @@ public class DBHelper {
         return rs;
     }
     
+    public ResultSet getNameAndColorShifts(){
+        
+        String query = "SELECT color, name " +
+                       "FROM shifts;";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+    }
+    
     public void assignShiftToUser(java.sql.Date date, String userName, String shiftName) {
         
         try {
