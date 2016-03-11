@@ -181,7 +181,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addShifts.png")), jPanel2); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Armando" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IntensiveNight" }));
 
         jLabel4.setText("Name:");
 
@@ -343,6 +343,8 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
     private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
         // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
+        jLabel11.setBackground(color);
     }//GEN-LAST:event_jLabel11MousePressed
 
     private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
@@ -363,6 +365,8 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
     private void jLabel21MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MousePressed
         // TODO add your handling code here:
+        Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
+        jLabel21.setBackground(color);
     }//GEN-LAST:event_jLabel21MousePressed
 
     /**
