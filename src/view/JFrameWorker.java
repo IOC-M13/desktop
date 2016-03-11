@@ -101,6 +101,8 @@ public class JFrameWorker extends javax.swing.JFrame {
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
+        jScrollPane1.setBorder(null);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
