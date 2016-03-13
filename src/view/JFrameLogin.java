@@ -227,6 +227,7 @@ public class JFrameLogin extends javax.swing.JFrame {
                     jFrameWorker.setLocationRelativeTo(null);
                     jFrameWorker.setLayout(null);
                 } else {
+                    Support.isAdmin = true;
                     JFrameAdmin jFrameAdmin = new JFrameAdmin();
                     jFrameAdmin.setVisible(true);
                     jFrameAdmin.setLocationRelativeTo(null);

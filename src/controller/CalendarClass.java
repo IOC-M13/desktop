@@ -2,7 +2,6 @@
 
 package controller;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -18,13 +17,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import view.JFrameAdminEditDay;
-import view.JFrameAdminUsers;
+import view.JFrameWorkerShowDay;
 
 /**
  *
@@ -157,10 +155,17 @@ public class CalendarClass {
                     //JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
                     dateSelected = String.valueOf(year) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + addZeroLeft(((JLabel) me.getSource()).getText());
                     //System.out.println(dateSelected);
-                    JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(dateSelected);
-                    jFrameAdminEditDay.setVisible(true);
-                    jFrameAdminEditDay.setLocationRelativeTo(null);
-                    jFrameAdminEditDay.setLayout(null);
+                    if (Support.isAdmin) {
+                        JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(dateSelected);
+                        jFrameAdminEditDay.setVisible(true);
+                        jFrameAdminEditDay.setLocationRelativeTo(null);
+                        jFrameAdminEditDay.setLayout(null);
+                    } else {
+                        JFrameWorkerShowDay jFrameWorkerShowDay = new JFrameWorkerShowDay(dateSelected);
+                        jFrameWorkerShowDay.setVisible(true);
+                        jFrameWorkerShowDay.setLocationRelativeTo(null);
+                        jFrameWorkerShowDay.setLayout(null);
+                    }
                 }
 
                 @Override
