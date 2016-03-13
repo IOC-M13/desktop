@@ -25,7 +25,7 @@ public class DBHelper {
             
             Class.forName("com.mysql.jdbc.Driver");
             
-            con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/dbchronoschedule", "standard", "1234");
+            con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/dbChronoSchedule", "standard", "1234");
             
         } catch(ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "La IP y/o el puerto son incorrectos");
@@ -36,7 +36,7 @@ public class DBHelper {
     public int login(String user, String pass) {
         
         String query = "SELECT admin " + 
-                       "FROM users " +
+                       "FROM Users " +
                        "WHERE userName = '" + user + 
                             "' AND pass = '" + pass + "';";
         
@@ -63,7 +63,7 @@ public class DBHelper {
     public ResultSet shiftsOfUserOnMonth(String user, int year, int month) {
         
         String query = "SELECT day(date), color " +
-                       "FROM shifts as s, users as u, usershifts as us " +
+                       "FROM Shifts as s, Users as u, UserShifts as us " +
                        "WHERE s.idShift = us.idShift AND us.idUser = u.idUser " +
                             "AND month(date) = " + (month + 1) + " " +
                             "AND year(date) = " + year + " " +
@@ -82,7 +82,7 @@ public class DBHelper {
     public ResultSet getUserNames() {
         
         String query = "SELECT userName " +
-                       "FROM users;";
+                       "FROM Users;";
         
         try {
             
@@ -98,7 +98,7 @@ public class DBHelper {
     public ResultSet getShifts() {
         
         String query = "SELECT name " +
-                       "FROM shifts;";
+                       "FROM Shifts;";
         
         try {
             
@@ -114,7 +114,7 @@ public class DBHelper {
     public ResultSet getNameAndColorShifts(){
         
         String query = "SELECT color, name " +
-                       "FROM shifts;";
+                       "FROM Shifts;";
         
         try {
             
@@ -138,7 +138,7 @@ public class DBHelper {
             int idShift = getIdShift(shiftName);            
             
             // the mysql insert statement
-            String query = "INSERT INTO usershifts (idUser, idShift, date) " + 
+            String query = "INSERT INTO UserShifts (idUser, idShift, date) " + 
                            "VALUES (?, ?, ?)";
 
             // create the mysql insert preparedstatement
@@ -166,7 +166,7 @@ public class DBHelper {
             int idShift = getIdShift(shiftName);   
 
             // create the java mysql update preparedstatement
-            String query = "UPDATE usershifts SET idShift = ? " + 
+            String query = "UPDATE UserShifts SET idShift = ? " + 
                            "WHERE idUser = ? AND date = ?";
 
             PreparedStatement preparedStmt = con.prepareStatement(query);
@@ -189,7 +189,7 @@ public class DBHelper {
         int idUser = getIdUser(userName);
         
         String query = "SELECT idShift " +
-                       "FROM usershifts " + 
+                       "FROM UserShifts " + 
                        "WHERE idUser = '" + idUser + "' AND date = '" + date + "';";
         
         try {
@@ -209,7 +209,7 @@ public class DBHelper {
         String shiftName = null;
         
         String query = "SELECT name " +
-                       "FROM shifts " + 
+                       "FROM Shifts " + 
                        "WHERE idShift = " + idShift + ";";
         
         try {
@@ -231,7 +231,7 @@ public class DBHelper {
     public ResultSet getUserPersonalData(String userName) {
     
         String query = "SELECT pass, userDni, realName " +
-                       "FROM users " +
+                       "FROM Users " +
                        "WHERE userName = '" + userName + "';";
         
         try {
@@ -251,7 +251,7 @@ public class DBHelper {
         int idUser = 0;
         
         String query = "SELECT idUser " +
-                       "FROM users " +
+                       "FROM Users " +
                        "WHERE userName = '" + userName + "';";
         
         try {
@@ -275,7 +275,7 @@ public class DBHelper {
         int idShift = 0;
         
         String query = "SELECT idShift " +
-                       "FROM shifts " +
+                       "FROM Shifts " +
                        "WHERE name = '" + shiftName + "';";
         
         try {
