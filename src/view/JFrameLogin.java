@@ -9,10 +9,6 @@ import controller.DBHelper;
 import controller.FileProperties;
 import controller.Support;
 import java.awt.event.KeyEvent;
-import java.io.File;
-import java.sql.Connection;
-import java.util.Arrays;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -208,7 +204,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         
         try {
             
-            db.connectDB(Support.IP,Support.port);
+            db.connectDB();
         
         
             String textUser = jTextField1.getText();

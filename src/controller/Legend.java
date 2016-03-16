@@ -5,7 +5,6 @@ package controller;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Box;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -38,7 +36,7 @@ public class Legend  {
         Box col2 = Box.createVerticalBox();
         
         DBHelper db = new DBHelper();
-        db.connectDB(Support.IP, Support.port);
+        db.connectDB();
         
         ResultSet rs = db.getNameAndColorShifts();
         

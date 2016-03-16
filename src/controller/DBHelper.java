@@ -19,13 +19,13 @@ public class DBHelper {
     Statement st = null;
     ResultSet rs = null;
     
-    public void connectDB(String ip, String port) {
+    public void connectDB() {
         
         try {
             
             Class.forName("com.mysql.jdbc.Driver");
             
-            con = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + port + "/dbChronoSchedule", "standard", "1234");
+            con = DriverManager.getConnection("jdbc:mysql://" + Support.IP + ":" + Support.port + "/dbChronoSchedule", "standard", "1234");
             
         } catch(ClassNotFoundException | SQLException e) {
             JOptionPane.showMessageDialog(null, "La IP y/o el puerto son incorrectos");
@@ -292,6 +292,147 @@ public class DBHelper {
         }
         
         return idShift;
+    }
+    
+    
+    public ResultSet getUserByUserName(String userName) {
+        
+        String query = "SELECT idUser " +
+                       "FROM Users " +
+                       "WHERE userName = '" + userName + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+    }
+    
+    public ResultSet getUserByUserDni(String userDni) {
+        
+        String query = "SELECT idUser " +
+                       "FROM Users " +
+                       "WHERE userDni = '" + userDni + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+    }
+    
+    public ResultSet getUserByUserDni(String userDni, String userName) {
+        
+        String query = "SELECT idUser " +
+                       "FROM Users " +
+                       "WHERE userDni = '" + userDni + "' AND userName != '" + userName + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+    }
+    
+    public void insertUser(String dni, String userName, String realName, String pass, boolean isAdmin) {
+        
+        try {
+            
+            // the mysql insert statement
+            String query = "INSERT INTO Users (userDni, userName, realName, pass, admin) " + 
+                           "VALUES (?, ?, ?, ?, ?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, dni);
+            preparedStmt.setString(2, userName);
+            preparedStmt.setString(3, realName);
+            preparedStmt.setString(4, pass);
+            preparedStmt.setBoolean(5, isAdmin);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    
+    public ResultSet getAllDataUser(String userName) {
+    
+        String query = "SELECT userDni, realName, pass, admin " +
+                       "FROM Users " +
+                       "WHERE userName = '" + userName + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+        
+    }
+    
+    public void updateUserData(String userName, String userDni, String realName, String pass, boolean isAdmin) {
+          
+        try {
+
+            // create the java mysql update preparedstatement
+            String query = "UPDATE Users SET userDni = ?, realName = ?, pass = ?, admin = ? " + 
+                           "WHERE userName = ?";
+
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, userDni);
+            preparedStmt.setString(2, realName);
+            preparedStmt.setString(3, pass);
+            preparedStmt.setBoolean(4, isAdmin);
+            preparedStmt.setString(5, userName);
+
+            // execute the java preparedstatement
+            preparedStmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
+    public void deleteUserByUserName(String userName) {
+          
+        try {
+
+            // create the java mysql update preparedstatement
+            String query = "DELETE FROM Users " + 
+                           "WHERE userName = ?";
+
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, userName);
+
+            // execute the java preparedstatement
+            preparedStmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
     }
     
     public void closeDB() {

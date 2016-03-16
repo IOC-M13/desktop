@@ -37,7 +37,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
         legend.draw();
         
         // Cargar los nombres de usuarios en el combobox, mediante una query al BD
-        db.connectDB(Support.IP, Support.port);
+        db.connectDB();
         ResultSet rs = db.getUserNames();
         
         String auxUserName = Support.userName; /**

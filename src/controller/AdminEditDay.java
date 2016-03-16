@@ -32,7 +32,7 @@ public class AdminEditDay {
         
         try {
             
-            db.connectDB(Support.IP, Support.port);
+            db.connectDB();
             ResultSet rs = db.getShifts();
             
             // Iterar por los resultados de los resultSet para ir agregado items al combobox
@@ -60,7 +60,7 @@ public class AdminEditDay {
     
     public void save (String day, String user, String shift) {
         
-        db.connectDB(Support.IP, Support.port);
+        db.connectDB();
         
         java.sql.Date sqlDate = stringDateToSQLdate(day);
         

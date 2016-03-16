@@ -20,7 +20,7 @@ public class WorkerData {
         
         DBHelper db = new DBHelper();
         
-        db.connectDB(Support.IP, Support.port);
+        db.connectDB();
         ResultSet rs = db.getUserPersonalData(Support.userName);
 
         

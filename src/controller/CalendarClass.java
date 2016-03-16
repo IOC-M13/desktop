@@ -199,7 +199,7 @@ public class CalendarClass {
 
     private void loadShiftsOnCalendar() {
         
-        db.connectDB(Support.IP, Support.port);
+        db.connectDB();
         
         ResultSet rs = db.shiftsOfUserOnMonth(Support.userName, year, month);
         
