@@ -62,7 +62,7 @@ public class AdminUsers {
         db = new DBHelper();
     }
     
-    public void cleanAll() {
+    public void clearAll() {
         addUserName.setText("");
         addDni.setText("");
         addRealName.setText("");

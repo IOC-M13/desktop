@@ -435,6 +435,24 @@ public class DBHelper {
             
     }
     
+    public void insertShift(String name, String startTime, String endTime, String color) throws SQLException {
+            
+            // the mysql insert statement
+            String query = "INSERT INTO Shifts (name, startTime, endTime, color) " + 
+                           "VALUES (?, ?, ?, ?)";
+
+            // create the mysql insert preparedstatement
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setString(1, name);
+            preparedStmt.setString(2, startTime);
+            preparedStmt.setString(3, endTime);
+            preparedStmt.setString(4, color);
+
+            // execute the preparedstatement
+            preparedStmt.execute();
+        
+    }
+    
     public void closeDB() {
          
         try {
