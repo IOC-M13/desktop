@@ -25,7 +25,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         
         controller = new AdminUsers(this,
                                     jTextField1, jTextField6, jTextField2, jPasswordField1, jCheckBox1,
-                                    jComboBox1, jTextField3, jTextField4, jPasswordField2, jCheckBox2);
+                                    jComboBox1, jTextField3, jTextField4, jPasswordField2, jCheckBox2, jButton5, jButton3, jButton4);
         
         //jTabbedPane1.setIconAt(0, new ImageIcon("icons" + File.separator + "edit.png"));
         //jTabbedPane1.setTitleAt(0, "Users");

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -37,13 +38,16 @@ public class AdminUsers {
     private JTextField editRealName;
     private JPasswordField editPass;
     private JCheckBox editIsAdmin;
+    private JButton editClearAll;
+    private JButton editSave;
+    private JButton editDel;
     
     public boolean usersLoadedInComboBox = false;
     
     
     public AdminUsers(JFrame jFrame,
                       JTextField addUserName, JTextField addDni, JTextField addRealName, JPasswordField addPass, JCheckBox addIsAdmin,
-                      JComboBox editUserName, JTextField editDni, JTextField editRealName, JPasswordField editPass, JCheckBox editIsAdmin) {
+                      JComboBox editUserName, JTextField editDni, JTextField editRealName, JPasswordField editPass, JCheckBox editIsAdmin, JButton editClearAll, JButton editSave, JButton editDel) {
         
         this.jFrame = jFrame;
         
@@ -58,6 +62,9 @@ public class AdminUsers {
         this.editRealName = editRealName;
         this.editPass = editPass;
         this.editIsAdmin = editIsAdmin;
+        this.editClearAll = editClearAll;
+        this.editSave = editSave;
+        this.editDel = editDel;
         
         db = new DBHelper();
     }
@@ -161,10 +168,23 @@ public class AdminUsers {
             }
             
             
-            if (userOfCombo.equals(Support.userName) || userOfCombo.equals("admin")) {
+            if (userOfCombo.equals(Support.userName)) {
                 editIsAdmin.setEnabled(false);
+                editDel.setEnabled(false);
+                if (!editSave.isEnabled()) {
+                    editSave.setEnabled(true);
+                }
+            } else if (userOfCombo.equals("admin")) {
+                editIsAdmin.setEnabled(false);
+                editSave.setEnabled(false);
+                editDel.setEnabled(false);
+            } else if (!editSave.isEnabled()) {
+                editIsAdmin.setEnabled(true);
+                editSave.setEnabled(true);
+                editDel.setEnabled(true);
             } else {
                 editIsAdmin.setEnabled(true);
+                editDel.setEnabled(true);
             }
             
         } catch (SQLException ex) {
@@ -214,29 +234,16 @@ public class AdminUsers {
     public void deleteUser() {
         
         String comboBox = (String) editUserName.getSelectedItem();
-        
-        //Para no poder eliminar tu propio usuario ni el usuario admin
-        if (!comboBox.equals("admin")) {
-            if (!comboBox.equals(Support.userName)) {
-            
-                db.connectDB();
-                
-                db.deleteUserByUserName(comboBox);
-                
-                JOptionPane.showMessageDialog(null, "El usuario " + comboBox + " ha sido eliminado correctamente.");
-                
-                //Recargar el comboBox de nombres de usuarios
-                usersLoadedInComboBox = false;
-                loadUsersInComboBox();
-            
-            } else {
-                JOptionPane.showMessageDialog(null, "No puedes eliminar tu propio usuario!");
-            }
-            
-            
-        } else {
-            JOptionPane.showMessageDialog(null, "El usuario 'admin' no se puede eliminar!");
-        }
+           
+        db.connectDB();
+
+        db.deleteUserByUserName(comboBox);
+
+        JOptionPane.showMessageDialog(null, "El usuario " + comboBox + " ha sido eliminado correctamente.");
+
+        //Recargar el comboBox de nombres de usuarios
+        usersLoadedInComboBox = false;
+        loadUsersInComboBox();
     
     }
 

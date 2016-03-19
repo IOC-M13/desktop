@@ -25,7 +25,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         
         controller = new AdminShifts(this,
                                      jTextField1, jComboBox12, jComboBox13, jComboBox10, jComboBox11, jLabel21,
-                                     jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9, jLabel11);
+                                     jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9, jLabel11, jButton7, jButton6, jButton4);
         
     }
 
@@ -79,6 +79,12 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         setResizable(false);
 
         jTabbedPane1.setName("df"); // NOI18N
+
+        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel2ComponentShown(evt);
+            }
+        });
 
         jLabel1.setText("Name:");
 
@@ -202,7 +208,17 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addShifts.png")), jPanel2); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "IntensiveNight" }));
+        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jPanel1ComponentShown(evt);
+            }
+        });
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Name:");
 
@@ -214,6 +230,11 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
         jButton4.setText("Delete");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setBackground(new java.awt.Color(102, 204, 255));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -243,9 +264,19 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
         jButton6.setText("Save");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
         jButton7.setText("Clear all");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -392,6 +423,33 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         controller.addShift();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
+        controller.loadShiftsInComboBox();
+    }//GEN-LAST:event_jPanel1ComponentShown
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        if (controller.shiftsLoadedInComboBox == true) {
+            //System.out.println("Cambio de elemento del combo");
+            controller.loadShiftDataInComponents();
+        }
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
+        controller.changePanel();
+    }//GEN-LAST:event_jPanel2ComponentShown
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        controller.loadShiftDataInComponents();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        controller.editShiftData();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        controller.deleteShift();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

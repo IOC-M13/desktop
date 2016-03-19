@@ -33,7 +33,7 @@ public class AdminEditDay {
         try {
             
             db.connectDB();
-            ResultSet rs = db.getShifts();
+            ResultSet rs = db.getShiftsName();
             
             // Iterar por los resultados de los resultSet para ir agregado items al combobox
             while (rs.next()) {

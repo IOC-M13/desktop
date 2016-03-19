@@ -82,7 +82,8 @@ public class DBHelper {
     public ResultSet getUserNames() {
         
         String query = "SELECT userName " +
-                       "FROM Users;";
+                       "FROM Users " +
+                       "ORDER BY userName;";
         
         try {
             
@@ -95,7 +96,7 @@ public class DBHelper {
         return rs;
     }
     
-    public ResultSet getShifts() {
+    public ResultSet getShiftsName() {
         
         String query = "SELECT name " +
                        "FROM Shifts;";
@@ -451,6 +452,55 @@ public class DBHelper {
             // execute the preparedstatement
             preparedStmt.execute();
         
+    }
+    
+    public ResultSet getAllDataShift(String name) {
+    
+        String query = "SELECT startTime, endTime, color " +
+                       "FROM Shifts " +
+                       "WHERE name = '" + name + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
+        
+    }
+    
+    public void updateShiftData(String name, String startTime, String endTime, String color) throws SQLException {
+
+        // create the java mysql update preparedstatement
+        String query = "UPDATE Shifts SET startTime = ?, endTime = ?, color = ? " + 
+                       "WHERE name = ?";
+
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt.setString(1, startTime);
+        preparedStmt.setString(2, endTime);
+        preparedStmt.setString(3, color);
+        preparedStmt.setString(4, name);
+
+        // execute the java preparedstatement
+        preparedStmt.executeUpdate();      
+            
+    }
+    
+    public void deleteShiftByName(String name) throws SQLException {
+
+        // create the java mysql update preparedstatement
+        String query = "DELETE FROM Shifts " + 
+                       "WHERE name = ?";
+
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt.setString(1, name);
+
+        // execute the java preparedstatement
+        preparedStmt.executeUpdate();
+   
     }
     
     public void closeDB() {
