@@ -2,35 +2,52 @@
 
 package controller;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
+import view.JFrameWorkerData;
 
 /**
  *
  * @author Oscar
  */
 public class Worker {
+    
+    private JPanel jPanelYearMonth;
+    private JPanel jPanelDays;
+    private JPanel jPanelLegend;
+    private JLabel jLabelUser;
+    
+    private CalendarClass calendar;
+    private Legend legend;
 
-    public Worker(JPanel jPanel) {
+    public Worker(JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JLabel jLabelUser) {
         
-        Legend legend = new Legend(jPanel);
+        this.jPanelYearMonth = jPanelYearMonth;
+        this.jPanelDays = jPanelDays;
+        this.jPanelLegend = jPanelLegend;
+        this.jLabelUser = jLabelUser;
+        
+        calendar = new CalendarClass(jPanelYearMonth, jPanelDays);
+        legend = new Legend(jPanelLegend);
+        
+        
+        
+        
+        jLabelUser.setText(Support.userName);
+        calendar.createCalendar();
         legend.draw();
         
+    }
+    
+    public void openJFrameWorkerData() {
+        JFrameWorkerData jFrameWorkerData = new JFrameWorkerData();
+        jFrameWorkerData.setVisible(true);
+        jFrameWorkerData.setLocationRelativeTo(null);
+        jFrameWorkerData.setLayout(null);
+    }
+    
+    public void exit() {
+        System.exit(0); // Cerrar la aplicación
     }
     
 }

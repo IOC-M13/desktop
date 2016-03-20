@@ -22,7 +22,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
         
         initComponents();
         
-        controller = new Admin(jPanel1, jPanel2, jPanel3, jComboBox1);
+        controller = new Admin(this, jPanel1, jPanel2, jPanel3, jComboBox1);
 
     }
 
@@ -176,8 +176,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
-        // TODO add your handling code here:
-        System.exit(0); // Cerrar la aplicación
+        controller.exit(); // Cerrar la aplicación
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed

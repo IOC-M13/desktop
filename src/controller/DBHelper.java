@@ -2,9 +2,7 @@
 
 package controller;
 
-import com.mysql.jdbc.CommunicationsException;
 import java.sql.*;
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -545,6 +543,23 @@ public class DBHelper {
         }
         
         return rs;
+    }
+    
+    public void updateUserPersonalData(String userDni, String userName, String realName, String pass) throws SQLException {
+
+        // create the java mysql update preparedstatement
+        String query = "UPDATE Users SET userDni = ?, realName = ?, pass = ? " + 
+                       "WHERE userName = ?";
+
+        PreparedStatement preparedStmt = con.prepareStatement(query);
+        preparedStmt.setString(1, userDni);
+        preparedStmt.setString(2, realName);
+        preparedStmt.setString(3, pass);
+        preparedStmt.setString(4, userName);
+
+        // execute the java preparedstatement
+        preparedStmt.executeUpdate();
+            
     }
     
     public void closeDB() {

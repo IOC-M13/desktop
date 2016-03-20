@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import view.JFrameAdmin;
 import view.JFrameAdminShifts;
@@ -18,6 +19,7 @@ import view.JFrameAdminUsers;
  */
 public class Admin {
     
+    private JFrame jFrame;
     private JPanel jPanelYearMonth;
     private JPanel jPanelDays;
     private JPanel jPanelLegend;
@@ -27,14 +29,13 @@ public class Admin {
     private Legend legend;
     private DBHelper db;
     
-    private AdminEditDay controllerAdminEditDay;
-    
     public boolean shiftsChanged = false;
     
     public boolean usersLoadedInComboBox = false;
     
-    public Admin (JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JComboBox jComboUsers) {
+    public Admin (JFrame jFrame, JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JComboBox jComboUsers) {
         
+        this.jFrame = jFrame;
         this.jPanelYearMonth = jPanelYearMonth;
         this.jPanelDays = jPanelDays;
         this.jPanelLegend = jPanelLegend;
@@ -115,6 +116,10 @@ public class Admin {
         jFrameAdminShifts.setVisible(true);
         jFrameAdminShifts.setLocationRelativeTo(null);
         jFrameAdminShifts.setLayout(null);
+    }
+    
+    public void exit() {
+        System.exit(0); // Cerrar la aplicación
     }
     
     /**

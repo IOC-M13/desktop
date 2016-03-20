@@ -21,13 +21,9 @@ public class JFrameWorkerData extends javax.swing.JFrame {
      */
     public JFrameWorkerData() {
         
-        controller = new WorkerData();
-        
         initComponents();
         
-        jLabel5.setText(Support.userName);
-        
-        controller.loadPersonalData(jPasswordField1, jTextField1, jTextField2);
+        controller = new WorkerData(this, jLabel5, jPasswordField1, jTextField1, jTextField2);
         
     }
 
@@ -115,17 +111,17 @@ public class JFrameWorkerData extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addComponent(jPasswordField1))
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(18, 18, 18)
-                            .addComponent(jTextField1))
-                        .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(29, 29, 29)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(21, 21, 21)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(22, 22, 22))
         );
         layout.setVerticalGroup(
@@ -158,17 +154,15 @@ public class JFrameWorkerData extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        controller.save();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        dispose();
+        controller.closeWindow();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
+        controller.closeWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
