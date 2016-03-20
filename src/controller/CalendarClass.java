@@ -39,8 +39,19 @@ public class CalendarClass {
     private JPanel jPanelDays;
     private JLabel[] labelsDaysCurrentMonth;
     
+    private Admin controllerAdmin;
     private DBHelper db;
 
+    public CalendarClass(Admin controllerAdmin, JPanel jPanelYearMonth, JPanel jPanelDays){
+        
+        db = new DBHelper();
+        
+        this.controllerAdmin = controllerAdmin;
+        this.jPanelYearMonth = jPanelYearMonth;
+        this.jPanelDays = jPanelDays;
+        
+    }
+    
     public CalendarClass(JPanel jPanelYearMonth, JPanel jPanelDays){
         
         db = new DBHelper();
@@ -156,7 +167,7 @@ public class CalendarClass {
                     dateSelected = String.valueOf(year) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + addZeroLeft(((JLabel) me.getSource()).getText());
                     //System.out.println(dateSelected);
                     if (Support.isAdmin) {
-                        JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(dateSelected);
+                        JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(controllerAdmin, dateSelected);
                         jFrameAdminEditDay.setVisible(true);
                         jFrameAdminEditDay.setLocationRelativeTo(null);
                         jFrameAdminEditDay.setLayout(null);

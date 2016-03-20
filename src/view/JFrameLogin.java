@@ -23,9 +23,6 @@ public class JFrameLogin extends javax.swing.JFrame {
     public JFrameLogin() {
         initComponents();
         
-        //jButton1.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png")));
-        //jButton2.setIcon(new ImageIcon(getClass().getResource("/resources/icons/loginClear.png")));
-        
         //Obtener los datos del fichero config.properties (la IP y puerto)
         FileProperties fp = new FileProperties();
         fp.loadProperties();
@@ -237,6 +234,8 @@ public class JFrameLogin extends javax.swing.JFrame {
             } 
         
         } catch (NullPointerException e) {
+            //System.out.println("Error en: " + e.printStackTrace());
+            e.printStackTrace();
         } finally {
             db.closeDB();
         }

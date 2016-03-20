@@ -22,6 +22,9 @@ public class AdminUsers {
     
     private DBHelper db;
     
+    //Referencia al controller del JFrameAdmin
+    private Admin controllerAdmin;
+    
     // Referencia al JFrame
     private JFrame jFrame;
     
@@ -45,9 +48,12 @@ public class AdminUsers {
     public boolean usersLoadedInComboBox = false;
     
     
-    public AdminUsers(JFrame jFrame,
+    public AdminUsers(Admin controllerAdmin,
+                      JFrame jFrame,
                       JTextField addUserName, JTextField addDni, JTextField addRealName, JPasswordField addPass, JCheckBox addIsAdmin,
                       JComboBox editUserName, JTextField editDni, JTextField editRealName, JPasswordField editPass, JCheckBox editIsAdmin, JButton editClearAll, JButton editSave, JButton editDel) {
+        
+        this.controllerAdmin = controllerAdmin;
         
         this.jFrame = jFrame;
         
@@ -102,6 +108,9 @@ public class AdminUsers {
                     
                     JOptionPane.showMessageDialog(null, "El usuario se ha agregado correctamente.");
                     
+                    //Recargar los usuarios del comboBox del JFrameAdmin
+                    controllerAdmin.loadUsersInCombo();
+                    
                     //jFrame.dispose(); // Cerrar la ventana
                     
                 } else {
@@ -152,45 +161,48 @@ public class AdminUsers {
     
     public void loadUserDataInComponents() {
         
-        String userOfCombo = (String) editUserName.getSelectedItem();
+        if (usersLoadedInComboBox) {
         
-        db.connectDB();
-        ResultSet rs = db.getAllDataUser(userOfCombo);
-        
-        // Iterar por los resultados de los resultSet
-        try {
-            if (rs.first()) {
-                editDni.setText(rs.getString(1));
-                editRealName.setText(rs.getString(2));
-                editPass.setText(rs.getString(3));
-                editIsAdmin.setSelected(rs.getBoolean(4));   
-                
-            }
-            
-            
-            if (userOfCombo.equals(Support.userName)) {
-                editIsAdmin.setEnabled(false);
-                editDel.setEnabled(false);
-                if (!editSave.isEnabled()) {
-                    editSave.setEnabled(true);
+            String userOfCombo = (String) editUserName.getSelectedItem();
+
+            db.connectDB();
+            ResultSet rs = db.getAllDataUser(userOfCombo);
+
+            // Iterar por los resultados de los resultSet
+            try {
+                if (rs.first()) {
+                    editDni.setText(rs.getString(1));
+                    editRealName.setText(rs.getString(2));
+                    editPass.setText(rs.getString(3));
+                    editIsAdmin.setSelected(rs.getBoolean(4));   
+
                 }
-            } else if (userOfCombo.equals("admin")) {
-                editIsAdmin.setEnabled(false);
-                editSave.setEnabled(false);
-                editDel.setEnabled(false);
-            } else if (!editSave.isEnabled()) {
-                editIsAdmin.setEnabled(true);
-                editSave.setEnabled(true);
-                editDel.setEnabled(true);
-            } else {
-                editIsAdmin.setEnabled(true);
-                editDel.setEnabled(true);
+
+
+                if (userOfCombo.equals(Support.userName)) {
+                    editIsAdmin.setEnabled(false);
+                    editDel.setEnabled(false);
+                    if (!editSave.isEnabled()) {
+                        editSave.setEnabled(true);
+                    }
+                } else if (userOfCombo.equals("admin")) {
+                    editIsAdmin.setEnabled(false);
+                    editSave.setEnabled(false);
+                    editDel.setEnabled(false);
+                } else if (!editSave.isEnabled()) {
+                    editIsAdmin.setEnabled(true);
+                    editSave.setEnabled(true);
+                    editDel.setEnabled(true);
+                } else {
+                    editIsAdmin.setEnabled(true);
+                    editDel.setEnabled(true);
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("Error en: " + ex);
+            } finally {
+                db.closeDB();
             }
-            
-        } catch (SQLException ex) {
-            System.out.println("Error en: " + ex);
-        } finally {
-            db.closeDB();
         }
     }
     
@@ -240,6 +252,9 @@ public class AdminUsers {
         db.deleteUserByUserName(comboBox);
 
         JOptionPane.showMessageDialog(null, "El usuario " + comboBox + " ha sido eliminado correctamente.");
+        
+        //Recargar los usuarios del comboBox del JFrameAdmin
+        controllerAdmin.loadUsersInCombo();
 
         //Recargar el comboBox de nombres de usuarios
         usersLoadedInComboBox = false;

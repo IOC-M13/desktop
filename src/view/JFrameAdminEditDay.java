@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.Admin;
 import controller.AdminEditDay;
 import controller.Support;
 
@@ -20,9 +21,9 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
      * Creates new form JFrameEditDay
      * @param dateSelected
      */
-    public JFrameAdminEditDay(String dateSelected) {
+    public JFrameAdminEditDay(Admin controllerAdmin, String dateSelected) {
         
-        controller = new AdminEditDay();
+        controller = new AdminEditDay(controllerAdmin);
         
         initComponents();
         jLabel2.setText(dateSelected);
@@ -141,7 +142,7 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         controller.save(jLabel2.getText(), jLabel5.getText(), (String) jComboBox2.getSelectedItem());
-        Support.windowClosed = true;
+        //Support.windowClosed = true;
         dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

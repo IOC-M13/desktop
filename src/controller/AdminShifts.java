@@ -25,6 +25,9 @@ public class AdminShifts {
     
     private DBHelper db;
     
+    //Referencia al controller del JFrameAdmin
+    private Admin controllerAdmin;
+    
     // Referencia al JFrame
     private JFrame jFrame;
     
@@ -49,9 +52,12 @@ public class AdminShifts {
     
     public boolean shiftsLoadedInComboBox = false;
     
-    public AdminShifts (JFrame jFrame,
+    public AdminShifts (Admin controllerAdmin,
+                        JFrame jFrame,
                         JTextField addName, JComboBox addStartTimeHour, JComboBox addStartTimeMin, JComboBox addEndTimeHour, JComboBox addEndTimeMin, JLabel addColor,
                         JComboBox editName, JComboBox editStartTimeHour, JComboBox editStartTimeMin, JComboBox editEndTimeHour, JComboBox editEndTimeMin, JLabel editColor, JButton editClearAll, JButton editSave, JButton editDel) {
+        
+        this.controllerAdmin = controllerAdmin;
         
         this.jFrame = jFrame;
         
@@ -138,6 +144,10 @@ public class AdminShifts {
         try {
             db.insertShift(name, startTime, endTime, color);
             JOptionPane.showMessageDialog(null, "The shift " + name + " has been added successfully.");
+            
+            //Cargar de nuevo la leyenda del JFrameAdmin
+            controllerAdmin.loadLegend();
+            
         } catch (SQLException ex) {
             
             if (ex.getErrorCode() == 1062) {
@@ -183,36 +193,39 @@ public class AdminShifts {
     
     public void  loadShiftDataInComponents() {
         
-        String shiftOfCombo = (String) editName.getSelectedItem();
+        if (shiftsLoadedInComboBox) {
         
-        db.connectDB();
-        ResultSet rs = db.getAllDataShift(shiftOfCombo);
-        
-        // Iterar por los resultados de los resultSet
-        try {
-            if (rs.first()) {
-                editStartTimeHour.setSelectedItem(rs.getString(1).substring(0, 2));
-                editStartTimeMin.setSelectedItem(rs.getString(1).substring(3, 5));
-                
-                editEndTimeHour.setSelectedItem(rs.getString(2).substring(0, 2));
-                editEndTimeMin.setSelectedItem(rs.getString(2).substring(3, 5));
-                
-                editColor.setBackground(Color.decode("#" + rs.getString(3))); 
+            String shiftOfCombo = (String) editName.getSelectedItem();
+
+            db.connectDB();
+            ResultSet rs = db.getAllDataShift(shiftOfCombo);
+
+            // Iterar por los resultados de los resultSet
+            try {
+                if (rs.first()) {
+                    editStartTimeHour.setSelectedItem(rs.getString(1).substring(0, 2));
+                    editStartTimeMin.setSelectedItem(rs.getString(1).substring(3, 5));
+
+                    editEndTimeHour.setSelectedItem(rs.getString(2).substring(0, 2));
+                    editEndTimeMin.setSelectedItem(rs.getString(2).substring(3, 5));
+
+                    editColor.setBackground(Color.decode("#" + rs.getString(3))); 
+                }
+
+                if (shiftOfCombo.equals("Free")) {
+                    editSave.setEnabled(false);
+                    editDel.setEnabled(false);
+                } else if (!editSave.isEnabled()) {
+                    editSave.setEnabled(true);
+                    editDel.setEnabled(true);                
+                }
+
+            } catch (SQLException ex) {
+                System.out.println("Error en: " + ex);
+            } finally {
+                db.closeDB();
             }
-            
-            if (shiftOfCombo.equals("Free")) {
-                editSave.setEnabled(false);
-                editDel.setEnabled(false);
-            } else if (!editSave.isEnabled()) {
-                editSave.setEnabled(true);
-                editDel.setEnabled(true);                
-            }
-            
-        } catch (SQLException ex) {
-            System.out.println("Error en: " + ex);
-        } finally {
-            db.closeDB();
-        }
+         }
         
     }
     
@@ -258,8 +271,11 @@ public class AdminShifts {
         }
 
         JOptionPane.showMessageDialog(null, "The shift " + comboBox + " has been deleted successfully.");
+        
+        //Cargar de nuevo la leyenda del JFrameAdmin
+        controllerAdmin.loadLegend();
 
-        //Recargar el comboBox de nombres de usuarios
+        //Recargar el comboBox de nombres de turnos
         shiftsLoadedInComboBox = false;
         loadShiftsInComboBox();
     

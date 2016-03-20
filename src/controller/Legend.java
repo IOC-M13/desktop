@@ -31,6 +31,9 @@ public class Legend  {
     }
     
     public void draw() {
+        
+        jPanel.removeAll();
+        
         List<JLabel> jLabel = new ArrayList<>();
         Box col = Box.createVerticalBox();
         Box col2 = Box.createVerticalBox();
@@ -54,9 +57,12 @@ public class Legend  {
                 jLabel.get(i).setOpaque(true);
                 col.add(jLabel.get(i));
                 
+                //jPanel.updateUI();
                 
                 jLabel.add(new JLabel(rs.getString(2)));
                 col2.add(jLabel.get(i + 1));
+                
+                //jPanel.updateUI();
                 
                 if (!rs.isLast()) {
                     col.add(Box.createRigidArea(new Dimension(0,5)));
@@ -97,7 +103,8 @@ public class Legend  {
         
         jPanel.setLayout(new BorderLayout());
         jPanel.add(row);
-        //jPanel.updateUI();
+        
+        jPanel.updateUI();
     }
     
 }

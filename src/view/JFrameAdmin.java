@@ -6,10 +6,6 @@
 package view;
 
 import controller.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -17,49 +13,17 @@ import java.util.logging.Logger;
  */
 public class JFrameAdmin extends javax.swing.JFrame {
 
-    //private Support support;
-    private CalendarClass calendar;
-    private DBHelper db;
-    private Legend legend;
+    private Admin controller;
     
     /**
      * Creates new form JFrameAdmin
      */
     public JFrameAdmin() {
         
-        
-        db = new DBHelper();
-        
         initComponents();
         
-        calendar = new CalendarClass(jPanel1, jPanel2);
-        legend = new Legend(jPanel3);
-        legend.draw();
-        
-        // Cargar los nombres de usuarios en el combobox, mediante una query al BD
-        db.connectDB();
-        ResultSet rs = db.getUserNames();
-        
-        String auxUserName = Support.userName; /**
-                                                *  Para que no varie el nombre de user, ya que al hacer cambios sobre
-                                                *  el combobox... el evento del mismo se activa y cambia el nombre de user
-                                                **/
-        // Iterar por los resultados de los resultSet para ir agregado items al combobox
-        try {
-            while (rs.next()) {
-                jComboUsers.addItem(rs.getString(1));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(JFrameAdmin.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            db.closeDB();
-        }
-        
-        //Devolver el nombre de user original a la variable Support.userName
-        Support.userName = auxUserName;
-        jComboUsers.setSelectedItem(Support.userName);
+        controller = new Admin(jPanel1, jPanel2, jPanel3, jComboBox1);
 
-        
     }
 
     /**
@@ -73,9 +37,9 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jComboUsers = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel3 = new javax.swing.JPanel();
+        jComboBox1 = new javax.swing.JComboBox();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -86,23 +50,6 @@ public class JFrameAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chrono Schedule 1.0");
         setResizable(false);
-        addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                formFocusGained(evt);
-            }
-        });
-        addWindowFocusListener(new java.awt.event.WindowFocusListener() {
-            public void windowGainedFocus(java.awt.event.WindowEvent evt) {
-                formWindowGainedFocus(evt);
-            }
-            public void windowLostFocus(java.awt.event.WindowEvent evt) {
-            }
-        });
-        addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                formPropertyChange(evt);
-            }
-        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -117,7 +64,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 26, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -130,12 +77,6 @@ public class JFrameAdmin extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 318, Short.MAX_VALUE)
         );
-
-        jComboUsers.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboUsersActionPerformed(evt);
-            }
-        });
 
         jScrollPane1.setBorder(null);
 
@@ -151,6 +92,12 @@ public class JFrameAdmin extends javax.swing.JFrame {
         );
 
         jScrollPane1.setViewportView(jPanel3);
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jMenu1.setText("File");
 
@@ -195,24 +142,25 @@ public class JFrameAdmin extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(31, 31, 31))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
-                                .addComponent(jComboUsers, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(114, 114, 114)))
-                .addGap(31, 31, 31))
+                                .addGap(36, 36, 36)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(125, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboUsers))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -224,9 +172,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        calendar.createCalendar();
-        
+        controller.loadUsersInCombo();
     }//GEN-LAST:event_formWindowOpened
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
@@ -236,43 +182,24 @@ public class JFrameAdmin extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        JFrameAdminUsers jFrameAdminUsers = new JFrameAdminUsers();
+        JFrameAdminUsers jFrameAdminUsers = new JFrameAdminUsers(controller);
         jFrameAdminUsers.setVisible(true);
         jFrameAdminUsers.setLocationRelativeTo(null);
         jFrameAdminUsers.setLayout(null);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jComboUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboUsersActionPerformed
-        // TODO add your handling code here:
-        Support.userName = (String) jComboUsers.getSelectedItem();
-        calendar.createCalendarDays();
-    }//GEN-LAST:event_jComboUsersActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
-        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts();
+        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts(controller);
         jFrameAdminShifts.setVisible(true);
         jFrameAdminShifts.setLocationRelativeTo(null);
         jFrameAdminShifts.setLayout(null);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void formFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_formFocusGained
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_formFocusGained
-
-    private void formPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_formPropertyChange
-        // TODO add your handling code here:
-    }//GEN-LAST:event_formPropertyChange
-
-    private void formWindowGainedFocus(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowGainedFocus
-        // TODO add your handling code here:
-        
-        if (Support.windowClosed) {
-            calendar.createCalendarDays();
-            //System.out.println("GainedFocus");
-            Support.windowClosed = false;
-        }
-    }//GEN-LAST:event_formWindowGainedFocus
+        controller.reloadCalendarToOtherUser();
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,13 +231,13 @@ public class JFrameAdmin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new JFrameAdmin().setVisible(true);
+                //new JFrameAdmin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox jComboUsers;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;

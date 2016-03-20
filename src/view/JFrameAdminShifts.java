@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.Admin;
 import controller.AdminShifts;
 import java.awt.Color;
 import javax.swing.JColorChooser;
@@ -20,10 +21,11 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     /**
      * Creates new form JFrameAdminShifts
      */
-    public JFrameAdminShifts() {
+    public JFrameAdminShifts(Admin controllerAdmin) {
         initComponents();
         
-        controller = new AdminShifts(this,
+        controller = new AdminShifts(controllerAdmin,
+                                     this,
                                      jTextField1, jComboBox12, jComboBox13, jComboBox10, jComboBox11, jLabel21,
                                      jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9, jLabel11, jButton7, jButton6, jButton4);
         
@@ -429,10 +431,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if (controller.shiftsLoadedInComboBox == true) {
-            //System.out.println("Cambio de elemento del combo");
-            controller.loadShiftDataInComponents();
-        }
+        controller.loadShiftDataInComponents();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown

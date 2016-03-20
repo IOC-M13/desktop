@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.Admin;
 import controller.AdminUsers;
 
 /**
@@ -18,12 +19,13 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     /**
      * Creates new form JFrameAdminUsers
      */
-    public JFrameAdminUsers() {
+    public JFrameAdminUsers(Admin controllerAdmin) {
         
         
         initComponents();
         
-        controller = new AdminUsers(this,
+        controller = new AdminUsers(controllerAdmin,
+                                    this,
                                     jTextField1, jTextField6, jTextField2, jPasswordField1, jCheckBox1,
                                     jComboBox1, jTextField3, jTextField4, jPasswordField2, jCheckBox2, jButton5, jButton3, jButton4);
         
@@ -353,10 +355,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        if (controller.usersLoadedInComboBox == true) {
-            //System.out.println("Cambio de elemento del combo");
-            controller.loadUserDataInComponents();
-        }
+        controller.loadUserDataInComponents();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged

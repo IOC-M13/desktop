@@ -20,10 +20,12 @@ public class AdminEditDay {
     
     private DBHelper db;
     private boolean doUpdate;
+    private Admin controllerAdmin;
     
-    public AdminEditDay() {
+    public AdminEditDay(Admin controllerAdmin) {
         db = new DBHelper();
         doUpdate = false;
+        this.controllerAdmin = controllerAdmin;
     }
     
     public void loadShifts(JComboBox jComboBox, String day, String user) {
@@ -72,6 +74,7 @@ public class AdminEditDay {
             db.assignShiftToUser(sqlDate, user, shift);
         }
         
+        controllerAdmin.loadCalendarDays();
         
     }
     
