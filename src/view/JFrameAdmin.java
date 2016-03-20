@@ -181,19 +181,12 @@ public class JFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        JFrameAdminUsers jFrameAdminUsers = new JFrameAdminUsers(controller);
-        jFrameAdminUsers.setVisible(true);
-        jFrameAdminUsers.setLocationRelativeTo(null);
-        jFrameAdminUsers.setLayout(null);
+        controller.openJFrameAdminUsers();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts(controller);
-        jFrameAdminShifts.setVisible(true);
-        jFrameAdminShifts.setLocationRelativeTo(null);
-        jFrameAdminShifts.setLayout(null);
+        controller.openJFrameAdminShifts();
+        
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

@@ -28,6 +28,9 @@ public class AdminShifts {
     //Referencia al controller del JFrameAdmin
     private Admin controllerAdmin;
     
+    //Referencia al controller del JFrameAdminEditDay
+    private AdminEditDay controllerAdminEditDay;
+    
     // Referencia al JFrame
     private JFrame jFrame;
     
@@ -147,6 +150,12 @@ public class AdminShifts {
             
             //Cargar de nuevo la leyenda del JFrameAdmin
             controllerAdmin.loadLegend();
+            
+            //Actualizar los turnos de la ventana JFrameEditDay, en el caso de que exista esta ventana
+            controllerAdminEditDay = controllerAdmin.getControllerAdminEditDay();
+            if (controllerAdminEditDay != null)  {
+                controllerAdminEditDay.loadShifts();
+            }
             
         } catch (SQLException ex) {
             
@@ -274,6 +283,17 @@ public class AdminShifts {
         
         //Cargar de nuevo la leyenda del JFrameAdmin
         controllerAdmin.loadLegend();
+        
+        //Cargar de nuevo el calendario de días, porque a lo mejor se ha eliminado un turno
+        //el cual estaba asignado a varios días.
+        controllerAdmin.loadCalendarDays();
+        
+        
+        //Actualizar los turnos de la ventana JFrameEditDay, en el caso de que exista esta ventana
+        controllerAdminEditDay = controllerAdmin.getControllerAdminEditDay();
+        if (controllerAdminEditDay != null)  {
+            controllerAdminEditDay.loadShifts();
+        }
 
         //Recargar el comboBox de nombres de turnos
         shiftsLoadedInComboBox = false;

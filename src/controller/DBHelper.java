@@ -184,6 +184,34 @@ public class DBHelper {
             
     }
     
+    public void deleteShiftToUser(java.sql.Date date, String userName, String shiftName) {
+          
+        try {
+            
+            //Obtener el id del usuario
+            int idUser = getIdUser(userName);
+            
+            //Obtener el id del turno
+            int idShift = getIdShift(shiftName);   
+
+            // create the java mysql update preparedstatement
+            String query = "DELETE FROM UserShifts " + 
+                           "WHERE idUser = ? AND idShift = ? AND date = ?";
+
+            PreparedStatement preparedStmt = con.prepareStatement(query);
+            preparedStmt.setInt(1, idUser);
+            preparedStmt.setInt(2, idShift);
+            preparedStmt.setDate(3, date);
+
+            // execute the java preparedstatement
+            preparedStmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    }
+    
     public ResultSet userWithShiftAssigned(String userName, java.sql.Date date) {
         
         //Obtener el id del usuario
@@ -501,6 +529,22 @@ public class DBHelper {
         // execute the java preparedstatement
         preparedStmt.executeUpdate();
    
+    }
+    
+    public ResultSet getShiftsTimesByName(String name) {
+        String query = "SELECT startTime, endTime " +
+                       "FROM Shifts " +
+                       "WHERE name = '" + name + "';";
+        
+        try {
+            
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+        } catch (SQLException ex) {
+            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return rs;
     }
     
     public void closeDB() {

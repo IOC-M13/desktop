@@ -9,6 +9,8 @@ import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import view.JFrameAdmin;
+import view.JFrameAdminShifts;
+import view.JFrameAdminUsers;
 
 /**
  *
@@ -24,6 +26,10 @@ public class Admin {
     private CalendarClass calendar;
     private Legend legend;
     private DBHelper db;
+    
+    private AdminEditDay controllerAdminEditDay;
+    
+    public boolean shiftsChanged = false;
     
     public boolean usersLoadedInComboBox = false;
     
@@ -92,6 +98,30 @@ public class Admin {
     
     public void loadLegend() {
         legend.draw();
+        
+        //
+    }
+    
+    public void openJFrameAdminUsers() {
+        JFrameAdminUsers jFrameAdminUsers = new JFrameAdminUsers(this);
+        jFrameAdminUsers.setVisible(true);
+        jFrameAdminUsers.setLocationRelativeTo(null);
+        jFrameAdminUsers.setLayout(null);
+    }
+    
+    public void openJFrameAdminShifts() {
+        
+        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts(this);
+        jFrameAdminShifts.setVisible(true);
+        jFrameAdminShifts.setLocationRelativeTo(null);
+        jFrameAdminShifts.setLayout(null);
+    }
+    
+    /**
+     * @return the controllerAdminEditDay
+     */
+    public AdminEditDay getControllerAdminEditDay() {
+        return calendar.getControllerAdminEditDay();
     }
     
 }

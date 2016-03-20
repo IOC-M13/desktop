@@ -40,6 +40,7 @@ public class CalendarClass {
     private JLabel[] labelsDaysCurrentMonth;
     
     private Admin controllerAdmin;
+    private AdminEditDay controllerAdminEditDay;
     private DBHelper db;
 
     public CalendarClass(Admin controllerAdmin, JPanel jPanelYearMonth, JPanel jPanelDays){
@@ -171,6 +172,8 @@ public class CalendarClass {
                         jFrameAdminEditDay.setVisible(true);
                         jFrameAdminEditDay.setLocationRelativeTo(null);
                         jFrameAdminEditDay.setLayout(null);
+                        controllerAdminEditDay = jFrameAdminEditDay.getController();
+                        
                     } else {
                         JFrameWorkerShowDay jFrameWorkerShowDay = new JFrameWorkerShowDay(dateSelected);
                         jFrameWorkerShowDay.setVisible(true);
@@ -265,6 +268,13 @@ public class CalendarClass {
 
     private void setDateSelected(String dateSelected) {
         this.dateSelected = dateSelected;
+    }
+
+    /**
+     * @return the controllerAdminEditDay
+     */
+    public AdminEditDay getControllerAdminEditDay() {
+        return controllerAdminEditDay;
     }
 
 }
