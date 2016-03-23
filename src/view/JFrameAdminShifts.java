@@ -420,35 +420,35 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel21MousePressed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        controller.clearAll();
+        getController().clearAll();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        controller.addShift();
+        getController().addShift();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
-        controller.loadShiftsInComboBox();
+        getController().loadShiftsInComboBox();
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        controller.loadShiftDataInComponents();
+        getController().loadShiftDataInComponents();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
-        controller.changePanel();
+        getController().changePanel();
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        controller.loadShiftDataInComponents();
+        getController().loadShiftDataInComponents();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        controller.editShiftData();
+        getController().editShiftData();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        controller.deleteShift();
+        getController().deleteShift();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
@@ -523,4 +523,11 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the controller
+     */
+    public AdminShifts getController() {
+        return controller;
+    }
 }

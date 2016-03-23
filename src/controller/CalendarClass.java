@@ -40,7 +40,8 @@ public class CalendarClass {
     private JLabel[] labelsDaysCurrentMonth;
     
     private Admin controllerAdmin;
-    private AdminEditDay controllerAdminEditDay;
+    private JFrameAdminEditDay jFrameAdminEditDay;
+    //private AdminEditDay controllerAdminEditDay;
     private DBHelper db;
 
     public CalendarClass(Admin controllerAdmin, JPanel jPanelYearMonth, JPanel jPanelDays){
@@ -165,14 +166,14 @@ public class CalendarClass {
                 @Override
                 public void mousePressed(MouseEvent me) {
                     //JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
-                    dateSelected = String.valueOf(year) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + addZeroLeft(((JLabel) me.getSource()).getText());
+                    dateSelected = addZeroLeft(((JLabel) me.getSource()).getText()) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + String.valueOf(year) ;
                     //System.out.println(dateSelected);
                     if (Support.isAdmin) {
-                        JFrameAdminEditDay jFrameAdminEditDay = new JFrameAdminEditDay(controllerAdmin, dateSelected);
+                        jFrameAdminEditDay = new JFrameAdminEditDay(controllerAdmin, dateSelected);
                         jFrameAdminEditDay.setVisible(true);
                         jFrameAdminEditDay.setLocationRelativeTo(null);
                         jFrameAdminEditDay.setLayout(null);
-                        controllerAdminEditDay = jFrameAdminEditDay.getController();
+                        //controllerAdminEditDay = jFrameAdminEditDay.getController();
                         
                     } else {
                         JFrameWorkerShowDay jFrameWorkerShowDay = new JFrameWorkerShowDay(dateSelected);
@@ -274,7 +275,12 @@ public class CalendarClass {
      * @return the controllerAdminEditDay
      */
     public AdminEditDay getControllerAdminEditDay() {
-        return controllerAdminEditDay;
+        if (jFrameAdminEditDay != null) {
+            return jFrameAdminEditDay.getController();
+        }
+       
+        return null;
+        
     }
 
 }

@@ -5,16 +5,11 @@ package controller;
 import java.awt.Color;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 /**
@@ -222,10 +217,16 @@ public class AdminShifts {
                 }
 
                 if (shiftOfCombo.equals("Free")) {
-                    editSave.setEnabled(false);
+                    editStartTimeHour.setEnabled(false);
+                    editStartTimeMin.setEnabled(false);
+                    editEndTimeHour.setEnabled(false);
+                    editEndTimeMin.setEnabled(false);
                     editDel.setEnabled(false);
-                } else if (!editSave.isEnabled()) {
-                    editSave.setEnabled(true);
+                } else if (!editDel.isEnabled()) {
+                    editStartTimeHour.setEnabled(true);
+                    editStartTimeMin.setEnabled(true);
+                    editEndTimeHour.setEnabled(true);
+                    editEndTimeMin.setEnabled(true);
                     editDel.setEnabled(true);                
                 }
 
@@ -256,6 +257,13 @@ public class AdminShifts {
             //Hacer update
             db.updateShiftData(name, startTime, endTime, color);
             JOptionPane.showMessageDialog(null, "The shift has been edited successfully.");
+            
+            //Cargar de nuevo la leyenda del JFrameAdmin
+            controllerAdmin.loadLegend();
+
+            //Cargar de nuevo el calendario de días, porque a lo mejor se ha eliminado un turno
+            //el cual estaba asignado a varios días.
+            controllerAdmin.loadCalendarDays();
             
         } catch (SQLException ex) {
             System.out.println("Error en: " + ex);

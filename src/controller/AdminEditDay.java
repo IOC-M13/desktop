@@ -79,7 +79,7 @@ public class AdminEditDay {
             }
             
             //Buscar si existe un turno asignado a este día y seleccinarlo en el combobox
-            java.sql.Date sqlDate = stringDateToSQLdate(dateSelected);
+            java.sql.Date sqlDate = db.stringDateToSQLdate(dateSelected);
             ResultSet rs2 = db.userWithShiftAssigned(userName.getText(), sqlDate);
 
             if (rs2.first()) {
@@ -135,7 +135,7 @@ public class AdminEditDay {
         
         db.connectDB();
         
-        java.sql.Date sqlDate = stringDateToSQLdate(dateSelected);
+        java.sql.Date sqlDate = db.stringDateToSQLdate(dateSelected);
         
         if (doUpdate) {
             
@@ -169,21 +169,6 @@ public class AdminEditDay {
         jFrame.dispose();
     }
     
-    private java.sql.Date stringDateToSQLdate(String day) {
-        
-        java.sql.Date sqlDate = null;
-        
-        try {
-            
-            SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-            java.util.Date date = sdf1.parse(day);
-            sqlDate = new java.sql.Date(date.getTime());  
-
-        } catch (ParseException ex) {
-            Logger.getLogger(AdminEditDay.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        return sqlDate;
-    }
+    
     
 }

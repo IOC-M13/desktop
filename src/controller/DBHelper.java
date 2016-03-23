@@ -3,6 +3,8 @@
 package controller;
 
 import java.sql.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -205,7 +207,7 @@ public class DBHelper {
             preparedStmt.executeUpdate();
             
         } catch (SQLException ex) {
-            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: " + ex.getMessage());
         }
             
     }
@@ -224,7 +226,7 @@ public class DBHelper {
             st = con.createStatement();
             rs = st.executeQuery(query);
         } catch (SQLException ex) {
-            Logger.getLogger(DBHelper.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: " + ex.getMessage());
         }
         
         return rs;
@@ -560,6 +562,24 @@ public class DBHelper {
         // execute the java preparedstatement
         preparedStmt.executeUpdate();
             
+    }
+    
+    public static java.sql.Date stringDateToSQLdate(String day) {
+        
+        java.sql.Date sqlDate = null;
+        
+        try {
+            
+            //SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd-MM-yyyy");
+            java.util.Date date = sdf1.parse(day);
+            sqlDate = new java.sql.Date(date.getTime());  
+
+        } catch (ParseException ex) {
+            Logger.getLogger(AdminEditDay.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return sqlDate;
     }
     
     public void closeDB() {
