@@ -41,7 +41,6 @@ public class CalendarClass {
     
     private Admin controllerAdmin;
     private JFrameAdminEditDay jFrameAdminEditDay;
-    //private AdminEditDay controllerAdminEditDay;
     private DBHelper db;
 
     public CalendarClass(Admin controllerAdmin, JPanel jPanelYearMonth, JPanel jPanelDays){
@@ -69,26 +68,42 @@ public class CalendarClass {
     }
     
     public void createCalendarYearMonth() {
+        
+        /* 
+           Crear el comboBox con los años, concretamente se crean 6 años
+           antes del año actual y 6 años después del año actual. 
+           See queda seleccionado, por defecto, el año actual.
+        */
         jPanelYearMonth.setLayout(new GridLayout(1, 2));
         JComboBox jComboBoxYear = new JComboBox();
         java.util.Calendar c1 = java.util.Calendar.getInstance();
         int currentYear = c1.get(java.util.Calendar.YEAR);
-        for (int i = 0; i < 6; i++) {
-            jComboBoxYear.addItem(String.valueOf(currentYear + i));
+        for (int i = 0; i <= 12; i++) {
+            jComboBoxYear.addItem(String.valueOf(currentYear + i - 6));
         }
+        jComboBoxYear.setSelectedItem(String.valueOf(currentYear));
         jPanelYearMonth.add(jComboBoxYear);
+        
+        /* 
+           Crear el comboBox con los meses.
+           Se queda, por defecto, seleccionado el mes actual.
+        */
         JComboBox jComboBoxMonth = new JComboBox();
         for (int i = 0; i < CalendarClass.MONTH_NAME.length; i++) {
             jComboBoxMonth.addItem(CalendarClass.MONTH_NAME[i]);
         }
+        
+        //Seleccionar el mes actual
+        int currentMonth = c1.get(java.util.Calendar.MONTH);
+        jComboBoxMonth.setSelectedItem(MONTH_NAME[currentMonth]);
         jPanelYearMonth.add(jComboBoxMonth);
+        
         jComboBoxYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
                 createCalendarDays();
-                //loadShiftsOnCalendar();
             }
         });
         jComboBoxMonth.addActionListener(new ActionListener() {
@@ -97,12 +112,10 @@ public class CalendarClass {
                 year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
                 month = jComboBoxMonth.getSelectedIndex();
                 createCalendarDays();
-                //loadShiftsOnCalendar();
             }
         });
         year = Integer.valueOf((String) jComboBoxYear.getSelectedItem());
         month = jComboBoxMonth.getSelectedIndex();
-        //createCalendarDays();
     }
 
     public void createCalendarDays() {
@@ -173,7 +186,6 @@ public class CalendarClass {
                         jFrameAdminEditDay.setVisible(true);
                         jFrameAdminEditDay.setLocationRelativeTo(null);
                         jFrameAdminEditDay.setLayout(null);
-                        //controllerAdminEditDay = jFrameAdminEditDay.getController();
                         
                     } else {
                         JFrameWorkerShowDay jFrameWorkerShowDay = new JFrameWorkerShowDay(dateSelected);

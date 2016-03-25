@@ -6,10 +6,10 @@
 package view;
 
 import controller.Admin;
-import controller.AdminEditDay;
 import controller.AdminShifts;
 import java.awt.Color;
 import javax.swing.JColorChooser;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,12 +17,21 @@ import javax.swing.JColorChooser;
  */
 public class JFrameAdminShifts extends javax.swing.JFrame {
 
+    private static JFrameAdminShifts instance;
     private AdminShifts controller;
+    
+    //Utilizar el patrón Singleton, para obtener una sola instancia de JFrameAdminUsers
+    public static JFrameAdminShifts getInstance(Admin controllerAdmin) {
+        if (instance == null) {
+            instance = new JFrameAdminShifts(controllerAdmin);
+        }
+        return instance;
+    }
     
     /**
      * Creates new form JFrameAdminShifts
      */
-    public JFrameAdminShifts(Admin controllerAdmin) {
+    private JFrameAdminShifts(Admin controllerAdmin) {
         initComponents();
         
         controller = new AdminShifts(controllerAdmin, 
@@ -80,6 +89,11 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Shifts");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPane1.setName("df"); // NOI18N
 
@@ -420,71 +434,40 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel21MousePressed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        getController().clearAll();
+        controller.clearAll();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        getController().addShift();
+        controller.addShift();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
-        getController().loadShiftsInComboBox();
+        controller.loadShiftsInComboBox();
     }//GEN-LAST:event_jPanel1ComponentShown
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        getController().loadShiftDataInComponents();
+        controller.loadShiftDataInComponents();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
-        getController().changePanel();
+        controller.changePanel();
     }//GEN-LAST:event_jPanel2ComponentShown
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        getController().loadShiftDataInComponents();
+        controller.loadShiftDataInComponents();
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        getController().editShiftData();
+        controller.editShiftData();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        getController().deleteShift();
+        controller.deleteShift();
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminShifts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminShifts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminShifts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminShifts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new JFrameAdminShifts().setVisible(true);
-            }
-        });
-    }
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        instance = null;
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
@@ -530,4 +513,5 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     public AdminShifts getController() {
         return controller;
     }
+    
 }

@@ -8,6 +8,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import view.JFrameAdmin;
 import view.JFrameAdminShifts;
@@ -28,6 +29,10 @@ public class Admin {
     private CalendarClass calendar;
     private Legend legend;
     private DBHelper db;
+    
+    private JFrameAdminUsers jFrameAdminUsers;
+    private JFrameAdminShifts jFrameAdminShifts;
+    
     
     public boolean shiftsChanged = false;
     
@@ -99,20 +104,17 @@ public class Admin {
     
     public void loadLegend() {
         legend.draw();
-        
-        //
     }
     
     public void openJFrameAdminUsers() {
-        JFrameAdminUsers jFrameAdminUsers = new JFrameAdminUsers(this);
+        jFrameAdminUsers = JFrameAdminUsers.getInstance(this);
         jFrameAdminUsers.setVisible(true);
         jFrameAdminUsers.setLocationRelativeTo(null);
         jFrameAdminUsers.setLayout(null);
     }
     
     public void openJFrameAdminShifts() {
-        
-        JFrameAdminShifts jFrameAdminShifts = new JFrameAdminShifts(this);
+        jFrameAdminShifts = JFrameAdminShifts.getInstance(this);
         jFrameAdminShifts.setVisible(true);
         jFrameAdminShifts.setLocationRelativeTo(null);
         jFrameAdminShifts.setLayout(null);
@@ -120,6 +122,10 @@ public class Admin {
     
     public void exit() {
         System.exit(0); // Cerrar la aplicación
+    }
+    
+    public void messageTwoWindowsNotOpen() {
+        JOptionPane.showMessageDialog(null, "Do not have two windows opened!");
     }
     
     /**

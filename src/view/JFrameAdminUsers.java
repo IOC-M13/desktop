@@ -14,12 +14,22 @@ import controller.AdminUsers;
  */
 public class JFrameAdminUsers extends javax.swing.JFrame {
 
+    private static JFrameAdminUsers instance;
+    
     private AdminUsers controller;
+    
+    //Utilizar el patrón Singleton, para obtener una sola instancia de JFrameAdminUsers
+    public static JFrameAdminUsers getInstance(Admin controllerAdmin) {
+        if (instance == null) {
+            instance = new JFrameAdminUsers(controllerAdmin);
+        }
+        return instance;
+    }
     
     /**
      * Creates new form JFrameAdminUsers
      */
-    public JFrameAdminUsers(Admin controllerAdmin) {
+    private JFrameAdminUsers(Admin controllerAdmin) {
         
         
         initComponents();
@@ -78,6 +88,11 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Users");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jTabbedPane1.setDoubleBuffered(true);
         jTabbedPane1.setName(""); // NOI18N
@@ -378,6 +393,10 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         controller.deleteUser();
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        instance = null;
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments

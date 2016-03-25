@@ -97,7 +97,7 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/startTime.png"))); // NOI18N
-        jLabel7.setText("Journey Start time:");
+        jLabel7.setText("Journey start time:");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/endTime.png"))); // NOI18N
         jLabel8.setText("Journey end time:");
