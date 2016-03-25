@@ -15,13 +15,22 @@ import controller.Support;
  */
 public class JFrameIPport extends javax.swing.JFrame {
 
+    private static JFrameIPport instance;
+    
     //Crear el atributo controller
     private IPport controller;
+    
+    public static JFrameIPport getInstance() {
+        if (instance == null) {
+            instance = new JFrameIPport();
+        }
+        return instance;
+    }
     
     /**
      * Creates new form JFrameIPport
      */
-    public JFrameIPport() {
+    private JFrameIPport() {
         initComponents();
         
         //Instanciar el controller de JFrameIPport
@@ -48,6 +57,11 @@ public class JFrameIPport extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Config DB");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Connect with database");
@@ -128,6 +142,10 @@ public class JFrameIPport extends javax.swing.JFrame {
         controller.save();
     }//GEN-LAST:event_btnSaveActionPerformed
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        instance = null;
+    }//GEN-LAST:event_formWindowClosing
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnSave;
@@ -164,5 +182,9 @@ public class JFrameIPport extends javax.swing.JFrame {
      */
     public javax.swing.JTextField getTfPort() {
         return tfPort;
+    }
+    
+    public JFrameIPport getJFrameIPport() {
+        return this;
     }
 }

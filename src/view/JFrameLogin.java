@@ -268,7 +268,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         // TODO add your handling code here:
         
-        JFrameIPport jframeIPport = new JFrameIPport();
+        JFrameIPport jframeIPport = JFrameIPport.getInstance();
         jframeIPport.setVisible(true);
         jframeIPport.setLocationRelativeTo(null);
         

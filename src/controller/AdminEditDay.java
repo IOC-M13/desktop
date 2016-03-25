@@ -4,8 +4,6 @@ package controller;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -163,6 +161,11 @@ public class AdminEditDay {
             JOptionPane.showMessageDialog(null, "There are no shift selected! ");
         }
         
+    }
+    
+    public void changeDate(String dateSelected) {
+        this.dateSelected = dateSelected;
+        day.setText(this.dateSelected);
     }
     
     public void exit() {

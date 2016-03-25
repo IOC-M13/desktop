@@ -13,12 +13,24 @@ import controller.WorkerShowDay;
  */
 public class JFrameWorkerShowDay extends javax.swing.JFrame {
 
+    private static JFrameWorkerShowDay instance;
+    
     private WorkerShowDay controller;
+    
+    public static JFrameWorkerShowDay getInstance(String dateSelected) {
+        if (instance == null) {
+            instance = new JFrameWorkerShowDay(dateSelected);
+            instance.setVisible(true);
+            instance.setLocationRelativeTo(null);
+            instance.setLayout(null);
+        }
+        return instance;
+    }
     
     /**
      * Creates new form JFrameWorkerShowDay
      */
-    public JFrameWorkerShowDay(String dateSelected) {
+    private JFrameWorkerShowDay(String dateSelected) {
         initComponents();
         
         controller = new WorkerShowDay(this, dateSelected);
@@ -46,6 +58,11 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Show Day");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabelUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
@@ -133,6 +150,10 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        instance = null;
+    }//GEN-LAST:event_formWindowClosing
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -178,20 +178,19 @@ public class CalendarClass {
 
                 @Override
                 public void mousePressed(MouseEvent me) {
-                    //JOptionPane.showMessageDialog(null, "Has clicado el dia: " + ((JLabel) me.getSource()).getText());
                     dateSelected = addZeroLeft(((JLabel) me.getSource()).getText()) + "-" + addZeroLeft(String.valueOf(month + 1)) + "-" + String.valueOf(year) ;
-                    //System.out.println(dateSelected);
                     if (Support.isAdmin) {
-                        jFrameAdminEditDay = new JFrameAdminEditDay(controllerAdmin, dateSelected);
-                        jFrameAdminEditDay.setVisible(true);
-                        jFrameAdminEditDay.setLocationRelativeTo(null);
-                        jFrameAdminEditDay.setLayout(null);
+                        jFrameAdminEditDay = JFrameAdminEditDay.getInstance(controllerAdmin, dateSelected);
+                        
+                        jFrameAdminEditDay.getController().changeDate(dateSelected);
+                        jFrameAdminEditDay.getController().loadShifts();
                         
                     } else {
-                        JFrameWorkerShowDay jFrameWorkerShowDay = new JFrameWorkerShowDay(dateSelected);
-                        jFrameWorkerShowDay.setVisible(true);
-                        jFrameWorkerShowDay.setLocationRelativeTo(null);
-                        jFrameWorkerShowDay.setLayout(null);
+                        JFrameWorkerShowDay jFrameWorkerShowDay = JFrameWorkerShowDay.getInstance(dateSelected);
+                        
+                        jFrameWorkerShowDay.getController().changeDate(dateSelected);
+                        jFrameWorkerShowDay.getController().loadData();
+                        
                     }
                 }
 
@@ -273,14 +272,6 @@ public class CalendarClass {
             return "0" + numString;
         }
         return numString;
-    }
-
-    private String getDateSelected() {
-        return dateSelected;
-    }
-
-    private void setDateSelected(String dateSelected) {
-        this.dateSelected = dateSelected;
     }
 
     /**

@@ -7,7 +7,6 @@ package view;
 
 import controller.Admin;
 import controller.AdminEditDay;
-import controller.Support;
 
 /**
  *
@@ -15,13 +14,25 @@ import controller.Support;
  */
 public class JFrameAdminEditDay extends javax.swing.JFrame {
     
+    private static JFrameAdminEditDay instance;
+    
     private AdminEditDay controller;
+    
+    public static JFrameAdminEditDay getInstance(Admin controllerAdmin, String dateSelected) {
+        if (instance == null) {
+            instance = new JFrameAdminEditDay(controllerAdmin, dateSelected);
+            instance.setVisible(true);
+            instance.setLocationRelativeTo(null);
+            instance.setLayout(null);
+        }
+        return instance;
+    }
     
     /**
      * Creates new form JFrameEditDay
      * @param dateSelected
      */
-    public JFrameAdminEditDay(Admin controllerAdmin, String dateSelected) {
+    private JFrameAdminEditDay(Admin controllerAdmin, String dateSelected) {
         
         initComponents();
         
@@ -55,6 +66,9 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         setTitle("Edit Day");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -190,6 +204,10 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         getController().loadShifts();
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        instance = null;
+    }//GEN-LAST:event_formWindowClosing
 
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

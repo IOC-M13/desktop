@@ -40,7 +40,7 @@ public class WorkerShowDay {
         loadData();
     }
     
-    private void loadData(){
+    public void loadData(){
         
         //Cargar la fecha
         date.setText(dateSelected);
@@ -70,10 +70,13 @@ public class WorkerShowDay {
             
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
-        } 
+        }   
         
-        
-        
+    }
+    
+    public void changeDate(String dateSelected) {
+        this.dateSelected = dateSelected;
+        date.setText(this.dateSelected);
     }
     
     
