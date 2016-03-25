@@ -7,6 +7,7 @@ package view;
 
 import controller.DBHelper;
 import controller.FileProperties;
+import controller.Login;
 import controller.Support;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -17,15 +18,15 @@ import javax.swing.JOptionPane;
  */
 public class JFrameLogin extends javax.swing.JFrame {
     
+    private Login controller;
+    
     /**
      * Creates new form JFrameWorker
      */
     public JFrameLogin() {
         initComponents();
         
-        //Obtener los datos del fichero config.properties (la IP y puerto)
-        FileProperties fp = new FileProperties();
-        fp.loadProperties();
+        controller = new Login(this);
         
     }
 
@@ -41,10 +42,10 @@ public class JFrameLogin extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tfUserName = new javax.swing.JTextField();
+        pfPass = new javax.swing.JPasswordField();
+        btnSignIn = new javax.swing.JButton();
+        btnClearAll = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -70,39 +71,34 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/pass.png"))); // NOI18N
         jLabel3.setText("Password:");
 
-        jTextField1.setName(""); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        tfUserName.setName(""); // NOI18N
+        tfUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextField1KeyTyped(evt);
+                tfUserNameKeyTyped(evt);
             }
         });
 
-        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        pfPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                jPasswordField1KeyTyped(evt);
+                pfPassKeyTyped(evt);
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png"))); // NOI18N
-        jButton1.setText("Sign in");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSignIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSignIn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/loginUnlock.png"))); // NOI18N
+        btnSignIn.setText("Sign in");
+        btnSignIn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSignInActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
-        jButton2.setText("Clear all");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnClearAll.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnClearAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
+        btnClearAll.setText("Clear all");
+        btnClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnClearAllActionPerformed(evt);
             }
         });
 
@@ -147,17 +143,17 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(btnClearAll)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(btnSignIn))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -167,94 +163,43 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClearAll))
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    private void btnClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearAllActionPerformed
+        controller.clearAll();
+    }//GEN-LAST:event_btnClearAllActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        jTextField1.setText("");
-        jPasswordField1.setText("");
-        jButton1.transferFocus();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void btnSignInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignInActionPerformed
+        controller.signIn();
+    }//GEN-LAST:event_btnSignInActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        DBHelper db = new DBHelper();
-        
-        try {
-            
-            db.connectDB();
-        
-        
-            String textUser = jTextField1.getText();
-            String textPass = String.valueOf(jPasswordField1.getPassword());
-
-            int stateLogin = db.login(textUser, textPass);
-            
-            if (stateLogin > 0) {
-                JOptionPane.showMessageDialog(null, "Ha entrado correctamente!");
-                this.setVisible(false);
-                Support.userName = textUser;
-                
-                if (stateLogin == 1) {
-                    JFrameWorker jFrameWorker = new JFrameWorker();
-                    jFrameWorker.setVisible(true);
-                    jFrameWorker.setLocationRelativeTo(null);
-                    jFrameWorker.setLayout(null);
-                } else {
-                    Support.isAdmin = true;
-                    JFrameAdmin jFrameAdmin = new JFrameAdmin();
-                    jFrameAdmin.setVisible(true);
-                    jFrameAdmin.setLocationRelativeTo(null);
-                    jFrameAdmin.setLayout(null);
-                }
-                
-                
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "El usuario y/o contraseña es/son incorrecto/s");
-            } 
-        
-        } catch (NullPointerException e) {
-            //System.out.println("Error en: " + e.printStackTrace());
-            e.printStackTrace();
-        } finally {
-            db.closeDB();
-        }
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
+    private void tfUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUserNameKeyTyped
         // TODO add your handling code here:
         if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            jTextField1.transferFocus();
+            getTfUserName().transferFocus();
         }
-    }//GEN-LAST:event_jTextField1KeyTyped
+    }//GEN-LAST:event_tfUserNameKeyTyped
 
-    private void jPasswordField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPasswordField1KeyTyped
+    private void pfPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPassKeyTyped
         // TODO add your handling code here:
         if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            jButton1.doClick();
+            getBtnSignIn().doClick();
         }
-    }//GEN-LAST:event_jPasswordField1KeyTyped
+    }//GEN-LAST:event_pfPassKeyTyped
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         System.exit(0); // Cerrar la aplicación
@@ -316,8 +261,8 @@ public class JFrameLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnClearAll;
+    private javax.swing.JButton btnSignIn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -326,8 +271,40 @@ public class JFrameLogin extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField pfPass;
+    private javax.swing.JTextField tfUserName;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the tfUserName
+     */
+    public javax.swing.JTextField getTfUserName() {
+        return tfUserName;
+    }
+    
+    /**
+     * @return the pfPass
+     */
+    public javax.swing.JPasswordField getPfPass() {
+        return pfPass;
+    }
+    
+    /**
+     * @return the btnClearAll
+     */
+    public javax.swing.JButton getBtnClearAll() {
+        return btnClearAll;
+    }
+
+    /**
+     * @return the btnSignIn
+     */
+    public javax.swing.JButton getBtnSignIn() {
+        return btnSignIn;
+    }
+
+   
+
+    
 }
