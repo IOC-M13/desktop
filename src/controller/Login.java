@@ -1,18 +1,19 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
+import java.awt.event.KeyEvent;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import view.JFrameAdmin;
+import view.JFrameIPport;
 import view.JFrameLogin;
 import view.JFrameWorker;
 
 /**
- *
- * @author Oscar
+ * Clase controller del jframe JFrameLogin. 
+ * Se encarga de toda la lógica de la ventana JFrameLogin.
+ * 
  */
 public class Login {
 
@@ -49,7 +50,6 @@ public class Login {
             
             db.connectDB();
         
-        
             String textUser = tfUserName.getText();
             String textPass = String.valueOf(pfPass.getPassword());
 
@@ -85,6 +85,28 @@ public class Login {
         } finally {
             db.closeDB();
         }
+    }
+    
+    public void tfUserNameKeyTyped(java.awt.event.KeyEvent evt) {
+        if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            tfUserName.transferFocus();
+        }
+    }
+    
+    public void pfPassKeyTyped(java.awt.event.KeyEvent evt) {
+        if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
+            btnSignIn.doClick();
+        }
+    }
+    
+    public void jMenuItemAccessDB() {   
+        JFrameIPport jframeIPport = JFrameIPport.getInstance();
+        jframeIPport.setVisible(true);
+        jframeIPport.setLocationRelativeTo(null);
+    }
+    
+    public void exit() {
+        System.exit(0);
     }
     
 }

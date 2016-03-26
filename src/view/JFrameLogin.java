@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
-import controller.DBHelper;
-import controller.FileProperties;
 import controller.Login;
-import controller.Support;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 
 /**
- *
- * @author Oscar
+ * Clase que muestra la ventana de Login de la aplicación
+ * 
  */
 public class JFrameLogin extends javax.swing.JFrame {
     
@@ -49,9 +40,9 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemClose = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemAccessDB = new javax.swing.JMenuItem();
 
         jRadioButtonMenuItem1.setSelected(true);
         jRadioButtonMenuItem1.setText("jRadioButtonMenuItem1");
@@ -59,11 +50,6 @@ public class JFrameLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chrono Schedule 1.0");
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/userName.png"))); // NOI18N
         jLabel1.setText("User name:");
@@ -106,25 +92,25 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("Close");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemClose.setText("Close");
+        jMenuItemClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemCloseActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItemClose);
 
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Edit");
 
-        jMenuItem2.setText("Access to DB");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAccessDB.setText("Access to DB");
+        jMenuItemAccessDB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                jMenuItemAccessDBActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
+        jMenu2.add(jMenuItemAccessDB);
 
         jMenuBar1.add(jMenu2);
 
@@ -188,36 +174,20 @@ public class JFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignInActionPerformed
 
     private void tfUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUserNameKeyTyped
-        // TODO add your handling code here:
-        if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            getTfUserName().transferFocus();
-        }
+        controller.tfUserNameKeyTyped(evt);
     }//GEN-LAST:event_tfUserNameKeyTyped
 
     private void pfPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPassKeyTyped
-        // TODO add your handling code here:
-        if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
-            getBtnSignIn().doClick();
-        }
+        controller.pfPassKeyTyped(evt);
     }//GEN-LAST:event_pfPassKeyTyped
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.exit(0); // Cerrar la aplicación
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
+        controller.exit();
+    }//GEN-LAST:event_jMenuItemCloseActionPerformed
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_formWindowOpened
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        
-        JFrameIPport jframeIPport = JFrameIPport.getInstance();
-        jframeIPport.setVisible(true);
-        jframeIPport.setLocationRelativeTo(null);
-        
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItemAccessDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAccessDBActionPerformed
+        controller.jMenuItemAccessDB();
+    }//GEN-LAST:event_jMenuItemAccessDBActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,11 +221,10 @@ public class JFrameLogin extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                JFrameLogin loginWindow = new JFrameLogin();
-                loginWindow.setVisible(true);
-                loginWindow.setLocationRelativeTo(null);
-                //loginWindow.setLayout(null);
-                //new JFrameLogin().setVisible(true);
+                JFrameLogin jFrameLogin = new JFrameLogin();
+                jFrameLogin.setVisible(true);
+                jFrameLogin.setLocationRelativeTo(null);
+                //jFrameLogin.setLayout(null);
             }
         });
     }
@@ -269,8 +238,8 @@ public class JFrameLogin extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItemAccessDB;
+    private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
     private javax.swing.JPasswordField pfPass;
     private javax.swing.JTextField tfUserName;
