@@ -5,9 +5,7 @@
  */
 package view;
 
-import controller.FileProperties;
 import controller.IPport;
-import controller.Support;
 
 /**
  *
