@@ -36,8 +36,8 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         
         controller = new AdminUsers(controllerAdmin,
                                     this,
-                                    jTextField1, jTextField6, jTextField2, jPasswordField1, jCheckBox1,
-                                    jComboBox1, jTextField3, jTextField4, jPasswordField2, jCheckBox2, jButton5, jButton3, jButton4);
+                                    textAddName, textAddDni, textAddRealName, passAddPass, checkAddIsAdmin,
+                                    comboEditName, textEditDni, textEditRealName, passEditPass, checkEditIsAdmin, btnEditClearAll, btnEditSave, btnEditDel);
         
         //jTabbedPane1.setIconAt(0, new ImageIcon("icons" + File.separator + "edit.png"));
         //jTabbedPane1.setTitleAt(0, "Users");
@@ -55,31 +55,31 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelAddUser = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        textAddName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        textAddRealName = new javax.swing.JTextField();
+        passAddPass = new javax.swing.JPasswordField();
+        checkAddIsAdmin = new javax.swing.JCheckBox();
+        btnAddAddUser = new javax.swing.JButton();
+        btnAddClearAll = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        textAddDni = new javax.swing.JTextField();
+        jPanelEditUser = new javax.swing.JPanel();
+        comboEditName = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        checkEditIsAdmin = new javax.swing.JCheckBox();
+        textEditDni = new javax.swing.JTextField();
+        textEditRealName = new javax.swing.JTextField();
+        btnEditSave = new javax.swing.JButton();
+        btnEditDel = new javax.swing.JButton();
+        btnEditClearAll = new javax.swing.JButton();
+        passEditPass = new javax.swing.JPasswordField();
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -97,10 +97,10 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         jTabbedPane1.setDoubleBuffered(true);
         jTabbedPane1.setName(""); // NOI18N
 
-        jPanel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jPanelAddUser.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanelAddUser.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel2ComponentShown(evt);
+                jPanelAddUserComponentShown(evt);
             }
         });
 
@@ -110,110 +110,110 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
-        jCheckBox1.setText("User admin?");
+        checkAddIsAdmin.setText("User admin?");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUser.png"))); // NOI18N
-        jButton1.setText("Add user");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddAddUser.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUser.png"))); // NOI18N
+        btnAddAddUser.setText("Add user");
+        btnAddAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddAddUserActionPerformed(evt);
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
-        jButton2.setText("Clear all");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAddClearAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
+        btnAddClearAll.setText("Clear all");
+        btnAddClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAddClearAllActionPerformed(evt);
             }
         });
 
         jLabel8.setText("User DNI:");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAddUserLayout = new javax.swing.GroupLayout(jPanelAddUser);
+        jPanelAddUser.setLayout(jPanelAddUserLayout);
+        jPanelAddUserLayout.setHorizontalGroup(
+            jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddUserLayout.createSequentialGroup()
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelAddUserLayout.createSequentialGroup()
                             .addGap(20, 20, 20)
-                            .addComponent(jButton2)
+                            .addComponent(btnAddClearAll)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(btnAddAddUser))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddUserLayout.createSequentialGroup()
                             .addGap(23, 23, 23)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanelAddUserLayout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(textAddDni, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelAddUserLayout.createSequentialGroup()
+                                    .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanelAddUserLayout.createSequentialGroup()
                                             .addComponent(jLabel3)
                                             .addGap(19, 19, 19))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addGroup(jPanelAddUserLayout.createSequentialGroup()
                                             .addComponent(jLabel2)
                                             .addGap(18, 18, 18)))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(passAddPass, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(textAddRealName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(jPanelAddUserLayout.createSequentialGroup()
                                     .addComponent(jLabel1)
                                     .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(textAddName, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGap(14, 14, 14)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(jPanelAddUserLayout.createSequentialGroup()
                         .addGap(56, 56, 56)
-                        .addComponent(jCheckBox1)))
+                        .addComponent(checkAddIsAdmin)))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanelAddUserLayout.setVerticalGroup(
+            jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddUserLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textAddName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textAddDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textAddRealName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passAddPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox1)
+                .addComponent(checkAddIsAdmin)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(jPanelAddUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddAddUser)
+                    .addComponent(btnAddClearAll))
                 .addGap(63, 63, 63))
         );
 
-        jTabbedPane1.addTab("Add User ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUsers.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("Add User ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUsers.png")), jPanelAddUser); // NOI18N
 
-        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jPanelEditUser.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel1ComponentShown(evt);
+                jPanelEditUserComponentShown(evt);
             }
         });
 
-        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+        comboEditName.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jComboBox1ItemStateChanged(evt);
+                comboEditNameItemStateChanged(evt);
             }
         });
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboEditName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboEditNameActionPerformed(evt);
             }
         });
 
@@ -225,100 +225,100 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
 
         jLabel7.setText("Password:");
 
-        jCheckBox2.setText("User admin?");
+        checkEditIsAdmin.setText("User admin?");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
-        jButton3.setText("Save");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnEditSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
+        btnEditSave.setText("Save");
+        btnEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnEditSaveActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEditDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
+        btnEditDel.setText("Delete");
+        btnEditDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEditDelActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
-        jButton5.setText("Clear all");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnEditClearAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
+        btnEditClearAll.setText("Clear all");
+        btnEditClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnEditClearAllActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelEditUserLayout = new javax.swing.GroupLayout(jPanelEditUser);
+        jPanelEditUser.setLayout(jPanelEditUserLayout);
+        jPanelEditUserLayout.setHorizontalGroup(
+            jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditUserLayout.createSequentialGroup()
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEditUserLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jButton5)
+                        .addComponent(btnEditClearAll)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnEditSave))
+                    .addGroup(jPanelEditUserLayout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jCheckBox2))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(checkEditIsAdmin))
+                    .addGroup(jPanelEditUserLayout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel5)
                             .addComponent(jLabel4)
                             .addComponent(jLabel7))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox1, 0, 140, Short.MAX_VALUE)
-                                    .addComponent(jTextField3))
+                        .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelEditUserLayout.createSequentialGroup()
+                                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(comboEditName, 0, 140, Short.MAX_VALUE)
+                                    .addComponent(textEditDni))
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton4))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPasswordField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
+                                .addComponent(btnEditDel))
+                            .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(passEditPass, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(textEditRealName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelEditUserLayout.setVerticalGroup(
+            jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditUserLayout.createSequentialGroup()
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEditUserLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(comboEditName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanelEditUserLayout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jButton4)))
+                        .addComponent(btnEditDel)))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textEditDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textEditRealName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passEditPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox2)
+                .addComponent(checkEditIsAdmin)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
+                .addGroup(jPanelEditUserLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditSave)
+                    .addComponent(btnEditClearAll))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Edit User", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png")), jPanel1); // NOI18N
+        jTabbedPane1.addTab("Edit User", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/edit.png")), jPanelEditUser); // NOI18N
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/jFrameAdminUsers.png"))); // NOI18N
 
@@ -357,42 +357,42 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAddClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClearAllActionPerformed
         controller.clearAll();        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAddClearAllActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAddUserActionPerformed
         controller.addUser();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddAddUserActionPerformed
 
-    private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
+    private void jPanelEditUserComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelEditUserComponentShown
         controller.loadUsersInComboBox();
-    }//GEN-LAST:event_jPanel1ComponentShown
+    }//GEN-LAST:event_jPanelEditUserComponentShown
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditNameActionPerformed
         controller.loadUserDataInComponents();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboEditNameActionPerformed
 
-    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+    private void comboEditNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboEditNameItemStateChanged
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jComboBox1ItemStateChanged
+    }//GEN-LAST:event_comboEditNameItemStateChanged
 
-    private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
+    private void jPanelAddUserComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAddUserComponentShown
         controller.changePanel();
-    }//GEN-LAST:event_jPanel2ComponentShown
+    }//GEN-LAST:event_jPanelAddUserComponentShown
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnEditClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditClearAllActionPerformed
         controller.loadUserDataInComponents();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnEditClearAllActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSaveActionPerformed
         controller.editUserData();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnEditSaveActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnEditDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDelActionPerformed
         controller.deleteUser();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnEditDelActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         instance = null;
@@ -434,14 +434,14 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JButton btnAddAddUser;
+    private javax.swing.JButton btnAddClearAll;
+    private javax.swing.JButton btnEditClearAll;
+    private javax.swing.JButton btnEditDel;
+    private javax.swing.JButton btnEditSave;
+    private javax.swing.JCheckBox checkAddIsAdmin;
+    private javax.swing.JCheckBox checkEditIsAdmin;
+    private javax.swing.JComboBox comboEditName;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -454,15 +454,15 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
+    private javax.swing.JPanel jPanelAddUser;
+    private javax.swing.JPanel jPanelEditUser;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JPasswordField passAddPass;
+    private javax.swing.JPasswordField passEditPass;
+    private javax.swing.JTextField textAddDni;
+    private javax.swing.JTextField textAddName;
+    private javax.swing.JTextField textAddRealName;
+    private javax.swing.JTextField textEditDni;
+    private javax.swing.JTextField textEditRealName;
     // End of variables declaration//GEN-END:variables
 }

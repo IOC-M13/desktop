@@ -38,6 +38,14 @@ public class Admin {
     
     public boolean usersLoadedInComboBox = false;
     
+    /**
+     * This is a controller of JFrameAdmin
+     * @param jFrame
+     * @param jPanelYearMonth
+     * @param jPanelDays
+     * @param jPanelLegend
+     * @param jComboUsers 
+     */
     public Admin (JFrame jFrame, JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JComboBox jComboUsers) {
         
         this.jFrame = jFrame;

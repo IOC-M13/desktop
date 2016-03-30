@@ -45,16 +45,16 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabelUser = new javax.swing.JLabel();
+        lblUser = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jLabelDate = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabelShift = new javax.swing.JLabel();
+        lblShift = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jLabelStartTime = new javax.swing.JLabel();
-        jLabelEndTime = new javax.swing.JLabel();
+        lblStartTime = new javax.swing.JLabel();
+        lblEndTime = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Show Day");
@@ -64,13 +64,13 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
             }
         });
 
-        jLabelUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblUser.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/dayShiftOnDate.png"))); // NOI18N
         jLabel1.setText("Day shift on date:");
 
-        jLabelDate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jLabelDate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblDate.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblDate.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/dayShiftForUser.png"))); // NOI18N
         jLabel3.setText("Day shift for user:");
@@ -78,7 +78,7 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/selectShift.png"))); // NOI18N
         jLabel4.setText("Shift name:");
 
-        jLabelShift.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblShift.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/startTime.png"))); // NOI18N
         jLabel7.setText("Journey Start time:");
@@ -86,9 +86,9 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/endTime.png"))); // NOI18N
         jLabel8.setText("Journey end time:");
 
-        jLabelStartTime.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblStartTime.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
-        jLabelEndTime.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblEndTime.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,24 +101,24 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel1)
                             .addGap(29, 29, 29)
-                            .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel3)
                                 .addComponent(jLabel4))
                             .addGap(26, 26, 26)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabelShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(lblUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabelEndTime, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                            .addComponent(lblEndTime, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabelStartTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblStartTime, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(3, 3, 3)))))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
@@ -128,23 +128,23 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelDate, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblDate, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelUser, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUser, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblShift, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelStartTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStartTime, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jLabelEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEndTime, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(20, 20, 20))
         );
 
@@ -162,11 +162,11 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabelDate;
-    private javax.swing.JLabel jLabelEndTime;
-    private javax.swing.JLabel jLabelShift;
-    private javax.swing.JLabel jLabelStartTime;
-    private javax.swing.JLabel jLabelUser;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblEndTime;
+    private javax.swing.JLabel lblShift;
+    private javax.swing.JLabel lblStartTime;
+    private javax.swing.JLabel lblUser;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -180,34 +180,34 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
      * @return the jLabelDate
      */
     public javax.swing.JLabel getjLabelDate() {
-        return jLabelDate;
+        return lblDate;
     }
 
     /**
      * @return the jLabelEndTime
      */
     public javax.swing.JLabel getjLabelEndTime() {
-        return jLabelEndTime;
+        return lblEndTime;
     }
 
     /**
      * @return the jLabelShift
      */
     public javax.swing.JLabel getjLabelShift() {
-        return jLabelShift;
+        return lblShift;
     }
 
     /**
      * @return the jLabelStartTime
      */
     public javax.swing.JLabel getjLabelStartTime() {
-        return jLabelStartTime;
+        return lblStartTime;
     }
 
     /**
      * @return the jLabelUser
      */
     public javax.swing.JLabel getjLabelUser() {
-        return jLabelUser;
+        return lblUser;
     }
 }

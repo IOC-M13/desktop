@@ -33,8 +33,8 @@ public class JFrameLogin extends javax.swing.JFrame {
         jRadioButtonMenuItem1 = new javax.swing.JRadioButtonMenuItem();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        tfUserName = new javax.swing.JTextField();
-        pfPass = new javax.swing.JPasswordField();
+        textUserName = new javax.swing.JTextField();
+        passPass = new javax.swing.JPasswordField();
         btnSignIn = new javax.swing.JButton();
         btnClearAll = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -57,16 +57,16 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/pass.png"))); // NOI18N
         jLabel3.setText("Password:");
 
-        tfUserName.setName(""); // NOI18N
-        tfUserName.addKeyListener(new java.awt.event.KeyAdapter() {
+        textUserName.setName(""); // NOI18N
+        textUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                tfUserNameKeyTyped(evt);
+                textUserNameKeyTyped(evt);
             }
         });
 
-        pfPass.addKeyListener(new java.awt.event.KeyAdapter() {
+        passPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                pfPassKeyTyped(evt);
+                passPassKeyTyped(evt);
             }
         });
 
@@ -138,8 +138,8 @@ public class JFrameLogin extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(passPass, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -149,12 +149,12 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(textUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(pfPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSignIn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -173,13 +173,13 @@ public class JFrameLogin extends javax.swing.JFrame {
         controller.signIn();
     }//GEN-LAST:event_btnSignInActionPerformed
 
-    private void tfUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfUserNameKeyTyped
+    private void textUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textUserNameKeyTyped
         controller.tfUserNameKeyTyped(evt);
-    }//GEN-LAST:event_tfUserNameKeyTyped
+    }//GEN-LAST:event_textUserNameKeyTyped
 
-    private void pfPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pfPassKeyTyped
+    private void passPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passPassKeyTyped
         controller.pfPassKeyTyped(evt);
-    }//GEN-LAST:event_pfPassKeyTyped
+    }//GEN-LAST:event_passPassKeyTyped
 
     private void jMenuItemCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCloseActionPerformed
         controller.exit();
@@ -241,22 +241,22 @@ public class JFrameLogin extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItemAccessDB;
     private javax.swing.JMenuItem jMenuItemClose;
     private javax.swing.JRadioButtonMenuItem jRadioButtonMenuItem1;
-    private javax.swing.JPasswordField pfPass;
-    private javax.swing.JTextField tfUserName;
+    private javax.swing.JPasswordField passPass;
+    private javax.swing.JTextField textUserName;
     // End of variables declaration//GEN-END:variables
 
     /**
      * @return the tfUserName
      */
     public javax.swing.JTextField getTfUserName() {
-        return tfUserName;
+        return textUserName;
     }
     
     /**
      * @return the pfPass
      */
     public javax.swing.JPasswordField getPfPass() {
-        return pfPass;
+        return passPass;
     }
     
     /**

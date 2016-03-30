@@ -35,8 +35,8 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         
         controller = new AdminShifts(controllerAdmin, 
                                      this,
-                                     jTextField1, jComboBox12, jComboBox13, jComboBox10, jComboBox11, jLabel21,
-                                     jComboBox1, jComboBox6, jComboBox7, jComboBox8, jComboBox9, jLabel11, jButton7, jButton6, jButton4);
+                                     textAddShiftName, comboAddStartTimeHour, comboAddStartTimeMin, comboAddEndTimeHour, comboAddEndTimeMin, lblAddColor,
+                                     comboEditName, comboEditStartTimeHour, comboEditStartTimeMin, comboEditEndTimeHour, comboEditEndTimeMin, lblEditColor, btnEditClearAll, btnEditSave, btnEditDel);
         
     }
 
@@ -50,37 +50,37 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelAddShift = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        textAddShiftName = new javax.swing.JTextField();
+        btnAddAddShift = new javax.swing.JButton();
+        btnAddClearAll = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox10 = new javax.swing.JComboBox();
+        comboAddEndTimeHour = new javax.swing.JComboBox();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox11 = new javax.swing.JComboBox();
-        jComboBox12 = new javax.swing.JComboBox();
+        comboAddEndTimeMin = new javax.swing.JComboBox();
+        comboAddStartTimeHour = new javax.swing.JComboBox();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox13 = new javax.swing.JComboBox();
-        jLabel21 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        comboAddStartTimeMin = new javax.swing.JComboBox();
+        lblAddColor = new javax.swing.JLabel();
+        jPanelEditShift = new javax.swing.JPanel();
+        comboEditName = new javax.swing.JComboBox();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        jComboBox6 = new javax.swing.JComboBox();
+        btnEditDel = new javax.swing.JButton();
+        lblEditColor = new javax.swing.JLabel();
+        comboEditStartTimeHour = new javax.swing.JComboBox();
         jLabel14 = new javax.swing.JLabel();
-        jComboBox7 = new javax.swing.JComboBox();
-        jComboBox8 = new javax.swing.JComboBox();
+        comboEditStartTimeMin = new javax.swing.JComboBox();
+        comboEditEndTimeHour = new javax.swing.JComboBox();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox9 = new javax.swing.JComboBox();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        comboEditEndTimeMin = new javax.swing.JComboBox();
+        btnEditSave = new javax.swing.JButton();
+        btnEditClearAll = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -96,27 +96,27 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jTabbedPane1.setName("df"); // NOI18N
 
-        jPanel2.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jPanelAddShift.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel2ComponentShown(evt);
+                jPanelAddShiftComponentShown(evt);
             }
         });
 
         jLabel1.setText("Name:");
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUser.png"))); // NOI18N
-        jButton3.setText("Add shift");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAddAddShift.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addUser.png"))); // NOI18N
+        btnAddAddShift.setText("Add shift");
+        btnAddAddShift.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAddAddShiftActionPerformed(evt);
             }
         });
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
-        jButton5.setText("Clear all");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnAddClearAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
+        btnAddClearAll.setText("Clear all");
+        btnAddClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnAddClearAllActionPerformed(evt);
             }
         });
 
@@ -128,111 +128,111 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jLabel19.setText(":");
 
-        jComboBox11.addActionListener(new java.awt.event.ActionListener() {
+        comboAddEndTimeMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox11ActionPerformed(evt);
+                comboAddEndTimeMinActionPerformed(evt);
             }
         });
 
         jLabel20.setText(":");
 
-        jComboBox13.addActionListener(new java.awt.event.ActionListener() {
+        comboAddStartTimeMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox13ActionPerformed(evt);
+                comboAddStartTimeMinActionPerformed(evt);
             }
         });
 
-        jLabel21.setBackground(new java.awt.Color(102, 204, 255));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("Color Chooser");
-        jLabel21.setOpaque(true);
-        jLabel21.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblAddColor.setBackground(new java.awt.Color(102, 204, 255));
+        lblAddColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAddColor.setText("Color Chooser");
+        lblAddColor.setOpaque(true);
+        lblAddColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel21MousePressed(evt);
+                lblAddColorMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelAddShiftLayout = new javax.swing.GroupLayout(jPanelAddShift);
+        jPanelAddShift.setLayout(jPanelAddShiftLayout);
+        jPanelAddShiftLayout.setHorizontalGroup(
+            jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelAddShiftLayout.createSequentialGroup()
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelAddShiftLayout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(jButton5)
+                        .addComponent(btnAddClearAll)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btnAddAddShift))
+                    .addGroup(jPanelAddShiftLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox10, 0, 45, Short.MAX_VALUE)
-                                    .addComponent(jComboBox12, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblAddColor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(textAddShiftName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                            .addGroup(jPanelAddShiftLayout.createSequentialGroup()
+                                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(comboAddEndTimeHour, 0, 45, Short.MAX_VALUE)
+                                    .addComponent(comboAddStartTimeHour, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jPanelAddShiftLayout.createSequentialGroup()
                                         .addComponent(jLabel20)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox13, 0, 45, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                        .addComponent(comboAddStartTimeMin, 0, 45, Short.MAX_VALUE))
+                                    .addGroup(jPanelAddShiftLayout.createSequentialGroup()
                                         .addComponent(jLabel19)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox11, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                                        .addComponent(comboAddEndTimeMin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
                 .addContainerGap(104, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jPanelAddShiftLayout.setVerticalGroup(
+            jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAddShiftLayout.createSequentialGroup()
                 .addGap(21, 21, 21)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textAddShiftName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboAddStartTimeMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel16)
-                        .addComponent(jComboBox12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comboAddStartTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(12, 12, 12)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboAddEndTimeHour, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboAddEndTimeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel17))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblAddColor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton5))
+                .addGroup(jPanelAddShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAddAddShift)
+                    .addComponent(btnAddClearAll))
                 .addGap(98, 98, 98))
         );
 
-        jTabbedPane1.addTab("Add Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addShifts.png")), jPanel2); // NOI18N
+        jTabbedPane1.addTab("Add Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/addShifts.png")), jPanelAddShift); // NOI18N
 
-        jPanel1.addComponentListener(new java.awt.event.ComponentAdapter() {
+        jPanelEditShift.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentShown(java.awt.event.ComponentEvent evt) {
-                jPanel1ComponentShown(evt);
+                jPanelEditShiftComponentShown(evt);
             }
         });
 
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        comboEditName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                comboEditNameActionPerformed(evt);
             }
         });
 
@@ -244,132 +244,132 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jLabel7.setText("Color:");
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
-        jButton4.setText("Delete");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnEditDel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/delete.png"))); // NOI18N
+        btnEditDel.setText("Delete");
+        btnEditDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnEditDelActionPerformed(evt);
             }
         });
 
-        jLabel11.setBackground(new java.awt.Color(102, 204, 255));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Color Chooser");
-        jLabel11.setOpaque(true);
-        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblEditColor.setBackground(new java.awt.Color(102, 204, 255));
+        lblEditColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEditColor.setText("Color Chooser");
+        lblEditColor.setOpaque(true);
+        lblEditColor.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel11MousePressed(evt);
+                lblEditColorMousePressed(evt);
             }
         });
 
         jLabel14.setText(":");
 
-        jComboBox7.addActionListener(new java.awt.event.ActionListener() {
+        comboEditStartTimeMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox7ActionPerformed(evt);
+                comboEditStartTimeMinActionPerformed(evt);
             }
         });
 
         jLabel15.setText(":");
 
-        jComboBox9.addActionListener(new java.awt.event.ActionListener() {
+        comboEditEndTimeMin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox9ActionPerformed(evt);
+                comboEditEndTimeMinActionPerformed(evt);
             }
         });
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
-        jButton6.setText("Save");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnEditSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
+        btnEditSave.setText("Save");
+        btnEditSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnEditSaveActionPerformed(evt);
             }
         });
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
-        jButton7.setText("Clear all");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        btnEditClearAll.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/clearAll.png"))); // NOI18N
+        btnEditClearAll.setText("Clear all");
+        btnEditClearAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                btnEditClearAllActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jPanelEditShiftLayout = new javax.swing.GroupLayout(jPanelEditShift);
+        jPanelEditShift.setLayout(jPanelEditShiftLayout);
+        jPanelEditShiftLayout.setHorizontalGroup(
+            jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditShiftLayout.createSequentialGroup()
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEditShiftLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jLabel4))
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox8, 0, 45, Short.MAX_VALUE)
-                            .addComponent(jComboBox6, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelEditShiftLayout.createSequentialGroup()
+                        .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(comboEditEndTimeHour, 0, 45, Short.MAX_VALUE)
+                            .addComponent(comboEditStartTimeHour, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanelEditShiftLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox7, 0, 45, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(comboEditStartTimeMin, 0, 45, Short.MAX_VALUE))
+                            .addGroup(jPanelEditShiftLayout.createSequentialGroup()
                                 .addComponent(jLabel15)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox9, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(comboEditEndTimeMin, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, 128, Short.MAX_VALUE))
+                    .addGroup(jPanelEditShiftLayout.createSequentialGroup()
+                        .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblEditColor, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboEditName, 0, 128, Short.MAX_VALUE))
                         .addGap(28, 28, 28)
-                        .addComponent(jButton4)
+                        .addComponent(btnEditDel)
                         .addGap(20, 20, 20))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanelEditShiftLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jButton7)
+                .addComponent(btnEditClearAll)
                 .addGap(18, 18, 18)
-                .addComponent(jButton6)
+                .addComponent(btnEditSave)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        jPanelEditShiftLayout.setVerticalGroup(
+            jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelEditShiftLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jComboBox1)
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditDel)
+                    .addComponent(comboEditName)
                     .addComponent(jLabel4))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboEditStartTimeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel5)
-                        .addComponent(jComboBox6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(comboEditStartTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox9, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(comboEditEndTimeHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboEditEndTimeMin, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel6))
                 .addGap(15, 15, 15)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblEditColor, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton6)
-                    .addComponent(jButton7))
+                .addGroup(jPanelEditShiftLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnEditSave)
+                    .addComponent(btnEditClearAll))
                 .addGap(37, 37, 37))
         );
 
-        jTabbedPane1.addTab("Edit Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/editShift.png")), jPanel1); // NOI18N
+        jTabbedPane1.addTab("Edit Shift ", new javax.swing.ImageIcon(getClass().getResource("/resources/icons/editShift.png")), jPanelEditShift); // NOI18N
 
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/jFrameAdminShifts.png"))); // NOI18N
 
@@ -404,87 +404,86 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel11MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MousePressed
+    private void lblEditColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEditColorMousePressed
         // TODO add your handling code here:
         Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
-        jLabel11.setBackground(color);
-    }//GEN-LAST:event_jLabel11MousePressed
+        lblEditColor.setBackground(color);
+    }//GEN-LAST:event_lblEditColorMousePressed
 
-    private void jComboBox7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox7ActionPerformed
+    private void comboEditStartTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditStartTimeMinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox7ActionPerformed
+    }//GEN-LAST:event_comboEditStartTimeMinActionPerformed
 
-    private void jComboBox9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox9ActionPerformed
+    private void comboEditEndTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditEndTimeMinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox9ActionPerformed
+    }//GEN-LAST:event_comboEditEndTimeMinActionPerformed
 
-    private void jComboBox11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox11ActionPerformed
+    private void comboAddEndTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAddEndTimeMinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox11ActionPerformed
+    }//GEN-LAST:event_comboAddEndTimeMinActionPerformed
 
-    private void jComboBox13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox13ActionPerformed
+    private void comboAddStartTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAddStartTimeMinActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox13ActionPerformed
+    }//GEN-LAST:event_comboAddStartTimeMinActionPerformed
 
-    private void jLabel21MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel21MousePressed
+    private void lblAddColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddColorMousePressed
         // TODO add your handling code here:
         Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
-        jLabel21.setBackground(color);
-    }//GEN-LAST:event_jLabel21MousePressed
+        lblAddColor.setBackground(color);
+    }//GEN-LAST:event_lblAddColorMousePressed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btnAddClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddClearAllActionPerformed
         controller.clearAll();
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btnAddClearAllActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAddAddShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddAddShiftActionPerformed
         controller.addShift();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAddAddShiftActionPerformed
 
-    private void jPanel1ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel1ComponentShown
+    private void jPanelEditShiftComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelEditShiftComponentShown
         controller.loadShiftsInComboBox();
-    }//GEN-LAST:event_jPanel1ComponentShown
+    }//GEN-LAST:event_jPanelEditShiftComponentShown
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void comboEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditNameActionPerformed
         controller.loadShiftDataInComponents();
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_comboEditNameActionPerformed
 
-    private void jPanel2ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanel2ComponentShown
+    private void jPanelAddShiftComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAddShiftComponentShown
         controller.changePanel();
-    }//GEN-LAST:event_jPanel2ComponentShown
+    }//GEN-LAST:event_jPanelAddShiftComponentShown
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void btnEditClearAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditClearAllActionPerformed
         controller.loadShiftDataInComponents();
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btnEditClearAllActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnEditSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditSaveActionPerformed
         controller.editShiftData();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnEditSaveActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnEditDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditDelActionPerformed
         controller.deleteShift();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnEditDelActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         instance = null;
     }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JComboBox jComboBox10;
-    private javax.swing.JComboBox jComboBox11;
-    private javax.swing.JComboBox jComboBox12;
-    private javax.swing.JComboBox jComboBox13;
-    private javax.swing.JComboBox jComboBox6;
-    private javax.swing.JComboBox jComboBox7;
-    private javax.swing.JComboBox jComboBox8;
-    private javax.swing.JComboBox jComboBox9;
+    private javax.swing.JButton btnAddAddShift;
+    private javax.swing.JButton btnAddClearAll;
+    private javax.swing.JButton btnEditClearAll;
+    private javax.swing.JButton btnEditDel;
+    private javax.swing.JButton btnEditSave;
+    private javax.swing.JComboBox comboAddEndTimeHour;
+    private javax.swing.JComboBox comboAddEndTimeMin;
+    private javax.swing.JComboBox comboAddStartTimeHour;
+    private javax.swing.JComboBox comboAddStartTimeMin;
+    private javax.swing.JComboBox comboEditEndTimeHour;
+    private javax.swing.JComboBox comboEditEndTimeMin;
+    private javax.swing.JComboBox comboEditName;
+    private javax.swing.JComboBox comboEditStartTimeHour;
+    private javax.swing.JComboBox comboEditStartTimeMin;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -492,7 +491,6 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -500,10 +498,12 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelAddShift;
+    private javax.swing.JPanel jPanelEditShift;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel lblAddColor;
+    private javax.swing.JLabel lblEditColor;
+    private javax.swing.JTextField textAddShiftName;
     // End of variables declaration//GEN-END:variables
 
     /**
