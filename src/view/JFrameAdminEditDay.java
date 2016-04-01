@@ -191,6 +191,7 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         getController().save();
+        instance = null;
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void comboShiftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboShiftActionPerformed
