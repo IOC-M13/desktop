@@ -18,7 +18,7 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     
     private AdminUsers controller;
     
-    //Utilizar el patrón Singleton, para obtener una sola instancia de JFrameAdminUsers
+    //Use the pattern Singleton, for a get a unique instance of JFrameAdminUsers at once
     public static JFrameAdminUsers getInstance(Admin controllerAdmin) {
         if (instance == null) {
             instance = new JFrameAdminUsers(controllerAdmin);
@@ -31,14 +31,9 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
      */
     private JFrameAdminUsers(Admin controllerAdmin) {
         
-        
         initComponents();
         
-        controller = new AdminUsers(controllerAdmin,
-                                    this,
-                                    textAddName, textAddDni, textAddRealName, passAddPass, checkAddIsAdmin,
-                                    comboEditName, textEditDni, textEditRealName, passEditPass, checkEditIsAdmin, btnEditClearAll, btnEditSave, btnEditDel);
-        
+        controller = new AdminUsers(controllerAdmin, this);
         
     }
 
@@ -376,7 +371,6 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     }//GEN-LAST:event_comboEditNameActionPerformed
 
     private void comboEditNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboEditNameItemStateChanged
-        // TODO add your handling code here:
         
     }//GEN-LAST:event_comboEditNameItemStateChanged
 
@@ -403,41 +397,6 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         controller.closeWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JFrameAdminUsers.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                //new JFrameAdminUsers().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAddUser;
@@ -471,4 +430,130 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private javax.swing.JTextField textEditDni;
     private javax.swing.JTextField textEditRealName;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the btnAddAddUser
+     */
+    public javax.swing.JButton getBtnAddAddUser() {
+        return btnAddAddUser;
+    }
+
+    /**
+     * @return the btnAddClearAll
+     */
+    public javax.swing.JButton getBtnAddClearAll() {
+        return btnAddClearAll;
+    }
+
+    /**
+     * @return the btnEditClearAll
+     */
+    public javax.swing.JButton getBtnEditClearAll() {
+        return btnEditClearAll;
+    }
+
+    /**
+     * @return the btnEditDel
+     */
+    public javax.swing.JButton getBtnEditDel() {
+        return btnEditDel;
+    }
+
+    /**
+     * @return the btnEditSave
+     */
+    public javax.swing.JButton getBtnEditSave() {
+        return btnEditSave;
+    }
+
+    /**
+     * @return the checkAddIsAdmin
+     */
+    public javax.swing.JCheckBox getCheckAddIsAdmin() {
+        return checkAddIsAdmin;
+    }
+
+    /**
+     * @return the checkEditIsAdmin
+     */
+    public javax.swing.JCheckBox getCheckEditIsAdmin() {
+        return checkEditIsAdmin;
+    }
+
+    /**
+     * @return the comboEditName
+     */
+    public javax.swing.JComboBox getComboEditName() {
+        return comboEditName;
+    }
+
+    /**
+     * @return the jPanelAddUser
+     */
+    public javax.swing.JPanel getjPanelAddUser() {
+        return jPanelAddUser;
+    }
+
+    /**
+     * @return the jPanelEditUser
+     */
+    public javax.swing.JPanel getjPanelEditUser() {
+        return jPanelEditUser;
+    }
+
+    /**
+     * @return the jTabbedPane1
+     */
+    public javax.swing.JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    /**
+     * @return the passAddPass
+     */
+    public javax.swing.JPasswordField getPassAddPass() {
+        return passAddPass;
+    }
+
+    /**
+     * @return the passEditPass
+     */
+    public javax.swing.JPasswordField getPassEditPass() {
+        return passEditPass;
+    }
+
+    /**
+     * @return the textAddDni
+     */
+    public javax.swing.JTextField getTextAddDni() {
+        return textAddDni;
+    }
+
+    /**
+     * @return the textAddName
+     */
+    public javax.swing.JTextField getTextAddName() {
+        return textAddName;
+    }
+
+    /**
+     * @return the textAddRealName
+     */
+    public javax.swing.JTextField getTextAddRealName() {
+        return textAddRealName;
+    }
+
+    /**
+     * @return the textEditDni
+     */
+    public javax.swing.JTextField getTextEditDni() {
+        return textEditDni;
+    }
+
+    /**
+     * @return the textEditRealName
+     */
+    public javax.swing.JTextField getTextEditRealName() {
+        return textEditRealName;
+    }
 }

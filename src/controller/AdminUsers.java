@@ -13,9 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import view.JFrameAdminUsers;
 
 /**
- *
+ * Class that contain the JFrameAdminUsers controller
  * @author Oscar
  */
 public class AdminUsers {
@@ -26,7 +27,7 @@ public class AdminUsers {
     private Admin controllerAdmin;
     
     // Referencia al JFrame
-    private JFrame jFrame;
+    private JFrameAdminUsers jFrame;
     
     // Referencias a componentes de la pestaña de Add Users
     private JTextField addUserName;
@@ -47,34 +48,40 @@ public class AdminUsers {
     
     public boolean usersLoadedInComboBox = false;
     
-    
-    public AdminUsers(Admin controllerAdmin,
-                      JFrame jFrame,
-                      JTextField addUserName, JTextField addDni, JTextField addRealName, JPasswordField addPass, JCheckBox addIsAdmin,
-                      JComboBox editUserName, JTextField editDni, JTextField editRealName, JPasswordField editPass, JCheckBox editIsAdmin, JButton editClearAll, JButton editSave, JButton editDel) {
+    /**
+     * Constructor of JFrameAdminUsers controller
+     * @param controllerAdmin The JFrameAdmin controller
+     * @param jFrame The jFrame of JFrameAdminUsers
+     * @author Oscar Membrilla Estorach
+     */
+    public AdminUsers(Admin controllerAdmin, JFrameAdminUsers jFrame) {
         
         this.controllerAdmin = controllerAdmin;
         
         this.jFrame = jFrame;
         
-        this.addUserName = addUserName;
-        this.addDni = addDni;
-        this.addRealName = addRealName;
-        this.addPass = addPass;
-        this.addIsAdmin = addIsAdmin;
+        this.addUserName = jFrame.getTextAddName();
+        this.addDni = jFrame.getTextAddDni();
+        this.addRealName = jFrame.getTextAddRealName();
+        this.addPass = jFrame.getPassAddPass();
+        this.addIsAdmin = jFrame.getCheckAddIsAdmin();
         
-        this.editUserName = editUserName;
-        this.editDni = editDni;
-        this.editRealName = editRealName;
-        this.editPass = editPass;
-        this.editIsAdmin = editIsAdmin;
-        this.editClearAll = editClearAll;
-        this.editSave = editSave;
-        this.editDel = editDel;
+        this.editUserName = jFrame.getComboEditName();
+        this.editDni = jFrame.getTextEditDni();
+        this.editRealName = jFrame.getTextEditRealName();
+        this.editPass = jFrame.getPassEditPass();
+        this.editIsAdmin = jFrame.getCheckEditIsAdmin();
+        this.editClearAll = jFrame.getBtnEditClearAll();
+        this.editSave = jFrame.getBtnEditSave();
+        this.editDel = jFrame.getBtnEditDel();
         
         db = new DBHelper();
     }
     
+    /**
+     * Clear all the swing components in JPanel of "Add Users"
+     * @author Oscar Membrilla Estorach
+     */
     public void clearAll() {
         addUserName.setText("");
         addDni.setText("");
@@ -83,6 +90,10 @@ public class AdminUsers {
         addIsAdmin.setSelected(false);
     }
     
+    /**
+     * Add a new user in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void addUser() {
         
         db.connectDB();
@@ -127,6 +138,10 @@ public class AdminUsers {
           
     }
     
+    /**
+     * Load users names in JComboBox users
+     * @author Oscar Membrilla Estorach
+     */
     public void loadUsersInComboBox() {
        
         editUserName.removeAllItems();
@@ -159,6 +174,10 @@ public class AdminUsers {
         
     }
     
+    /**
+     * Load users data in swing components of JPanel of "Edit Users"
+     * @author Oscar Membrilla Estorach
+     */
     public void loadUserDataInComponents() {
         
         if (usersLoadedInComboBox) {
@@ -206,10 +225,18 @@ public class AdminUsers {
         }
     }
     
+    /**
+     * Put red semaphore "usersLoadedInComboBox", else this semaphore will always be in green
+     * @author Oscar Membrilla Estorach
+     */
     public void changePanel() {
         usersLoadedInComboBox = false;
     }
     
+    /**
+     * Edit user data in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void editUserData() {
         
         String userName = (String) editUserName.getSelectedItem();
@@ -243,6 +270,10 @@ public class AdminUsers {
         
     }
     
+    /**
+     * Delete user in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void deleteUser() {
         
         String comboBox = (String) editUserName.getSelectedItem();
@@ -262,6 +293,10 @@ public class AdminUsers {
     
     }
     
+    /**
+     * Close JFrame of JFrameAdminShifts
+     * @author Oscar Membrilla Estorach
+     */
     public void closeWindow() {
         jFrame.dispose();
     }
