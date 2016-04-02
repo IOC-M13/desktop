@@ -25,7 +25,7 @@ import view.JFrameAdminEditDay;
 import view.JFrameWorkerShowDay;
 
 /**
- *
+ * Class that contain all necessary to generate a GUI calendar
  * @author Oscar
  */
 public class CalendarClass {
@@ -43,6 +43,13 @@ public class CalendarClass {
     private JFrameAdminEditDay jFrameAdminEditDay;
     private DBHelper db;
 
+    /**
+     * Constructor of CalendarClass with an Admin controller parameter
+     * @param controllerAdmin The JFrameAdmin controller
+     * @param jPanelYearMonth The JPanel of years and months of a GUI calendar
+     * @param jPanelDays The JPanel of days of a GUI calendar
+     * @author Oscar Membrilla Estorach
+     */
     public CalendarClass(Admin controllerAdmin, JPanel jPanelYearMonth, JPanel jPanelDays){
         
         db = new DBHelper();
@@ -53,6 +60,12 @@ public class CalendarClass {
         
     }
     
+    /**
+     * Constructor of CalendarClass
+     * @param jPanelYearMonth The JPanel of years and months of a GUI calendar
+     * @param jPanelDays The JPanel of days of a GUI calendar
+     * @author Oscar Membrilla Estorach
+     */
     public CalendarClass(JPanel jPanelYearMonth, JPanel jPanelDays){
         
         db = new DBHelper();
@@ -62,17 +75,25 @@ public class CalendarClass {
         
     }
     
+    /**
+     * Call the two methods that create a complete GUI calendar
+     * @author Oscar Membrilla Estorach
+     */
     public void createCalendar() {
         createCalendarYearMonth();
         createCalendarDays();
     }
     
+    /**
+     * Create two JComboBoxes with years and months of a GUI calendar
+     * @author Oscar Membrilla Estorach
+     */
     public void createCalendarYearMonth() {
         
         /* 
            Crear el comboBox con los años, concretamente se crean 6 años
            antes del año actual y 6 años después del año actual. 
-           See queda seleccionado, por defecto, el año actual.
+           Se queda seleccionado, por defecto, el año actual.
         */
         jPanelYearMonth.setLayout(new GridLayout(1, 2));
         JComboBox jComboBoxYear = new JComboBox();
@@ -118,6 +139,11 @@ public class CalendarClass {
         month = jComboBoxMonth.getSelectedIndex();
     }
 
+    /**
+     * Create a days of a month (and year) selected of a GUI calendar.
+     * And load shifts, from DB, of selected user.
+     * @author Oscar Membrilla Estorach
+     */
     public void createCalendarDays() {
         
         // Crear un Layout en forma de cuadrícula de 7 filas x 7 columnas
@@ -153,7 +179,6 @@ public class CalendarClass {
             jLab[i].setBorder(border);
             jPanelDays.add(jLab[i]);
         }
-        
         
         
         
@@ -204,7 +229,6 @@ public class CalendarClass {
         
         
         
-        
         // Agregar los días posteriores al mes seleccionado
         JLabel[] jLab2 = new JLabel[42 - daysOfMonth - daysBeforeMonth];
         for (int i = 0; i < jLab2.length; i++) {
@@ -223,6 +247,10 @@ public class CalendarClass {
         jPanelDays.updateUI();
     }
 
+    /**
+     * Load shifts, from DB, of selected user.
+     * @author Oscar Membrilla Estorach
+     */
     private void loadShiftsOnCalendar() {
         
         db.connectDB();
@@ -244,6 +272,12 @@ public class CalendarClass {
         
     }
     
+    /**
+     * Method that get number of days before month of cal parameter
+     * @param cal Instance of GregorianCalendar
+     * @return int with number of days before month of cal parameter
+     * @author Oscar Membrilla Estorach
+     */
     private int getDaysBeforeMonth(Calendar cal) {
         int initialDayOfMonth = cal.get(java.util.Calendar.DAY_OF_WEEK);
         cal.setMinimalDaysInFirstWeek(7);
@@ -260,12 +294,24 @@ public class CalendarClass {
         }
     }
     
+    /**
+     * Put text of JLabel in bold
+     * @param lab JLabel which is to put the text in bold 
+     * @return JLabel with your own text in bold
+     * @author Oscar Membrilla Estorach
+     */
     private JLabel boldFont(JLabel lab) {
         Font f = lab.getFont();
         lab.setFont(f.deriveFont(f.getStyle() | Font.BOLD));
         return lab;
     }
 
+    /**
+     * Add zero to left to a number, if numString parameter is under of 10
+     * @param numString The number to add zero to left, if it necessary...
+     * @return String with number that zero added to left, in case that numString param is under of 10
+     * @author Oscar Membrilla Estorach
+     */
     private String addZeroLeft(String numString) {
         int num = Integer.valueOf(numString);
         if (num < 10) {
@@ -276,6 +322,7 @@ public class CalendarClass {
 
     /**
      * @return the controllerAdminEditDay
+     * @author Oscar Membrilla Estorach
      */
     public AdminEditDay getControllerAdminEditDay() {
         if (jFrameAdminEditDay != null) {
