@@ -39,9 +39,6 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
                                     textAddName, textAddDni, textAddRealName, passAddPass, checkAddIsAdmin,
                                     comboEditName, textEditDni, textEditRealName, passEditPass, checkEditIsAdmin, btnEditClearAll, btnEditSave, btnEditDel);
         
-        //jTabbedPane1.setIconAt(0, new ImageIcon("icons" + File.separator + "edit.png"));
-        //jTabbedPane1.setTitleAt(0, "Users");
-        
         
     }
 
@@ -325,6 +322,11 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
         jMenu1.setText("File");
 
         jMenuItem1.setText("Close");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -397,6 +399,10 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         instance = null;
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        controller.closeWindow();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -40,7 +40,7 @@ public class Worker {
     }
     
     public void openJFrameWorkerData() {
-        JFrameWorkerData jFrameWorkerData = new JFrameWorkerData();
+        JFrameWorkerData jFrameWorkerData = JFrameWorkerData.getInstance();
         jFrameWorkerData.setVisible(true);
         jFrameWorkerData.setLocationRelativeTo(null);
         jFrameWorkerData.setLayout(null);

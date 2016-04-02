@@ -11,9 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import view.JFrameAdminShifts;
 
 /**
- *
+ * Class that contain the JFrameAdminShifts controller
  * @author Oscar
  */
 public class AdminShifts {
@@ -27,7 +28,7 @@ public class AdminShifts {
     private AdminEditDay controllerAdminEditDay;
     
     // Referencia al JFrame
-    private JFrame jFrame;
+    private JFrameAdminShifts jFrame;
     
     // Referencias a componentes de la pestaña de Add Shifts
     private JTextField addName;
@@ -50,31 +51,34 @@ public class AdminShifts {
     
     public boolean shiftsLoadedInComboBox = false;
     
-    public AdminShifts (Admin controllerAdmin,
-                        JFrame jFrame,
-                        JTextField addName, JComboBox addStartTimeHour, JComboBox addStartTimeMin, JComboBox addEndTimeHour, JComboBox addEndTimeMin, JLabel addColor,
-                        JComboBox editName, JComboBox editStartTimeHour, JComboBox editStartTimeMin, JComboBox editEndTimeHour, JComboBox editEndTimeMin, JLabel editColor, JButton editClearAll, JButton editSave, JButton editDel) {
+    /**
+     * Constructor of JFrameAdminShifts controller
+     * @param controllerAdmin The JFrameAdmin controller
+     * @param jFrame The jFrame of JFrameAdminShifts
+     * @author Oscar Membrilla Estorach
+     */
+    public AdminShifts (Admin controllerAdmin, JFrameAdminShifts jFrame) {
         
         this.controllerAdmin = controllerAdmin;
         
         this.jFrame = jFrame;
         
-        this.addName = addName;
-        this.addStartTimeHour = addStartTimeHour;
-        this.addStartTimeMin = addStartTimeMin;
-        this.addEndTimeHour = addEndTimeHour;
-        this.addEndTimeMin = addEndTimeMin;
-        this.addColor = addColor;
+        this.addName = jFrame.getTextAddShiftName();
+        this.addStartTimeHour = jFrame.getComboAddStartTimeHour();
+        this.addStartTimeMin = jFrame.getComboAddStartTimeMin();
+        this.addEndTimeHour = jFrame.getComboAddEndTimeHour();
+        this.addEndTimeMin = jFrame.getComboAddEndTimeMin();
+        this.addColor = jFrame.getLblAddColor();
         
-        this.editName = editName;
-        this.editStartTimeHour = editStartTimeHour;
-        this.editStartTimeMin = editStartTimeMin;
-        this.editEndTimeHour = editEndTimeHour;
-        this.editEndTimeMin = editEndTimeMin;
-        this.editColor = editColor;
-        this.editClearAll = editClearAll;
-        this.editSave = editSave;
-        this.editDel = editDel;
+        this.editName = jFrame.getComboEditName();
+        this.editStartTimeHour = jFrame.getComboEditStartTimeHour();
+        this.editStartTimeMin = jFrame.getComboEditStartTimeMin();
+        this.editEndTimeHour = jFrame.getComboEditEndTimeHour();
+        this.editEndTimeMin = jFrame.getComboEditEndTimeMin();
+        this.editColor = jFrame.getLblEditColor();
+        this.editClearAll = jFrame.getBtnEditClearAll();
+        this.editSave = jFrame.getBtnEditSave();
+        this.editDel = jFrame.getBtnEditDel();
         
         db = new DBHelper();
         
@@ -82,6 +86,10 @@ public class AdminShifts {
         
     }
     
+    /**
+     * Fill time JComboBoxes with hours and mins that have a day
+     * @author Oscar Membrilla Estorach
+     */
     private void loadComboBoxHourAndMin() {
         
         //Bucle para rellenar los combobox de las horas
@@ -116,6 +124,10 @@ public class AdminShifts {
         
     }
     
+    /**
+     * Clear all the swing components in JPanel of "Add Shifts"
+     * @author Oscar Membrilla Estorach
+     */
     public void clearAll() {
         addName.setText("");
         addStartTimeHour.setSelectedItem("00");
@@ -125,11 +137,20 @@ public class AdminShifts {
         addColor.setBackground(Color.decode("#" + "66CCFF"));
     }
     
+    /**
+     * Add zero to left to a number
+     * @param num The number to add zero to left
+     * @return String with number that zero added to left
+     * @author Oscar Membrilla Estorach
+     */
     private String zeroLeft(int num) {
         return "0" + String.valueOf(num);
     }
     
-    
+    /**
+     * Add a new shift in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void addShift() {
         
         String name = addName.getText();
@@ -142,6 +163,9 @@ public class AdminShifts {
         try {
             db.insertShift(name, startTime, endTime, color);
             JOptionPane.showMessageDialog(null, "The shift " + name + " has been added successfully.");
+            
+            //Clear all
+            clearAll();
             
             //Cargar de nuevo la leyenda del JFrameAdmin
             controllerAdmin.loadLegend();
@@ -164,6 +188,10 @@ public class AdminShifts {
         
     }
     
+    /**
+     * Load shift names of JComboBox shifts
+     * @author Oscar Membrilla Estorach
+     */
     public void loadShiftsInComboBox() {
         
         editName.removeAllItems();
@@ -195,6 +223,10 @@ public class AdminShifts {
          
     }
     
+    /**
+     * Load shift data in swing components of JPanel of "Edit Shifts"
+     * @author Oscar Membrilla Estorach
+     */
     public void  loadShiftDataInComponents() {
         
         if (shiftsLoadedInComboBox) {
@@ -239,10 +271,18 @@ public class AdminShifts {
         
     }
     
+    /**
+     * Put red semaphore "shiftLoadedInComboBox", else this semaphore will always be in green
+     * @author Oscar Membrilla Estorach
+     */
     public void changePanel() {
         shiftsLoadedInComboBox = false;
     }
     
+    /**
+     * Edit shift data in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void editShiftData() {
     
         String name = (String) editName.getSelectedItem();
@@ -273,6 +313,10 @@ public class AdminShifts {
         
     }
     
+    /**
+     * Delete shift in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void deleteShift() {
         
         String comboBox = (String) editName.getSelectedItem();
@@ -307,6 +351,14 @@ public class AdminShifts {
         shiftsLoadedInComboBox = false;
         loadShiftsInComboBox();
     
+    }
+    
+    /**
+     * Close JFrame of JFrameAdminShifts
+     * @author Oscar Membrilla Estorach
+     */
+    public void closeWindow() {
+        jFrame.dispose();
     }
 
 }

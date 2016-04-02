@@ -261,5 +261,9 @@ public class AdminUsers {
         loadUsersInComboBox();
     
     }
+    
+    public void closeWindow() {
+        jFrame.dispose();
+    }
 
 }

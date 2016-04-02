@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import java.sql.ResultSet;
@@ -15,8 +13,8 @@ import view.JFrameAdminShifts;
 import view.JFrameAdminUsers;
 
 /**
- *
- * @author Oscar
+ * Class that contain the JFrameAdmin controller
+ * @author Oscar Membrilla Estorach
  */
 public class Admin {
     
@@ -39,32 +37,32 @@ public class Admin {
     public boolean usersLoadedInComboBox = false;
     
     /**
-     * This is a controller of JFrameAdmin
-     * @param jFrame
-     * @param jPanelYearMonth
-     * @param jPanelDays
-     * @param jPanelLegend
-     * @param jComboUsers 
+     * Constructor of JFrameAdmin controller 
+     * @param jFrame The JFrame of JFrameAdmin
+     * @author Oscar Membrilla Estorach
      */
-    public Admin (JFrame jFrame, JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JComboBox jComboUsers) {
+    public Admin (JFrameAdmin jFrame) {
         
         this.jFrame = jFrame;
-        this.jPanelYearMonth = jPanelYearMonth;
-        this.jPanelDays = jPanelDays;
-        this.jPanelLegend = jPanelLegend;
-        this.jComboUsers = jComboUsers;
+        this.jPanelYearMonth = jFrame.getJPanelYearMonth();
+        this.jPanelDays = jFrame.getJPanelDays();
+        this.jPanelLegend = jFrame.getJPanelLegend();
+        this.jComboUsers = jFrame.getComboUsers();
         
         db = new DBHelper();
         calendar = new CalendarClass(this, jPanelYearMonth, jPanelDays);
         legend = new Legend(jPanelLegend);
-        
-        //loadUsersInCombo();
         
         loadCalendar();
         loadLegend();
         
     }
     
+    
+    /**
+     * Load the users in the JComboBox users
+     * @author Oscar Membrilla Estorach
+     */
     public void loadUsersInCombo() {
         
         usersLoadedInComboBox = false;
@@ -93,6 +91,10 @@ public class Admin {
         
     }
     
+    /**
+     * Reload calendar when change the user selected in the users JComboBox
+     * @author Oscar Membrilla Estorach
+     */
     public void reloadCalendarToOtherUser() {
         
         if (usersLoadedInComboBox) {
@@ -102,18 +104,34 @@ public class Admin {
         
     }
     
+    /**
+     * Load all the calendar, that is load the years, months and days of calendar
+     * @author Oscar Membrilla Estorach
+     */
     public void loadCalendar() {
         calendar.createCalendar();
     }
     
+    /**
+     * Only load the days of calendar
+     * @author Oscar Membrilla Estorach
+     */
     public void loadCalendarDays() {
         calendar.createCalendarDays();
     }
     
+    /**
+     * Load the legend of shifts that exists into DB
+     * @author Oscar Membrilla Estorach
+     */
     public void loadLegend() {
         legend.draw();
     }
     
+    /**
+     * Open the JFrame with name JFrameAdminUsers
+     * @author Oscar Membrilla Estorach
+     */
     public void openJFrameAdminUsers() {
         jFrameAdminUsers = JFrameAdminUsers.getInstance(this);
         jFrameAdminUsers.setVisible(true);
@@ -121,6 +139,10 @@ public class Admin {
         jFrameAdminUsers.setLayout(null);
     }
     
+    /**
+     * Open the JFrame with name JFrameAdminShifts
+     * @author Oscar Membrilla Estorach
+     */
     public void openJFrameAdminShifts() {
         jFrameAdminShifts = JFrameAdminShifts.getInstance(this);
         jFrameAdminShifts.setVisible(true);
@@ -128,12 +150,12 @@ public class Admin {
         jFrameAdminShifts.setLayout(null);
     }
     
+    /**
+     * Close the application
+     * @author Oscar Membrilla Estorach
+     */
     public void exit() {
         System.exit(0); // Cerrar la aplicación
-    }
-    
-    public void messageTwoWindowsNotOpen() {
-        JOptionPane.showMessageDialog(null, "Do not have two windows opened!");
     }
     
     /**

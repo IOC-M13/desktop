@@ -11,9 +11,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import view.JFrameAdmin;
+import view.JFrameAdminEditDay;
 
 /**
- *
+ * Class that contain the JFrameAdminEditDay controller
  * @author Oscar
  */
 public class AdminEditDay {
@@ -38,7 +39,14 @@ public class AdminEditDay {
     
     public boolean shiftsLoadedInComboBox = false;
     
-    public AdminEditDay(Admin controllerAdmin, String dateSelected, JFrame jFrame, JLabel day, JLabel userName, JComboBox shiftName, JLabel startTime, JLabel endTime) {
+    /**
+     * Constructor of JFrameAdminEditDay controller
+     * @param controllerAdmin The JFrameAdmin controller
+     * @param dateSelected The date selected, in the calendar, by user
+     * @param jFrame The JFrame of JFrameAdminEditDay
+     * @author Oscar Membrilla Estorach
+     */
+    public AdminEditDay(Admin controllerAdmin, String dateSelected, JFrameAdminEditDay jFrame) {
         db = new DBHelper();
         doUpdate = false;
         this.controllerAdmin = controllerAdmin;
@@ -47,17 +55,21 @@ public class AdminEditDay {
         
         this.jFrame = jFrame;
         
-        this.day = day;
-        this.userName = userName;
-        this.shiftName = shiftName;
-        this.startTime = startTime;
-        this.endTime = endTime;
+        this.day = jFrame.getLblDate();
+        this.userName = jFrame.getLblUser();
+        this.shiftName = jFrame.getComboShift();
+        this.startTime = jFrame.getLblStartTime();
+        this.endTime = jFrame.getLblEndTime();
         
         day.setText(dateSelected);
         userName.setText(Support.userName);
         
     }
     
+    /**
+     * Load shifts in JComboBox shifts
+     * @author Oscar Membrilla Estorach
+     */
     public void loadShifts() {
         
         shiftsLoadedInComboBox = false;
@@ -103,11 +115,14 @@ public class AdminEditDay {
         
     }
     
+    /**
+     * Load hours and minutes of start and end to the shift selected
+     * @author Oscar Membrilla Estorach
+     */
     public void changeTimes() {
         
         if (shiftsLoadedInComboBox && !((String)shiftName.getSelectedItem()).equals(TEXT_NO_SHIFT)) {
         
-            //System.out.println((String)shiftName.getSelectedItem());
             try {
             
                 db.connectDB();
@@ -129,6 +144,10 @@ public class AdminEditDay {
         }
     }
     
+    /**
+     * Save changes of JFrameAdminEditDay in DB
+     * @author Oscar Membrilla Estorach
+     */
     public void save () {
         
         db.connectDB();
@@ -138,9 +157,10 @@ public class AdminEditDay {
         if (doUpdate) {
             
             if (((String)shiftName.getSelectedItem()).equals(TEXT_NO_SHIFT)) {
+                //Do delete
                 db.deleteShiftToUser(sqlDate, userName.getText(), shiftFindedInDB);               
             } else {
-                //Hacer update
+                //Do update
                 db.updateShiftToUser(sqlDate, userName.getText(), (String)shiftName.getSelectedItem());
             }
             
@@ -150,7 +170,7 @@ public class AdminEditDay {
             jFrame.dispose();
             
         } else if (!doUpdate && !((String)shiftName.getSelectedItem()).equals(TEXT_NO_SHIFT)) {
-            //Hacer insert
+            //Do insert
             db.assignShiftToUser(sqlDate, userName.getText(), (String)shiftName.getSelectedItem());
             
             //Recargar el calendario()
@@ -163,12 +183,21 @@ public class AdminEditDay {
         
     }
     
+    /**
+     * Write date selected in JLabel of date
+     * @param dateSelected The date selected, in the calendar, by user
+     * @author Oscar Membrilla Estorach
+     */
     public void changeDate(String dateSelected) {
         this.dateSelected = dateSelected;
         day.setText(this.dateSelected);
     }
     
-    public void exit() {
+    /**
+     * Close JFrame of JFrameAdminEditDay
+     * @author Oscar Membrilla Estorach
+     */
+    public void closeWindow() {
         jFrame.dispose();
     }
     

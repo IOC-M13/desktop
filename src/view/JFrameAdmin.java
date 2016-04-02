@@ -22,7 +22,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
         
         initComponents();
         
-        controller = new Admin(this, jPanelYearMonth, jPanelDays, jPanelLegend, comboUsers);
+        controller = new Admin(this);
 
     }
 
@@ -206,4 +206,32 @@ public class JFrameAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelYearMonth;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * @return the jPanelDays
+     */
+    public javax.swing.JPanel getJPanelDays() {
+        return jPanelDays;
+    }
+
+    /**
+     * @return the jPanelLegend
+     */
+    public javax.swing.JPanel getJPanelLegend() {
+        return jPanelLegend;
+    }
+
+    /**
+     * @return the jPanelYearMonth
+     */
+    public javax.swing.JPanel getJPanelYearMonth() {
+        return jPanelYearMonth;
+    }
+
+    /**
+     * @return the comboUsers
+     */
+    public javax.swing.JComboBox getComboUsers() {
+        return comboUsers;
+    }
 }

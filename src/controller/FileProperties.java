@@ -26,13 +26,13 @@ public class FileProperties {
     private Properties prop;
     private InputStream in;
     private OutputStream out;
-    private String jarDir;
+    //private String jarDir;
     
     public FileProperties() {
         prop = new Properties();
         
-        /*
         
+        /*
         // For run with .jar
         
         CodeSource codeSource = FileProperties.class.getProtectionDomain().getCodeSource();
@@ -43,8 +43,8 @@ public class FileProperties {
             Logger.getLogger(FileProperties.class.getName()).log(Level.SEVERE, null, ex);
         }
         jarDir = jarFile.getParentFile().getAbsolutePath();
-        
         */
+        
     }
     
     public void loadProperties() {

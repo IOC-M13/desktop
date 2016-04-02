@@ -36,7 +36,7 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
         
         initComponents();
         
-        controller = new AdminEditDay(controllerAdmin, dateSelected, this, lblDate, lblUser, comboShift, lblStartTime, lblEndTime);
+        controller = new AdminEditDay(controllerAdmin, dateSelected, this);
         
     }
 
@@ -186,7 +186,8 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        getController().exit();
+        getController().closeWindow();
+        instance = null;
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -228,5 +229,54 @@ public class JFrameAdminEditDay extends javax.swing.JFrame {
      */
     public AdminEditDay getController() {
         return controller;
+    }
+
+    /**
+     * @return the btnCancel
+     */
+    public javax.swing.JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    /**
+     * @return the btnSave
+     */
+    public javax.swing.JButton getBtnSave() {
+        return btnSave;
+    }
+
+    /**
+     * @return the comboShift
+     */
+    public javax.swing.JComboBox getComboShift() {
+        return comboShift;
+    }
+
+    /**
+     * @return the lblDate
+     */
+    public javax.swing.JLabel getLblDate() {
+        return lblDate;
+    }
+
+    /**
+     * @return the lblEndTime
+     */
+    public javax.swing.JLabel getLblEndTime() {
+        return lblEndTime;
+    }
+
+    /**
+     * @return the lblStartTime
+     */
+    public javax.swing.JLabel getLblStartTime() {
+        return lblStartTime;
+    }
+
+    /**
+     * @return the lblUser
+     */
+    public javax.swing.JLabel getLblUser() {
+        return lblUser;
     }
 }

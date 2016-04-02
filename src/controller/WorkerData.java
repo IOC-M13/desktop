@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import view.JFrameWorkerData;
 
 /**
  *
@@ -77,6 +78,7 @@ public class WorkerData {
             JOptionPane.showMessageDialog(null, "Your personal data has been edited successfully.");
             
             closeWindow();
+            
         } catch (SQLException ex) {
             if (ex.getErrorCode() == 1062) {
                 JOptionPane.showMessageDialog(null, "The dni of the user is already used by other user!");
