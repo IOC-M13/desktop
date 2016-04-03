@@ -15,7 +15,7 @@ import view.JFrameAdminUsers;
 
 /**
  * Class that contain the JFrameAdminUsers controller
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class AdminUsers {
     

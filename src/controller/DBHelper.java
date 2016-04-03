@@ -9,7 +9,7 @@ import javax.swing.*;
 
 /**
  * Class for work with DB
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class DBHelper {
     

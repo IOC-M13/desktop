@@ -13,7 +13,7 @@ import view.JFrameAdminShifts;
 
 /**
  * Class that contain the JFrameAdminShifts controller
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class AdminShifts {
     

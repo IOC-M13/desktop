@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import java.awt.BorderLayout;
@@ -16,20 +14,29 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- *
- * @author Oscar
+ * Class that contain all necessary to generate a GUI Legend
+ * @author Oscar Membrilla Estorach
  */
 public class Legend  {
     
     private static final String SIZE_COLOR = "     ";
     private JPanel jPanel;
 
+    /**
+     * Constructor of Legend with a JPanel parameter
+     * @param jPanel JPanel that draw the gui legend
+     * @author Oscar Membrilla Estorach
+     */
     public Legend(JPanel jPanel) {
         
         this.jPanel = jPanel;
         
     }
     
+    /**
+     * Draw gui legend on the jPanel attribute
+     * @author Oscar Membrilla Estorach
+     */
     public void draw() {
         
         jPanel.removeAll();

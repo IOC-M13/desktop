@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Class to manage the file config.properties
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class FileProperties {
     

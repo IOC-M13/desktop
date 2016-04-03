@@ -13,7 +13,7 @@ import view.JFrameAdminEditDay;
 
 /**
  * Class that contain the JFrameAdminEditDay controller
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class AdminEditDay {
     

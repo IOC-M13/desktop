@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import javax.swing.JButton;
@@ -8,7 +6,7 @@ import view.JFrameIPport;
 
 /**
  * Class that contain the JFrameIPport controller
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class IPport {
 

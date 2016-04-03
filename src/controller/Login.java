@@ -11,9 +11,9 @@ import view.JFrameLogin;
 import view.JFrameWorker;
 
 /**
- * Clase controller del jframe JFrameLogin. 
- * Se encarga de toda la lógica de la ventana JFrameLogin.
- * 
+ * Controller class of JFrameLogin JFrame 
+ * Do all the logic of JFrameLogin JFrame
+ * @author Oscar Membrilla Estorach
  */
 public class Login {
 
@@ -24,6 +24,11 @@ public class Login {
     private JButton btnClearAll;
     private JButton btnSignIn;
     
+    /**
+     * Constructor of JFrameLogin controller
+     * @param jFrame JFrame of JFrameLogin
+     * @author Oscar Membrilla Estorach
+     */
     public Login(JFrameLogin jFrame) {
         this.jFrame = jFrame;
         tfUserName = jFrame.getTfUserName();
@@ -37,12 +42,20 @@ public class Login {
         
     }
     
+    /**
+     * Delete all text of Swing components in the JFrameLogin
+     * @author Oscar Membrilla Estorach
+     */
     public void clearAll() {
         tfUserName.setText("");
         pfPass.setText("");
         btnSignIn.transferFocus();
     }
     
+    /**
+     * Try login to DB
+     * @author Oscar Membrilla Estorach
+     */
     public void signIn() {
         DBHelper db = new DBHelper();
         
@@ -87,24 +100,44 @@ public class Login {
         }
     }
     
+    /**
+     * Transfer to next swing component when user press Enter with JTextField 
+     * of user name is focused
+     * @param evt java.awt.event.KeyEvent of JTextField of user name
+     * @author Oscar Membrilla Estorach
+     */
     public void tfUserNameKeyTyped(java.awt.event.KeyEvent evt) {
         if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
             tfUserName.transferFocus();
         }
     }
     
+    /**
+     * Do click in button of sign in when user press Enter with JPasswordField 
+     * of user password is focused
+     * @param evt java.awt.event.KeyEvent of JPasswordField of user pass
+     * @author Oscar Membrilla Estorach
+     */
     public void pfPassKeyTyped(java.awt.event.KeyEvent evt) {
         if(evt.getKeyChar() == KeyEvent.VK_ENTER) {
             btnSignIn.doClick();
         }
     }
     
+    /**
+     * Try open JFrame to JFrameIPport
+     * @author Oscar Membrilla Estorach
+     */
     public void jMenuItemAccessDB() {   
         JFrameIPport jframeIPport = JFrameIPport.getInstance();
         jframeIPport.setVisible(true);
         jframeIPport.setLocationRelativeTo(null);
     }
     
+    /**
+     * Close JFrame of JFrameLogin
+     * @author Oscar Membrilla Estorach
+     */
     public void exit() {
         System.exit(0);
     }

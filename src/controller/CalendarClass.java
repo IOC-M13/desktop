@@ -24,7 +24,7 @@ import view.JFrameWorkerShowDay;
 
 /**
  * Class that contain all necessary to generate a GUI calendar
- * @author Oscar
+ * @author Oscar Membrilla Estorach
  */
 public class CalendarClass {
     public static final String[] MONTH_NAME = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Agosto", "Noviembre", "Diciembre"};
