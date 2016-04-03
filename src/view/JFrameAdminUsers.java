@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.Admin;
 import controller.AdminUsers;
 
 /**
- *
- * @author Oscar
+ * Class that contain a JFrame of JFrameAdminUsers
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameAdminUsers extends javax.swing.JFrame {
 
@@ -18,7 +13,12 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     
     private AdminUsers controller;
     
-    //Use the pattern Singleton, for a get a unique instance of JFrameAdminUsers at once
+    /**
+     * Use the pattern Singleton, for a get a unique instance of JFrameAdminUsers at once
+     * @param controllerAdmin The JFrameAdmin controller
+     * @return JFrameAdminUsers instance
+     * @author Oscar Membrilla Estorach
+     */
     public static JFrameAdminUsers getInstance(Admin controllerAdmin) {
         if (instance == null) {
             instance = new JFrameAdminUsers(controllerAdmin);
@@ -28,6 +28,8 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameAdminUsers
+     * @param controllerAdmin The JFrameAdmin controller
+     * @author Oscar Membrilla Estorach
      */
     private JFrameAdminUsers(Admin controllerAdmin) {
         
@@ -198,17 +200,6 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
             }
         });
 
-        comboEditName.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboEditNameItemStateChanged(evt);
-            }
-        });
-        comboEditName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEditNameActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("User:");
 
         jLabel5.setText("User DNI:");
@@ -365,14 +356,6 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void jPanelEditUserComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelEditUserComponentShown
         controller.loadUsersInComboBox();
     }//GEN-LAST:event_jPanelEditUserComponentShown
-
-    private void comboEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditNameActionPerformed
-        controller.loadUserDataInComponents();
-    }//GEN-LAST:event_comboEditNameActionPerformed
-
-    private void comboEditNameItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboEditNameItemStateChanged
-        
-    }//GEN-LAST:event_comboEditNameItemStateChanged
 
     private void jPanelAddUserComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jPanelAddUserComponentShown
         controller.changePanel();

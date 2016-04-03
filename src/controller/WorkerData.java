@@ -35,8 +35,8 @@ public class WorkerData {
         this.jFrame = jFrame;
         this.userName = jFrame.getLblUserName();
         this.pass = jFrame.getPassPass();
-        this.dni = jFrame.getTextRealName();
-        this.realName = realName;
+        this.dni = jFrame.getTextDni();
+        this.realName = jFrame.getTextRealName();
         
         db = new DBHelper();
         

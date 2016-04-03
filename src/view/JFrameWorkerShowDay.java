@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.WorkerShowDay;
 
 /**
- *
- * @author Oscar
+ * Class that contain a JFrame of JFrameWorkerShowDay
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameWorkerShowDay extends javax.swing.JFrame {
 
@@ -17,6 +12,12 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
     
     private WorkerShowDay controller;
     
+    /**
+     * Use the pattern Singleton, for a get a unique instance of JFrameWorkerShowDay at once
+     * @param dateSelected Date selected, on the calendar, by user
+     * @return JFrameWorkerShowDay instance
+     * @author Oscar Membrilla Estorach
+     */
     public static JFrameWorkerShowDay getInstance(String dateSelected) {
         if (instance == null) {
             instance = new JFrameWorkerShowDay(dateSelected);
@@ -29,6 +30,7 @@ public class JFrameWorkerShowDay extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameWorkerShowDay
+     * @author Oscar Membrilla Estorach
      */
     private JFrameWorkerShowDay(String dateSelected) {
         initComponents();

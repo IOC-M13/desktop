@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.*;
 
 /**
- *
- * @author Oscar
+ * Class that contain a JFrame of JFrameAdmin
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameAdmin extends javax.swing.JFrame {
 
@@ -17,6 +12,7 @@ public class JFrameAdmin extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameAdmin
+     * @author Oscar Membrilla Estorach
      */
     public JFrameAdmin() {
         
@@ -189,7 +185,6 @@ public class JFrameAdmin extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     private void comboUsersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboUsersActionPerformed
-        // TODO add your handling code here:
         controller.reloadCalendarToOtherUser();
     }//GEN-LAST:event_comboUsersActionPerformed
 

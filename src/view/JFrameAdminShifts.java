@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.Admin;
@@ -11,15 +6,20 @@ import java.awt.Color;
 import javax.swing.JColorChooser;
 
 /**
- *
- * @author Oscar
+ * Class that contain a JFrame of JFrameAdminShifts
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameAdminShifts extends javax.swing.JFrame {
 
     private static JFrameAdminShifts instance;
     private AdminShifts controller;
     
-    //Utilizar el patrón Singleton, para obtener una sola instancia de JFrameAdminUsers
+    /**
+     * Use the pattern Singleton, for a get a unique instance of JFrameAdminShifts at once
+     * @param controllerAdmin The JFrameAdmin controller
+     * @return JFrameAdminShifts instance
+     * @author Oscar Membrilla Estorach
+     */
     public static JFrameAdminShifts getInstance(Admin controllerAdmin) {
         if (instance == null) {
             instance = new JFrameAdminShifts(controllerAdmin);
@@ -29,6 +29,8 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameAdminShifts
+     * @param controllerAdmin The JFrameAdmin controller
+     * @author Oscar Membrilla Estorach
      */
     private JFrameAdminShifts(Admin controllerAdmin) {
         initComponents();
@@ -126,19 +128,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jLabel19.setText(":");
 
-        comboAddEndTimeMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboAddEndTimeMinActionPerformed(evt);
-            }
-        });
-
         jLabel20.setText(":");
-
-        comboAddStartTimeMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboAddStartTimeMinActionPerformed(evt);
-            }
-        });
 
         lblAddColor.setBackground(new java.awt.Color(102, 204, 255));
         lblAddColor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -260,19 +250,7 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
 
         jLabel14.setText(":");
 
-        comboEditStartTimeMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEditStartTimeMinActionPerformed(evt);
-            }
-        });
-
         jLabel15.setText(":");
-
-        comboEditEndTimeMin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboEditEndTimeMinActionPerformed(evt);
-            }
-        });
 
         btnEditSave.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/icons/save.png"))); // NOI18N
         btnEditSave.setText("Save");
@@ -410,22 +388,6 @@ public class JFrameAdminShifts extends javax.swing.JFrame {
         Color color = JColorChooser.showDialog(null, "Seleccione un Color", Color.gray);
         getLblEditColor().setBackground(color);
     }//GEN-LAST:event_lblEditColorMousePressed
-
-    private void comboEditStartTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditStartTimeMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboEditStartTimeMinActionPerformed
-
-    private void comboEditEndTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditEndTimeMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboEditEndTimeMinActionPerformed
-
-    private void comboAddEndTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAddEndTimeMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboAddEndTimeMinActionPerformed
-
-    private void comboAddStartTimeMinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboAddStartTimeMinActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboAddStartTimeMinActionPerformed
 
     private void lblAddColorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAddColorMousePressed
         // TODO add your handling code here:

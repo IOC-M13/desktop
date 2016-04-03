@@ -1,11 +1,10 @@
 package view;
 
 import controller.Login;
-import java.awt.event.KeyEvent;
 
 /**
- * Clase que muestra la ventana de Login de la aplicación
- * 
+ * Class that contain a JFrame of JFrameLogin
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameLogin extends javax.swing.JFrame {
     
@@ -13,6 +12,7 @@ public class JFrameLogin extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameWorker
+     * @author Oscar Membrilla Estorach
      */
     public JFrameLogin() {
         initComponents();

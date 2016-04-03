@@ -1,14 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.IPport;
 
 /**
- *
+ * Class that contain a JFrame of JFrameIPport
  * @author Oscar
  */
 public class JFrameIPport extends javax.swing.JFrame {
@@ -18,6 +13,11 @@ public class JFrameIPport extends javax.swing.JFrame {
     //Crear el atributo controller
     private IPport controller;
     
+    /**
+     * Use the pattern Singleton, for a get a unique instance of JFrameIPport at once
+     * @return JFrameIPport instance
+     * @author Oscar Membrilla Estorach
+     */
     public static JFrameIPport getInstance() {
         if (instance == null) {
             instance = new JFrameIPport();
@@ -27,6 +27,7 @@ public class JFrameIPport extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameIPport
+     * @author Oscar Membrilla Estorach
      */
     private JFrameIPport() {
         initComponents();

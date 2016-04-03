@@ -1,15 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import controller.WorkerData;
 
 /**
- *
- * @author Oscar
+ * Class that contain a JFrame of JFrameWorkerData
+ * @author Oscar Membrilla Estorach
  */
 public class JFrameWorkerData extends javax.swing.JFrame {
 
@@ -17,7 +12,11 @@ public class JFrameWorkerData extends javax.swing.JFrame {
     
     private WorkerData controller;
     
-    //Utilizar el patrón Singleton, para obtener una sola instancia de JFrameAdminUsers
+    /**
+     * Use the pattern Singleton, for a get a unique instance of JFrameWorkerData at once
+     * @return JFrameWorkerData instance
+     * @author Oscar Membrilla Estorach
+     */
     public static JFrameWorkerData getInstance() {
         if (instance == null) {
             instance = new JFrameWorkerData();
@@ -27,6 +26,7 @@ public class JFrameWorkerData extends javax.swing.JFrame {
     
     /**
      * Creates new form JFrameWorkerData
+     * @author Oscar Membrilla Estorach
      */
     private JFrameWorkerData() {
         

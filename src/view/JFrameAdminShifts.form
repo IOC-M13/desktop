@@ -246,9 +246,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboAddEndTimeMinActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel20">
               <Properties>
@@ -268,9 +265,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboAddStartTimeMinActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="lblAddColor">
               <Properties>
@@ -463,9 +457,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboEditStartTimeMinActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JComboBox" name="comboEditEndTimeHour">
               <Properties>
@@ -485,9 +476,6 @@
                   <StringArray count="0"/>
                 </Property>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboEditEndTimeMinActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btnEditSave">
               <Properties>
