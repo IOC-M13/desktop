@@ -1,9 +1,7 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 /**
- *
+ * Class to give support with a static variables and shared methods
  * @author Oscar
  */
 public class Support {

@@ -32,7 +32,7 @@ public class JFrameWorkerData extends javax.swing.JFrame {
         
         initComponents();
         
-        controller = new WorkerData(this, lblUserName, passPass, textDni, textRealName);
+        controller = new WorkerData(this);
         
     }
 
@@ -201,4 +201,46 @@ public class JFrameWorkerData extends javax.swing.JFrame {
     private javax.swing.JTextField textDni;
     private javax.swing.JTextField textRealName;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the btnCancel
+     */
+    public javax.swing.JButton getBtnCancel() {
+        return btnCancel;
+    }
+
+    /**
+     * @return the btnSave
+     */
+    public javax.swing.JButton getBtnSave() {
+        return btnSave;
+    }
+
+    /**
+     * @return the lblUserName
+     */
+    public javax.swing.JLabel getLblUserName() {
+        return lblUserName;
+    }
+
+    /**
+     * @return the passPass
+     */
+    public javax.swing.JPasswordField getPassPass() {
+        return passPass;
+    }
+
+    /**
+     * @return the textDni
+     */
+    public javax.swing.JTextField getTextDni() {
+        return textDni;
+    }
+
+    /**
+     * @return the textRealName
+     */
+    public javax.swing.JTextField getTextRealName() {
+        return textRealName;
+    }
 }

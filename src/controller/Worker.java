@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import javax.swing.JLabel;
@@ -7,7 +5,7 @@ import javax.swing.JPanel;
 import view.JFrameWorkerData;
 
 /**
- *
+ * Controller class of JFrameWorker JFrame
  * @author Oscar
  */
 public class Worker {
@@ -20,6 +18,14 @@ public class Worker {
     private CalendarClass calendar;
     private Legend legend;
 
+    /**
+     * Constructor of JFrameWorker controller
+     * @param jPanelYearMonth JPanel of years and months of a GUI calendar
+     * @param jPanelDays JPanel of days of a GUI calendar
+     * @param jPanelLegend JPanel of GUI legend
+     * @param jLabelUser JLabel of user name
+     * @author Oscar Membrilla Estorach
+     */
     public Worker(JPanel jPanelYearMonth, JPanel jPanelDays, JPanel jPanelLegend, JLabel jLabelUser) {
         
         this.jPanelYearMonth = jPanelYearMonth;
@@ -39,6 +45,10 @@ public class Worker {
         
     }
     
+    /**
+     * Try open JFrame of JFrameWorkerData
+     * @author Oscar Membrilla Estorach
+     */
     public void openJFrameWorkerData() {
         JFrameWorkerData jFrameWorkerData = JFrameWorkerData.getInstance();
         jFrameWorkerData.setVisible(true);
@@ -46,8 +56,12 @@ public class Worker {
         jFrameWorkerData.setLayout(null);
     }
     
+    /**
+     * Close JFrame of JFrameWorker
+     * @author Oscar Membrilla Estorach
+     */
     public void exit() {
-        System.exit(0); // Cerrar la aplicación
+        System.exit(0);
     }
     
 }

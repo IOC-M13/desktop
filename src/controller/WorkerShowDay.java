@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import java.sql.ResultSet;
@@ -10,7 +8,7 @@ import javax.swing.JLabel;
 import view.JFrameWorkerShowDay;
 
 /**
- *
+ * Controller class of JFrameWorkerShowDay JFrame
  * @author Oscar
  */
 public class WorkerShowDay {
@@ -26,6 +24,12 @@ public class WorkerShowDay {
     private JLabel startTime;
     private JLabel endTime;
     
+    /**
+     * Constructor of JFrameWorkerShowDay controller
+     * @param jFrame JFrame of JFrameWorkerShowDay
+     * @param dateSelected date selected, on the calendar, by user
+     * @author Oscar Membrilla Estorach
+     */
     public WorkerShowDay(JFrameWorkerShowDay jFrame, String dateSelected) {
         this.jFrame = jFrame;
         this.dateSelected = dateSelected;
@@ -40,6 +44,10 @@ public class WorkerShowDay {
         loadData();
     }
     
+    /**
+     * Load the data of selected date on swing components
+     * @author Oscar Membrilla Estorach
+     */
     public void loadData(){
         
         //Cargar la fecha
@@ -74,6 +82,11 @@ public class WorkerShowDay {
         
     }
     
+    /**
+     * Set selected date for another one passed as paramater.
+     * @param dateSelected String of selected date, in format "dd-mm-yyyy"
+     * @author Oscar Membrilla Estorach
+     */
     public void changeDate(String dateSelected) {
         this.dateSelected = dateSelected;
         date.setText(this.dateSelected);

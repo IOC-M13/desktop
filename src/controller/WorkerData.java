@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import java.sql.ResultSet;
@@ -14,12 +12,12 @@ import javax.swing.JTextField;
 import view.JFrameWorkerData;
 
 /**
- *
- * @author Oscar
+ * Controller class of JFrameWorkerData JFrame
+ * @author Oscar Membrilla Estorach
  */
 public class WorkerData {
     
-    private JFrame jFrame;
+    private JFrameWorkerData jFrame;
     private JLabel userName;
     private JPasswordField pass;
     private JTextField dni;
@@ -27,12 +25,17 @@ public class WorkerData {
     
     private DBHelper db;
     
-    public WorkerData(JFrame jFrame, JLabel userName, JPasswordField pass, JTextField dni, JTextField realName) {
+    /**
+     * Constructor of JFrameWorkerData controller
+     * @param jFrame JFrame of JFrameWorkerData
+     * @author Oscar Membrilla Estorach
+     */
+    public WorkerData(JFrameWorkerData jFrame) {
         
         this.jFrame = jFrame;
-        this.userName = userName;
-        this.pass = pass;
-        this.dni = dni;
+        this.userName = jFrame.getLblUserName();
+        this.pass = jFrame.getPassPass();
+        this.dni = jFrame.getTextRealName();
         this.realName = realName;
         
         db = new DBHelper();
@@ -43,6 +46,10 @@ public class WorkerData {
         
     }
     
+    /**
+     * Load user personal data on swing components of JFrameWorkerData JFrame
+     * @author Oscar Membrilla Estorach
+     */
     public void loadPersonalData() {
         
         db.connectDB();
@@ -63,6 +70,10 @@ public class WorkerData {
         
     }
     
+    /**
+     * Try to persist the all personal user data to DB
+     * @author Oscar Membrilla Estorach
+     */
     public void save() {
         db.connectDB();
         
@@ -91,6 +102,10 @@ public class WorkerData {
         
     }
     
+    /**
+     * Close JFrame of JFrameWorker
+     * @author Oscar Membrilla Estorach
+     */
     public void closeWindow() {
         jFrame.dispose();
     }

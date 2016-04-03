@@ -40,7 +40,7 @@ public class AdminEditDay {
     /**
      * Constructor of JFrameAdminEditDay controller
      * @param controllerAdmin The JFrameAdmin controller
-     * @param dateSelected The date selected, in the calendar, by user
+     * @param dateSelected The date selected, on the calendar, by user
      * @param jFrame The JFrame of JFrameAdminEditDay
      * @author Oscar Membrilla Estorach
      */
