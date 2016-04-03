@@ -1,5 +1,3 @@
-//Creat per Oscar Membrilla Estorach
-
 package controller;
 
 import java.awt.Color;
