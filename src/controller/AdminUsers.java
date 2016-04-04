@@ -117,6 +117,9 @@ public class AdminUsers {
                     
                     JOptionPane.showMessageDialog(null, "El usuario se ha agregado correctamente.");
                     
+                    //Limpiar todos los componentes
+                    clearAll();
+                    
                     //Recargar los usuarios del comboBox del JFrameAdmin
                     controllerAdmin.loadUsersInCombo();
                     
@@ -196,7 +199,7 @@ public class AdminUsers {
                 }
 
 
-                if (userOfCombo.equals(Support.userName)) {
+                if (userOfCombo.equals(Support.userNameLogged)) {
                     editIsAdmin.setEnabled(false);
                     editDel.setEnabled(false);
                     if (!editSave.isEnabled()) {
@@ -281,9 +284,12 @@ public class AdminUsers {
         db.deleteUserByUserName(comboBox);
 
         JOptionPane.showMessageDialog(null, "El usuario " + comboBox + " ha sido eliminado correctamente.");
-        
+ 
         //Recargar los usuarios del comboBox del JFrameAdmin
         controllerAdmin.loadUsersInCombo();
+        
+        controllerAdmin.reloadCalendarToOtherUser();
+        
 
         //Recargar el comboBox de nombres de usuarios
         usersLoadedInComboBox = false;

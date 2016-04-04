@@ -72,6 +72,7 @@ public class Login {
                 JOptionPane.showMessageDialog(null, "Ha entrado correctamente!");
                 jFrame.setVisible(false);
                 Support.userName = textUser;
+                Support.userNameLogged = textUser;
                 
                 if (stateLogin == 1) {
                     JFrameWorker jFrameWorker = new JFrameWorker();

@@ -200,6 +200,12 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
             }
         });
 
+        comboEditName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboEditNameActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("User:");
 
         jLabel5.setText("User DNI:");
@@ -380,6 +386,10 @@ public class JFrameAdminUsers extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         controller.closeWindow();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void comboEditNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboEditNameActionPerformed
+        controller.loadUserDataInComponents();
+    }//GEN-LAST:event_comboEditNameActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddAddUser;
